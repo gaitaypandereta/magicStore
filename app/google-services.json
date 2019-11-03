@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "886352858896",
+    "firebase_url": "https://magistore-2389a.firebaseio.com",
+    "project_id": "magistore-2389a",
+    "storage_bucket": "magistore-2389a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886352858896:android:35786fa878606385a41f95",
+        "android_client_info": {
+          "package_name": "com.example.magistore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886352858896-n86qpk175jolcctbp1lbeotsa1qh8plq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.magistore",
+            "certificate_hash": "ec66029cc1be011ed6e780be002e5964d3f8b285"
+          }
+        },
+        {
+          "client_id": "886352858896-qmt4s553lff734iidv5u985575b875si.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxVIQiPy6OxWNuQroVu5yEH0qcJGY1geE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886352858896-qmt4s553lff734iidv5u985575b875si.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.magistore.MainActivity">
+    <item
+        android:id="@+id/inic"
+        android:orderInCategory="100"
+        android:title="INICIO"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/login"
+        android:orderInCategory="100"
+        android:title="LOGIN" />
+    <item
+        android:id="@+id/store"
+        android:orderInCategory="100"
+        android:title="TIENDA" />
+    <item
+        android:id="@+id/logout"
+        android:orderInCategory="100"
+        android:title="LOGOUT" />
+    <item
+        android:id="@+id/salir"
+        android:orderInCategory="100"
+        android:title="SALIR" />
+
+
+</menu>
