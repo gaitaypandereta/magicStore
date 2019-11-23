@@ -2,6 +2,7 @@ package com.example.magistore;
 
 import android.os.Bundle;
 
+import com.example.magistore.vista.FragmentLogin;
 import com.example.magistore.vista.FragmentRegisterInit;
 import com.example.magistore.vista.FragmentInicio;
 import com.example.magistore.vista.FragmentRegistration;
@@ -77,7 +78,7 @@ private FragmentInicio fragmentInicio = new FragmentInicio();
             cambiarFragmento(new FragmentInicio());
         }
         if (id == R.id.login) {
-            cambiarFragmento(new FragmentRegisterInit());
+            cambiarFragmento(new FragmentLogin());
         }
         if (id == R.id.store) {
             cambiarFragmento(new FragmentStore());

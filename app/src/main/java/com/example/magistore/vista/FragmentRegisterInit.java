@@ -2,6 +2,8 @@ package com.example.magistore.vista;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,9 @@ public class FragmentRegisterInit extends Fragment {
 private Button btn_register;
 private EditText edit_nombre, edit_email, edit_pass;
 private String nombre, email, password;
+private AlertDialog.Builder dialogo;
+private View view;
+
 
     public FragmentRegisterInit() {
         // Required empty public constructor
@@ -104,10 +109,27 @@ private String nombre, email, password;
                      @Override
                      public void onComplete(@NonNull Task<Void> task2) {
                          if (task2.isSuccessful()){
-                             Toast.makeText(getActivity(), "dentro del metodo", Toast.LENGTH_SHORT).show();
                              ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegistration());
-                            // finish();
 
+                           /*  dialogo = new AlertDialog.Builder(view.getContext());
+                             dialogo.setTitle("IR DE COMPRAS A LA TIENDA");
+                             dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                 @Override
+                                 public void onClick(DialogInterface dialogInterface, int i) {
+                                     ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegistration());
+                                 }
+                             });
+                             dialogo.setNegativeButton("IR DE VISITA A LA TIENDA", new DialogInterface.OnClickListener() {
+                                 @Override
+                                 public void onClick(DialogInterface dialogInterface, int i) {
+
+                                     ((MainActivity) getActivity()).cambiarFragmento(new FragmentStore());
+
+                                     dialogInterface.dismiss();
+                                 }
+                             });
+                             dialogo.show();
+*/
                          }
 
                      }

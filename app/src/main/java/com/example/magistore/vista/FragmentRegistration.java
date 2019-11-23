@@ -1,6 +1,7 @@
 package com.example.magistore.vista;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.magistore.R;
 import com.example.magistore.modelo.Usuario;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -34,12 +39,15 @@ public class FragmentRegistration extends Fragment {
     private RadioButton radioButtonChico, getRadioButtonChica, getRadioButtonOtro;
     private Button btn_guardar_user;
     private Usuario usuario;
-    String id;
+    private String id;
+    private View vista;
     private FirebaseFirestore mFirestore;
-   /* private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
-*/
+
+    private  FirebaseFirestore db=FirebaseFirestore.getInstance();
+
     public FragmentRegistration() {
         // Required empty public constructor
     }
@@ -47,7 +55,7 @@ public class FragmentRegistration extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View vista = inflater.inflate(R.layout.fragment_registration, container, false);
+        final View vista = inflater.inflate(R.layout.fragment_registration, container, false);
 
        // mAuth = FirebaseAuth.getInstance();
        // mDatabase= FirebaseDatabase.getInstance().getReference();
@@ -88,9 +96,15 @@ public class FragmentRegistration extends Fragment {
         btn_guardar_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-Toast.makeText(getContext(), id+"donde tiene que ser", Toast.LENGTH_SHORT).show();
+                Snackbar snackbar = Snackbar.make(view, " NO HAS INTRODUCIDO NINGÚN DATO", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null);
+                View sbView = snackbar.getView();
+                sbView.setBackgroundColor(Color.rgb(28, 181, 148));
+                snackbar.show();
 
+              //  Snackbar.make(vista, "FALTAN CAMPOS OBLIGATORIOS", Snackbar.LENGTH_SHORT).show();
 
+               // actualizarRegistro();
             }
         });
 
@@ -131,27 +145,44 @@ Toast.makeText(getContext(), id+"donde tiene que ser", Toast.LENGTH_SHORT).show(
 
 
     public void actualizarRegistro() {
+       // String id=usuario.getId();
 
+        String nombre=usuario.getNombre();
+        String email=usuario.getEmail();
         String telefono = edit_telefono.getText().toString();
         String facebok = edit_facebook.getText().toString();
         String twiter = edit_twitter.getText().toString();
-        String direccion = edit_direccion.getText().toString();
         String instagra = edit_instagram.getText().toString();
+        String direccion = edit_direccion.getText().toString();
         String edad = valor_edad.getText().toString();
         String sex = valorSexo(radioGroup);
-
+        String pasword=usuario.getPass();
+        int saldo =usuario.getSaldo();
+/*
         Map<String, Object> map = new HashMap<>();
         map.put("telefono", telefono);
         map.put("facebok", facebok);
         map.put("twiter", twiter);
         map.put("instagra", instagra);
         map.put("direccion_envio", direccion);
-        map.put("edad", edad);
-        map.put("sexo", sex);
+        id="2vEM0lt2DnfgorlgbGzqMXaVn4h1";
+      //  mDatabase.child("users").child(id).updateChildren(map);
+       // db.collection("users").document(id).update(map);
+       */
+/*
+        id="95PBlCffMDdELgLm7LRajVYXRSQ2";
+        try {
+       DatabaseReference     mDatabase= FirebaseDatabase.getInstance().getReference("users").child(id);
+           usuario=new  Usuario(id, usuario.getNombre(), usuario.getEmail(), telefono,  facebok, twiter, instagra, direccion, edad, sex, usuario.getPass(), usuario.getSaldo());
+          mDatabase.setValue(usuario);
 
+            //
+            // mDatabase.child("users").child(id).child(facebok).setValue("f345667");
+        } catch (Exception e) {
 
-
-
+            Toast.makeText(getContext(), "noooooooooooooooooooooo", Toast.LENGTH_SHORT).show();
+        }
+        */
     }
 
 

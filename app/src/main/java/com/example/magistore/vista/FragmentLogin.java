@@ -35,7 +35,7 @@ private Button btn_registro, btn_login;
         btn_registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegistration());
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegisterInit());
             }
         });
 
@@ -44,6 +44,11 @@ private Button btn_registro, btn_login;
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).cambiarFragmento(new FragmentStore());
+
+
+
+
+
             }
         });
         return vista;
