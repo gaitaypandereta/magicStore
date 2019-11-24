@@ -16,12 +16,13 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.example.magistore.modelo.Usuario;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -37,7 +38,7 @@ public class FragmentRegistration extends Fragment {
     private TextView valor_edad;
     private RadioGroup radioGroup;
     private RadioButton radioButtonChico, getRadioButtonChica, getRadioButtonOtro;
-    private Button btn_guardar_user;
+    private Button btn_guardar_user, btn_en_otro_momento;
     private Usuario usuario;
     private String id;
     private View vista;
@@ -45,7 +46,6 @@ public class FragmentRegistration extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
-
     private  FirebaseFirestore db=FirebaseFirestore.getInstance();
 
     public FragmentRegistration() {
@@ -92,6 +92,13 @@ public class FragmentRegistration extends Fragment {
 
         radioGroup = vista.findViewById(R.id.radioGrou);
 
+        btn_en_otro_momento=vista.findViewById(R.id.btn_ir_a_session);
+        btn_en_otro_momento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
+            }
+        });
         btn_guardar_user = vista.findViewById(R.id.btn_guardar_usuario);
         btn_guardar_user.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +108,8 @@ public class FragmentRegistration extends Fragment {
                 View sbView = snackbar.getView();
                 sbView.setBackgroundColor(Color.rgb(28, 181, 148));
                 snackbar.show();
+
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
 
               //  Snackbar.make(vista, "FALTAN CAMPOS OBLIGATORIOS", Snackbar.LENGTH_SHORT).show();
 

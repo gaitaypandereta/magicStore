@@ -77,8 +77,8 @@ private FragmentInicio fragmentInicio = new FragmentInicio();
         if (id == R.id.inic) {
             cambiarFragmento(new FragmentInicio());
         }
-        if (id == R.id.login) {
-            cambiarFragmento(new FragmentLogin());
+        if (id == R.id.registro) {
+            cambiarFragmento(new FragmentRegisterInit());
         }
         if (id == R.id.store) {
             cambiarFragmento(new FragmentStore());

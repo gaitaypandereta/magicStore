@@ -1,6 +1,4 @@
 package com.example.magistore.vista;
-
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -36,7 +34,7 @@ import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentRegisterInit extends Fragment {
-private Button btn_register;
+private Button btn_register, btn_session;
 private EditText edit_nombre, edit_email, edit_pass;
 private String nombre, email, password;
 private AlertDialog.Builder dialogo;
@@ -60,6 +58,14 @@ private View view;
         edit_email=vista.findViewById(R.id.edit_email_init);
         edit_pass=vista.findViewById(R.id.edit_pasword_init);
         btn_register=vista.findViewById(R.id.btn_regitrar_user);
+        btn_session=vista.findViewById(R.id.btn_inicio_sesion);
+
+        btn_session.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
+            }
+        });
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override

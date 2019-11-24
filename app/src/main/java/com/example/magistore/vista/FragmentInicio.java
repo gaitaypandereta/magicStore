@@ -1,10 +1,6 @@
 package com.example.magistore.vista;
-
-
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class FragmentInicio extends Fragment {
 private Button btn_session;
 private TextView tv_sesion;
-private FirebaseAuth firebaseAuth;
+// private FirebaseAuth firebaseAuth;
 
     public FragmentInicio() {
         // Required empty public constructor
@@ -32,7 +28,7 @@ private FirebaseAuth firebaseAuth;
         // Inflate the layout for this fragment
         View vista= inflater.inflate(R.layout.fragment_inicio, container, false);
 
-        firebaseAuth.getInstance();
+       //// firebaseAuth.getInstance();
 
         btn_session=vista. findViewById(R.id.btn_of_session);
         tv_sesion=vista.findViewById(R.id.tv_saludo_session);
@@ -41,7 +37,7 @@ private FirebaseAuth firebaseAuth;
             @Override
             public void onClick(View view) {
 
-               firebaseAuth.signOut();
+               //firebaseAuth.signOut();
                btn_session.setVisibility(View.GONE);
                // stopButton.setVisibility(View.VISIBLE);
 
