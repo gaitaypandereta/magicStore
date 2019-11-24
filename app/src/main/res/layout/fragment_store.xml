@@ -8,9 +8,22 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/ed_user_store"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TIENDA" />
+        android:text="usuario" />
+
+    <TextView
+        android:id="@+id/ed_email_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="email" />
+
+    <TextView
+        android:id="@+id/ed_apikey_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="apikey" />
 
     <Button
         android:id="@+id/btn_signOut"

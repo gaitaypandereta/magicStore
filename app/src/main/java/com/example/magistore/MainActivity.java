@@ -9,6 +9,7 @@ import com.example.magistore.vista.FragmentRegistration;
 import com.example.magistore.vista.FragmentStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -24,6 +25,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 private FragmentInicio fragmentInicio = new FragmentInicio();
+private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,7 @@ private FragmentInicio fragmentInicio = new FragmentInicio();
         FragmentManager FM = getSupportFragmentManager();
         FragmentTransaction FT = FM.beginTransaction();
         FT.replace(R.id.contenedor, fragmento);
-        FT.addToBackStack(" ");
+        FT.addToBackStack("");
         FT.commit();
     }
 
@@ -93,4 +95,6 @@ private FragmentInicio fragmentInicio = new FragmentInicio();
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
