@@ -52,7 +52,7 @@ public class FragmentLogin extends Fragment {
                 password=ed_password.getText().toString().trim();
 
                 if(!email.isEmpty() && !password.isEmpty()){
-                    loginUser();
+                   loginUser();
 
                 }else{
                     Toast.makeText(getContext(), "Ingrese correctamente los datos", Toast.LENGTH_SHORT).show();

@@ -3,47 +3,50 @@ package com.example.magistore.modelo;
 import java.util.Date;
 
 public class Compra {
-private Date fecha_compra;
-private Articulo articulo_compra;
-private boolean estado;
-private Date fecha_envio;
+    private String url_img, titulo, megusta, comenta;
 
-    public Compra(Date fecha_compra, Articulo articulo_compra, boolean estado, Date fecha_envio) {
-        this.fecha_compra = fecha_compra;
-        this.articulo_compra = articulo_compra;
-        this.estado = estado;
-        this.fecha_envio = fecha_envio;
+
+    public Compra(String url_img, String titulo, String megusta, String comenta) {
+        this.url_img = url_img;
+        this.titulo = titulo;
+        this.megusta = megusta;
+        this.comenta = comenta;
     }
 
-    public Date getFecha_compra() {
-        return fecha_compra;
+    public Compra() {
     }
 
-    public void setFecha_compra(Date fecha_compra) {
-        this.fecha_compra = fecha_compra;
+
+
+    public String getUrl_img() {
+        return url_img;
     }
 
-    public Articulo getArticulo_compra() {
-        return articulo_compra;
+    public void setUrl_img(String url_img) {
+        this.url_img = url_img;
     }
 
-    public void setArticulo_compra(Articulo articulo_compra) {
-        this.articulo_compra = articulo_compra;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public String getMegusta() {
+        return megusta;
     }
 
-    public Date getFecha_envio() {
-        return fecha_envio;
+    public void setMegusta(String megusta) {
+        this.megusta = megusta;
     }
 
-    public void setFecha_envio(Date fecha_envio) {
-        this.fecha_envio = fecha_envio;
+    public String getComenta() {
+        return comenta;
+    }
+
+    public void setComenta(String comenta) {
+        this.comenta = comenta;
     }
 }
