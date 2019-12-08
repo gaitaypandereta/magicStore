@@ -2,11 +2,12 @@ package com.example.magistore;
 
 import android.os.Bundle;
 
-import com.example.magistore.vista.FragmentLogin;
-import com.example.magistore.vista.FragmentRegisterInit;
-import com.example.magistore.vista.FragmentInicio;
+import com.example.magistore.vista.FragmentRegitrationInit;
+import com.example.magistore.vista.FragmentInic;
 import com.example.magistore.vista.FragmentRegistration;
 import com.example.magistore.vista.FragmentStore;
+import com.example.magistore.vista.FragmentStoreDetail;
+import com.example.magistore.vista.FragmentUploadStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-private FragmentInicio fragmentInicio = new FragmentInicio();
+private FragmentInic fragmentInicio = new FragmentInic();
 private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ private FirebaseAuth mAuth;
         FragmentManager FM = getSupportFragmentManager();
         FragmentTransaction FT = FM.beginTransaction();
         FT.replace(R.id.contenedor, fragmento);
-        FT.addToBackStack("");
+        FT.addToBackStack(null);
         FT.commit();
     }
 
@@ -77,17 +78,22 @@ private FirebaseAuth mAuth;
         int id = item.getItemId();
 
         if (id == R.id.inic) {
-            cambiarFragmento(new FragmentInicio());
+            cambiarFragmento(new FragmentInic());
         }
         if (id == R.id.registro) {
-            cambiarFragmento(new FragmentRegisterInit());
+            cambiarFragmento(new FragmentRegitrationInit());
         }
         if (id == R.id.store) {
             cambiarFragmento(new FragmentStore());
         }
-
-        if (id == R.id.logout) {
+        if(id==R.id.subir_Store){
+            cambiarFragmento(new FragmentUploadStore());
+        }
+        if(id==R.id.registro_completo){
             cambiarFragmento(new FragmentRegistration());
+        }
+        if (id == R.id.store_detaill) {
+            cambiarFragmento(new FragmentStoreDetail());
         }
         if (id == R.id.salir) {
 

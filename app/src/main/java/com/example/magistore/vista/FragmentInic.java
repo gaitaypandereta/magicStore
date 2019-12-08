@@ -7,18 +7,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentInicio extends Fragment {
+public class FragmentInic extends Fragment {
 private Button btn_session;
 private TextView tv_sesion;
-// private FirebaseAuth firebaseAuth;
+private FirebaseAuth mAuth;
 
-    public FragmentInicio() {
+    public FragmentInic() {
         // Required empty public constructor
     }
 
@@ -26,7 +27,7 @@ private TextView tv_sesion;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista= inflater.inflate(R.layout.fragment_inicio, container, false);
+        View vista= inflater.inflate(R.layout.fragment_inic, container, false);
 
        //// firebaseAuth.getInstance();
 

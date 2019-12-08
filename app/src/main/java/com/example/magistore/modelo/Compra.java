@@ -1,29 +1,48 @@
 package com.example.magistore.modelo;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Compra {
-    private String url_img, titulo, megusta, comenta;
+public class Compra implements Serializable {
+    private String user;
+    private String foto;
+    private String titulo ;
+    private int megusta;
 
 
-    public Compra(String url_img, String titulo, String megusta, String comenta) {
-        this.url_img = url_img;
+    public Compra(String user, String url_img, String titulo, int megusta) {
+        this.user = user;
+        this.foto = url_img;
         this.titulo = titulo;
         this.megusta = megusta;
-        this.comenta = comenta;
+
     }
+
+    public Compra(String user, String url_img, String titulo) {
+        this.user=user;
+        this.foto = url_img;
+        this.titulo = titulo;
+
+    }
+
+
 
     public Compra() {
     }
 
-
-
-    public String getUrl_img() {
-        return url_img;
+    public String getUser() {
+        return user;
     }
 
-    public void setUrl_img(String url_img) {
-        this.url_img = url_img;
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getTitulo() {
@@ -34,19 +53,13 @@ public class Compra {
         this.titulo = titulo;
     }
 
-    public String getMegusta() {
+    public int getMegusta() {
         return megusta;
     }
 
-    public void setMegusta(String megusta) {
+    public void setMegusta(int megusta) {
         this.megusta = megusta;
     }
 
-    public String getComenta() {
-        return comenta;
-    }
 
-    public void setComenta(String comenta) {
-        this.comenta = comenta;
-    }
 }

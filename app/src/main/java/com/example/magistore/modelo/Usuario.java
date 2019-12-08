@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Usuario implements Serializable {
-    private String id;
     private String nombre;
     private String email;
     private String telefono;
@@ -15,34 +14,17 @@ public class Usuario implements Serializable {
     private String edad;
     private String sexo;
     private String pass;
-    private int  saldo=0;
-    private List<Compra> listCompras;
-    private List<Favorito> listFavoritos;
 
-    public Usuario(String id, String facebook, String twitter, String instagram, String direccion) {
-        this.id = id;
-        this.facebook = facebook;
-        this.twitter = twitter;
-        this.instagram = instagram;
-        this.direccion = direccion;
+    public Usuario(String nombre) {
+        this.nombre = nombre;
+
     }
 
-    public Usuario() {
-    }
-
-    public Usuario(String nombre, String email, String telefono, String direccion, String edad, String sexo, String facebook, String twitter, String instagram, String pass, int saldo) {
+    public Usuario(String nombre, String email) {
         this.nombre = nombre;
         this.email = email;
-        this.telefono = telefono;
-        this.direccion = direccion;
-        this.edad = edad;
-        this.sexo = sexo;
-        this.facebook = facebook;
-        this.twitter = twitter;
-        this.instagram = instagram;
-        this.pass = pass;
-        this.saldo = saldo;
     }
+
 
     public Usuario(String nombre, String email, String telefono, String facebook, String twitter, String instagram, String direccion, String edad, String sexo, String pass) {
         this.nombre = nombre;
@@ -58,50 +40,6 @@ public class Usuario implements Serializable {
 
     }
 
-    public Usuario(String id, String nombre, String email, String telefono, String facebook, String twitter, String instagram, String direccion, String edad, String sexo, String pass, int saldo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.telefono = telefono;
-        this.facebook = facebook;
-        this.twitter = twitter;
-        this.instagram = instagram;
-        this.direccion = direccion;
-        this.edad = edad;
-        this.sexo = sexo;
-        this.pass = pass;
-        this.saldo = saldo;
-    }
-
-    public Usuario(String id, String nombre) {
-        this.id = id;
-        this.nombre = nombre;
-    }
-
-    public Usuario(String id, String nombre, String email, String telefono, String facebook, String twitter, String instagram, String direccion, String edad, String sexo, String pass, int saldo, List<Compra> listCompras, List<Favorito> listFavoritos) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.telefono = telefono;
-        this.facebook = facebook;
-        this.twitter = twitter;
-        this.instagram = instagram;
-        this.direccion = direccion;
-        this.edad = edad;
-        this.sexo = sexo;
-        this.pass = pass;
-        this.saldo = saldo;
-        this.listCompras = listCompras;
-        this.listFavoritos = listFavoritos;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Usuario(String telefono, String facebok, String twiter, String instagra, String direccion, String edad, String sex) {
     }
@@ -186,27 +124,4 @@ public class Usuario implements Serializable {
         this.pass = pass;
     }
 
-    public int getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(int saldo) {
-        this.saldo = saldo;
-    }
-
-    public List<Compra> getListCompras() {
-        return listCompras;
-    }
-
-    public void setListCompras(List<Compra> listCompras) {
-        this.listCompras = listCompras;
-    }
-
-    public List<Favorito> getListFavoritos() {
-        return listFavoritos;
-    }
-
-    public void setListFavoritos(List<Favorito> listFavoritos) {
-        this.listFavoritos = listFavoritos;
-    }
 }

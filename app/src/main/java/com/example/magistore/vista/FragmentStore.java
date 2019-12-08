@@ -1,45 +1,119 @@
 package com.example.magistore.vista;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.magistore.R;
 import com.example.magistore.modelo.Compra;
 import com.example.magistore.modelo.CompraAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
+
 public class FragmentStore extends Fragment {
-    private List<Compra> movieList = new ArrayList<>();
+    private List<Compra> compraList = new ArrayList<>();
     private CompraAdapter mAdapter;
+    private DatabaseReference mDatabase;
 
     public FragmentStore() {
     }
-
-
 @Override
 public View onCreateView(LayoutInflater inflater, ViewGroup container,
         Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_store, container, false);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
+    ValueEventListener postListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            // Get Post object and use the values to update the UI
+            Compra compra= dataSnapshot.getValue(Compra.class);
+ compraList.add(compra);
+            Toast.makeText(getContext(), compra.getTitulo(), Toast.LENGTH_SHORT);
+            // ...
+        }
+
+        @SuppressLint("LongLogTag")
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+            // Getting Post failed, log a message
+            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            // ...
+        }
+    };
+   // mPostReference.addValueEventListener(postListener);
+/*
+    private DatabaseReference mDatabase;// ...
+    mDatabase = FirebaseDatabase.getInstance().getReference();
+
+    myRef.addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                        if (dataSnapshot != null && dataSnapshot.getValue() != null) {
+                                            Compra compras = dataSnapshot.getValue(Compra.class);
+                                            compraList.add(compras);
+
+                                            mAdapter.notifyDataSetChanged();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                    }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+
+    });*/
 
     RecyclerView recyclerView = view.findViewById(R.id.rcv_store);
-    mAdapter = new CompraAdapter(movieList, getContext());
+
+    mAdapter = new CompraAdapter(compraList, getContext());
     LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setItemAnimator(new DefaultItemAnimator());
     recyclerView.setAdapter(mAdapter);
 
-    prepareMovieData();
+   // prepareMovieData();
 
     return view;
 
 }
+
+/*
+
     private void prepareMovieData() {
         Compra movie = new Compra("https://postimg.cc/34pYFndx", "Action & Adventure", "2015", "56");
         movieList.add(movie);
@@ -77,13 +151,48 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 
     }
 
-
+*/
 }
 
 
 
 
 
+
+/*
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("alumnos");
+
+    mDatabase = FirebaseDatabase.getInstance().getReference();
+    mDatabase.child("compra").addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+            if(dataSnapshot.exists()){
+                Compra compra = dataSnapshot.getValue(Compra.class);
+                compraList.add(compra);
+
+                mAdapter.notifyDataSetChanged();
+
+
+                    // Toast.makeText(getContext(), url_img+"--"+titulo, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+            }
+
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    });
+*/
 
 
 

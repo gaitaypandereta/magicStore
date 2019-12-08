@@ -166,7 +166,7 @@ public class FragmentRegistration extends Fragment {
         String edad = valor_edad.getText().toString();
         String sex = valorSexo(radioGroup);
         String pasword=usuario.getPass();
-        int saldo =usuario.getSaldo();
+
 /*
         Map<String, Object> map = new HashMap<>();
         map.put("telefono", telefono);

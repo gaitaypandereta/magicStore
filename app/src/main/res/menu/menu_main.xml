@@ -12,13 +12,21 @@
         android:orderInCategory="100"
         android:title="REGISTRO" />
     <item
+        android:id="@+id/registro_completo"
+        android:orderInCategory="100"
+        android:title="COMPLETAR REGISTRO" />
+    <item
         android:id="@+id/store"
         android:orderInCategory="100"
-        android:title="TIENDA" />
+        android:title="TU STORE" />
     <item
-        android:id="@+id/logout"
+        android:id="@+id/store_detaill"
         android:orderInCategory="100"
-        android:title="LOGOUT" />
+        android:title=" STORE DETAILL" />
+    <item
+        android:id="@+id/subir_Store"
+        android:orderInCategory="100"
+        android:title="SUBIR A TU STORE" />
     <item
         android:id="@+id/salir"
         android:orderInCategory="100"

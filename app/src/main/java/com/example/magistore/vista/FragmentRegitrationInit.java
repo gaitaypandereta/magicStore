@@ -1,12 +1,10 @@
 package com.example.magistore.vista;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +14,6 @@ import android.widget.Toast;
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,12 +24,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
-
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentRegisterInit extends Fragment {
+public class FragmentRegitrationInit extends Fragment {
 private Button btn_register, btn_session;
 private EditText edit_nombre, edit_email, edit_pass;
 private String nombre, email, password;
@@ -41,7 +35,7 @@ private AlertDialog.Builder dialogo;
 private View view;
 
 
-    public FragmentRegisterInit() {
+    public FragmentRegitrationInit() {
         // Required empty public constructor
     }
 
@@ -51,7 +45,7 @@ private View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View vista=inflater.inflate(R.layout.fragment_regist_init, container, false);
+        View vista=inflater.inflate(R.layout.fragment_registration_init, container, false);
         mAuth=FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
         edit_nombre=vista.findViewById(R.id.edit_nombre_init);

@@ -14,10 +14,10 @@ import com.example.magistore.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentOptBuy extends Fragment {
+public class FragmentStoreDetail extends Fragment {
 
 
-    public FragmentOptBuy() {
+    public FragmentStoreDetail() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class FragmentOptBuy extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View vista=inflater.inflate(R.layout.fragment_opt_buy, container, false);
+        View vista=inflater.inflate(R.layout.fragment_store_detail, container, false);
         return vista;
     }
 
