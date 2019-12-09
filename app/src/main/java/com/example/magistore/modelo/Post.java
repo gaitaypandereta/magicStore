@@ -1,16 +1,34 @@
 package com.example.magistore.modelo;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Post implements Serializable {
+
+    @Expose
+    @SerializedName("id")
     private String id;
+
+    @Expose
+    @SerializedName("user")
     private String user;
+
+    @Expose
+    @SerializedName("url_img")
     private String url_img;
+
+    @Expose
+    @SerializedName("descripcion")
     private String descripcion;
-    private int megusta;
+
+    @Expose
+    @SerializedName("megusta")
+    private String megusta;
 
 
-    public Post(String id, String user, String descripcion, String url_img, int megusta) {
+    public Post(String id, String user, String descripcion, String url_img, String megusta) {
         this.id=id;
         this.user = user;
         this.url_img = url_img;
@@ -19,11 +37,11 @@ public class Post implements Serializable {
 
     }
 
-    public Post(String id, String user, String url_img, String titulo) {
-        this.id=id;
+    public Post(String user, String url_img, String titulo,  String megusta) {
         this.user=user;
         this.url_img = url_img;
         this.descripcion = titulo;
+        this.megusta=megusta;
 
     }
 
@@ -64,11 +82,11 @@ public class Post implements Serializable {
         this.descripcion = decripcion;
     }
 
-    public int getMegusta() {
+    public String getMegusta() {
         return megusta;
     }
 
-    public void setMegusta(int megusta) {
+    public void setMegusta(String megusta) {
         this.megusta = megusta;
     }
 

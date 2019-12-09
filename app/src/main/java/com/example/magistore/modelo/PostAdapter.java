@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,11 +28,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title, megusta, comenta;
+        TextView title, user;
+        Button megusta, comenta;
         ImageView img_foto;
         MyViewHolder(View view) {
             super(view);
             img_foto=view.findViewById(R.id.img_principal);
+            user=view.findViewById(R.id.tv_user);
             title = view.findViewById(R.id.tv_titulo);
             megusta=view.findViewById(R.id.btn_megusta);
             comenta=view.findViewById(R.id.btn_comenta);
@@ -58,6 +61,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Post post = compraList.get(position);
+        holder.user.setText(post.getUser());
         holder.title.setText(post.getDecripcion());
         holder.comenta.setText("56");
         holder.megusta.setText("34");
