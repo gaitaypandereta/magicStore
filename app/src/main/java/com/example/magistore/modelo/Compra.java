@@ -9,7 +9,11 @@ public class Compra implements Serializable {
     private int megusta;
 
 
-    public Compra(String user, String url_img, String titulo, int megusta) {
+    public Compra(String titulo, String url_img, String user, int megusta) {
+        if(titulo.trim() == ""){
+            titulo="No se introducido dato";
+        }
+
         this.user = user;
         this.foto = url_img;
         this.titulo = titulo;
