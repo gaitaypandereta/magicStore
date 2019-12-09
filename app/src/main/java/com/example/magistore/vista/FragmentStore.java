@@ -1,6 +1,7 @@
 package com.example.magistore.vista;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,8 +16,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.magistore.R;
-import com.example.magistore.modelo.Compra;
-import com.example.magistore.modelo.CompraAdapter;
+import com.example.magistore.modelo.Post;
+import com.example.magistore.modelo.PostAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,47 +31,92 @@ import java.util.List;
 import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
 
 public class FragmentStore extends Fragment {
-    private List<Compra> compraList = new ArrayList<>();
-    private CompraAdapter mAdapter;
+    private List<Post> compraList = new ArrayList<>();
+    private PostAdapter mAdapter;
     private DatabaseReference mDatabase;
 
     public FragmentStore() {
     }
-@Override
-public View onCreateView(LayoutInflater inflater, ViewGroup container,
-        Bundle savedInstanceState) {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_store, container, false);
+
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("img_upload");
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("img_upload").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                if(dataSnapshot.exists()){
+                    Post compra = dataSnapshot.getValue(Post.class);
+                    compraList.add(compra);
+
+                  //  mAdapter.notifyDataSetChanged();
+
+
+                    // Toast.makeText(getContext(), url_img+"--"+titulo, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        /*
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-    ValueEventListener postListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            // Get Post object and use the values to update the UI
-            Compra compra= dataSnapshot.getValue(Compra.class);
- compraList.add(compra);
-            Toast.makeText(getContext(), compra.getTitulo(), Toast.LENGTH_SHORT);
-            // ...
-        }
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                Post compra = dataSnapshot.getValue(Post.class);
+                compraList.add(compra);
+                Toast.makeText(getContext(), compra.getDecripcion(), Toast.LENGTH_SHORT);
+                // ...
+            }
 
-        @SuppressLint("LongLogTag")
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-            // Getting Post failed, log a message
-            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            // ...
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                // ...
+            }
         }
-    };
-   // mPostReference.addValueEventListener(postListener);
-/*
-    private DatabaseReference mDatabase;// ...
+*/
+    return view;
+    }
+}
+
+    /*
+    mPostReference.addValueEventListener(postListener);
+
+
     mDatabase = FirebaseDatabase.getInstance().getReference();
 
     myRef.addChildEventListener(new ChildEventListener() {
                                     @Override
                                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                                         if (dataSnapshot != null && dataSnapshot.getValue() != null) {
-                                            Compra compras = dataSnapshot.getValue(Compra.class);
-                                            compraList.add(compras);
+                                            Post post = dataSnapshot.getValue(Post.class);
+                                            compraList.add(post);
 
                                             mAdapter.notifyDataSetChanged();
                                         }
@@ -96,11 +142,11 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 
         }
 
-    });*/
+    });
 
     RecyclerView recyclerView = view.findViewById(R.id.rcv_store);
 
-    mAdapter = new CompraAdapter(compraList, getContext());
+    mAdapter = new PostAdapter(compraList, getContext());
     LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
     recyclerView.setLayoutManager(mLayoutManager);
     recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -111,6 +157,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
     return view;
 
 }
+*/
 
 /*
 
@@ -152,47 +199,14 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
     }
 
 */
-}
 
 
 
 
 
 
-/*
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("alumnos");
-
-    mDatabase = FirebaseDatabase.getInstance().getReference();
-    mDatabase.child("compra").addValueEventListener(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-            if(dataSnapshot.exists()){
-                Compra compra = dataSnapshot.getValue(Compra.class);
-                compraList.add(compra);
-
-                mAdapter.notifyDataSetChanged();
-
-
-                    // Toast.makeText(getContext(), url_img+"--"+titulo, Toast.LENGTH_SHORT).show();
-
-
-
-
-
-            }
-
-
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-        }
-    });
-*/
 
 
 
