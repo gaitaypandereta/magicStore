@@ -51,6 +51,7 @@ public class FragmentStore extends Fragment {
         mAdapter.notifyDataSetChanged();
         rv.setAdapter(mAdapter);
 */
+//va con origin2
 
        FirebaseDatabase database = FirebaseDatabase.getInstance();
        DatabaseReference myRef = database.getReference("users");
