@@ -41,7 +41,7 @@ public class FragmentUploadStore extends Fragment {
 private static  final int PICK_IMAGE_REQUEST =1;
 private Button btn_chooseImage;
 private Button btn_upload;
-private EditText titulo, user;
+private EditText descripcion, user;
 private ImageView  chooseImageView;
 private ProgressBar uploadProgressBar;
 
@@ -66,7 +66,7 @@ private FirebaseFirestore mfirestore;
      View view =inflater.inflate(R.layout.fragment_upload_store, container, false);
      btn_chooseImage=view.findViewById(R.id.btn_choose_img);
      btn_upload=view.findViewById(R.id.ulpoadBtn);
-     titulo =view.findViewById(R.id.ed_description);
+     descripcion =view.findViewById(R.id.ed_description);
      user=view.findViewById(R.id.ed_user);
      chooseImageView=view.findViewById(R.id.chooseImageView);
      uploadProgressBar=view.findViewById(R.id.progress_bar);
@@ -93,13 +93,13 @@ private FirebaseFirestore mfirestore;
         @Override
         public void onClick(View view) {
             if(mUploadTask !=null && mUploadTask.isInProgress()){
-                Toast.makeText(getContext(), "Subiendo post, espere por favor"+mImageUri, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Espere por favor, aún se está subiendo el archivo anterior"+mImageUri, Toast.LENGTH_SHORT).show();
 
             }else{
                 uploadFile();
                 btn_chooseImage.setVisibility(View.VISIBLE);
                 btn_upload.setVisibility(View.GONE);
-                Toast.makeText(getContext(), "Subiendo post, espere por favor:"+mImageUri, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Subiendo post actual, espere por favor:"+mImageUri, Toast.LENGTH_SHORT).show();
 
 
             }
@@ -157,12 +157,14 @@ private FirebaseFirestore mfirestore;
                                 uploadProgressBar.setProgress(0);
                                }
                            },500);
-                           String apk =mAuth.getCurrentUser().getUid();
+                           String id_user =mAuth.getCurrentUser().getUid();
                            String my_user=user.getText().toString().trim();
+                           String my_img=taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
+                           String my_descripcion=descripcion.getText().toString().trim();
                            Toast.makeText(getContext(), "Su pots se ha creado correctamente", Toast.LENGTH_SHORT).show();
-                           Post post  =new Post(apk, "@"+my_user, taskSnapshot.getMetadata().getReference().getDownloadUrl().toString(), titulo.getText().toString().trim());
-                           String compraId=mDatabase.push().getKey();
-                           mDatabase.child(compraId).setValue(post);
+                           Post post  =new Post(""+id_user, "@"+my_user, ""+my_descripcion  , ""+my_img  , "4");
+                           String postId=mDatabase.push().getKey();
+                           mDatabase.child(postId).setValue(post);
 
                        }
                    })

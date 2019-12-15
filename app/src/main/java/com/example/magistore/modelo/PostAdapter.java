@@ -1,5 +1,4 @@
 package com.example.magistore.modelo;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,46 +6,39 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.magistore.R;
 
-import java.util.List;
-
+import java.util.ArrayList;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {
-    public List<Post> compraList;
+    private ArrayList<Post> postList;
+    private int resource;
     public static Context context;
 
-
-    public PostAdapter(List<Post> moviesList, Context context){
-        this.compraList =moviesList;
+    public PostAdapter(ArrayList<Post> postList, int resource,Context context){
+        this.postList =postList;
         this.context=context;
+        this.resource=resource;
 
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title, user;
+        TextView comento, user;
         Button megusta, comenta;
         ImageView img_foto;
         MyViewHolder(View view) {
             super(view);
             img_foto=view.findViewById(R.id.img_principal);
             user=view.findViewById(R.id.tv_user);
-            title = view.findViewById(R.id.tv_titulo);
+            comento = view.findViewById(R.id.tv_titulo);
             megusta=view.findViewById(R.id.btn_megusta);
-            comenta=view.findViewById(R.id.btn_comenta);
         }
     }
 
-
-
-
-
-    public PostAdapter(List<Post> moviesList) {
-        this.compraList = moviesList;
+    public PostAdapter(ArrayList<Post> postList) {
+        this.postList = postList;
 
     }
     @NonNull
@@ -60,10 +52,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     }
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Post post = compraList.get(position);
+        Post post = postList.get(position);
         holder.user.setText(post.getUser());
-        holder.title.setText(post.getDecripcion());
-        holder.comenta.setText("56");
+        holder.comento.setText(post.getDecripcion());
         holder.megusta.setText("34");
 
         Glide.with(context)
@@ -72,7 +63,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> 
     }
     @Override
     public int getItemCount() {
-        return compraList.size();
+        return postList.size();
     }
 
 }

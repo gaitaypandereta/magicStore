@@ -1,7 +1,7 @@
 package com.example.magistore;
-
 import android.os.Bundle;
 
+import com.example.magistore.modelo.Post;
 import com.example.magistore.vista.FragmentRegitrationInit;
 import com.example.magistore.vista.FragmentInic;
 import com.example.magistore.vista.FragmentRegistration;
@@ -13,20 +13,22 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 private FragmentInic fragmentInicio = new FragmentInic();
 private FirebaseAuth mAuth;
+private List<Post> postList =new ArrayList<Post>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +67,9 @@ private FirebaseAuth mAuth;
         FT.commit();
     }
 
+    public List<Post> getListPost() {
+        return postList;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

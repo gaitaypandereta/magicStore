@@ -20,7 +20,7 @@ public class Post implements Serializable {
     private String url_img;
 
     @Expose
-    @SerializedName("descripcion")
+    @SerializedName("decripcion")
     private String descripcion;
 
     @Expose
@@ -37,10 +37,10 @@ public class Post implements Serializable {
 
     }
 
-    public Post(String user, String url_img, String titulo,  String megusta) {
+    public Post(String user, String url_img, String descripcion,  String megusta) {
         this.user=user;
         this.url_img = url_img;
-        this.descripcion = titulo;
+        this.descripcion = descripcion;
         this.megusta=megusta;
 
     }
@@ -78,8 +78,8 @@ public class Post implements Serializable {
         return descripcion;
     }
 
-    public void setDecripcion(String decripcion) {
-        this.descripcion = decripcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getMegusta() {
