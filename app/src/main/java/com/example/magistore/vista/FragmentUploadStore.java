@@ -1,4 +1,5 @@
 package com.example.magistore.vista;
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -6,6 +7,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.os.Handler;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,23 +19,29 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.example.magistore.modelo.Post;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.UUID;
+
 import static android.app.Activity.RESULT_OK;
+import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +54,7 @@ private EditText descripcion, user;
 private ImageView  chooseImageView;
 private ProgressBar uploadProgressBar;
 
-
+    String my_img=null;
 private Uri mImageUri;
 
 private StorageReference mStorageReference;
@@ -53,7 +62,9 @@ private DatabaseReference mDatabase;
 private StorageTask mUploadTask;
 private FirebaseAuth mAuth;
 private FirebaseFirestore mfirestore;
-
+    FirebaseStorage storage;
+    StorageReference storageReference;
+    FirebaseDatabase firebaseDatabase;
     public FragmentUploadStore() {
         // Required empty public constructor
     }
@@ -93,13 +104,13 @@ private FirebaseFirestore mfirestore;
         @Override
         public void onClick(View view) {
             if(mUploadTask !=null && mUploadTask.isInProgress()){
-                Toast.makeText(getContext(), "Espere por favor, aún se está subiendo el archivo anterior"+mImageUri, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Espere por favor, aún se está subiendo el archivo anterior", Toast.LENGTH_SHORT).show();
 
             }else{
                 uploadFile();
                 btn_chooseImage.setVisibility(View.VISIBLE);
                 btn_upload.setVisibility(View.GONE);
-                Toast.makeText(getContext(), "Subiendo post actual, espere por favor:"+mImageUri, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Subiendo post actual, espere por favor:", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -135,61 +146,78 @@ private FirebaseFirestore mfirestore;
         }
 
 
-    private void uploadFile(){
-        if(mImageUri !=null) {
-           StorageReference fileReference =mStorageReference.child(System.currentTimeMillis()
-           + ", " + getFileExtension(mImageUri));
+    private void uploadFile() {
 
-           uploadProgressBar.setVisibility(View.VISIBLE);
-           uploadProgressBar.setIndeterminate(true);
+        if (mImageUri != null) {
+            final StorageReference fileReference = mStorageReference.child(System.currentTimeMillis()
+                    + ", " + getFileExtension(mImageUri));
+
+            uploadProgressBar.setVisibility(View.VISIBLE);
+            ;
+            uploadProgressBar.setIndeterminate(true);
 
 
-           mUploadTask=fileReference.putFile(mImageUri)
-                   .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                       @Override
-                       public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                           Handler handler =new Handler();
-                           handler.postDelayed(new Runnable() {
-                               @Override
-                               public void run() {
-                                uploadProgressBar.setVisibility(View.VISIBLE);
-                                uploadProgressBar.setIndeterminate(false);
-                                uploadProgressBar.setProgress(0);
-                               }
-                           },500);
-                           String id_user =mAuth.getCurrentUser().getUid();
-                           String my_user=user.getText().toString().trim();
-                           String my_img=taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
-                           String my_descripcion=descripcion.getText().toString().trim();
-                           Toast.makeText(getContext(), "Su pots se ha creado correctamente", Toast.LENGTH_SHORT).show();
-                           Post post  =new Post(""+id_user, "@"+my_user, ""+my_descripcion  , ""+my_img  , "4");
-                           String postId=mDatabase.push().getKey();
-                           mDatabase.child(postId).setValue(post);
+            mUploadTask = fileReference.putFile(mImageUri)
 
-                       }
-                   })
-                   .addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-                           Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                       }
-                   }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                                @Override
-                                                public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
-                                                    double progress=(100.0 * taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
-                                                    uploadProgressBar.setProgress((int) progress);
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    uploadProgressBar.setVisibility(View.VISIBLE);
+                                    uploadProgressBar.setIndeterminate(false);
+                                    uploadProgressBar.setProgress(0);
+                                }
+                            }, 500);
 
-                                                }
-                   });
-        }else{
+                            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+                             taskSnapshot.getStorage()
+                                    .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+
+                                    my_img=uri.toString();
+                                    String id_user = mAuth.getCurrentUser().getUid();
+                                    String my_user = user.getText().toString().trim();
+                                    String my_descripcion = descripcion.getText().toString().trim();
+                                    Post post = new Post("" + id_user, "@" + my_user, "" + my_descripcion, my_img+"", "4");
+                                    String postId = mDatabase.push().getKey();
+                                    mDatabase.child(postId).setValue(post);
+
+                                     Toast.makeText(getContext(), my_img+"dentrooooooooooooooooooooooooooo", Toast.LENGTH_SHORT).show();
+
+
+                                }
+                            });
+
+                           // Log.e("my_img", my_img);
+
+
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            uploadProgressBar.setProgress((int) progress);
+
+                        }
+                    });
+        } else {
             Toast.makeText(getContext(), "No ha seleccionado ningún archivo", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
-
-
-
 }
+

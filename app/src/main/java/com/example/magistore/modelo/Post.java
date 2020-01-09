@@ -39,14 +39,22 @@ public class Post implements Serializable {
 
     public Post(String user, String url_img, String descripcion,  String megusta) {
         this.user=user;
-        this.url_img = url_img;
+        this.url_img =url_img;
         this.descripcion = descripcion;
         this.megusta=megusta;
 
     }
 
-
-
+    public Post(String user, String url_img, String descripcion) {
+        this.user=user;
+        this.url_img =url_img;
+        this.descripcion = descripcion;
+    }
+    public Post(String url_img, String descripcion) {
+        this.user=user;
+        this.url_img =url_img;
+        this.descripcion = descripcion;
+    }
     public Post() {
     }
 
@@ -71,7 +79,7 @@ public class Post implements Serializable {
     }
 
     public void setUrl_img(String url_img) {
-        this.url_img = url_img;
+        this.url_img =url_img;
     }
 
     public String getDecripcion() {
@@ -90,5 +98,14 @@ public class Post implements Serializable {
         this.megusta = megusta;
     }
 
-
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id='" + id + '\'' +
+                ", user='" + user + '\'' +
+                ", url_img='" + url_img + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", megusta='" + megusta + '\'' +
+                '}';
+    }
 }

@@ -7,6 +7,7 @@ import com.example.magistore.vista.FragmentInic;
 import com.example.magistore.vista.FragmentRegistration;
 import com.example.magistore.vista.FragmentStore;
 import com.example.magistore.vista.FragmentStoreDetail;
+import com.example.magistore.vista.FragmentUploadDesing;
 import com.example.magistore.vista.FragmentUploadStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -101,8 +102,9 @@ private List<Post> postList =new ArrayList<Post>();
             cambiarFragmento(new FragmentStoreDetail());
         }
         if (id == R.id.salir) {
-
+            cambiarFragmento(new FragmentUploadDesing());
         }
+
 
         return super.onOptionsItemSelected(item);
     }

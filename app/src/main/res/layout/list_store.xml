@@ -12,10 +12,11 @@
 
         <ImageView
             android:id="@+id/img_principal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFEB3B"
             android:src="@drawable/leonardo"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitCenter"/>
         <TextView
             android:id="@+id/tv_user"
             android:layout_width="match_parent"
