@@ -103,6 +103,13 @@ private View view;
                  map.put("nombre", nombre);
                  map.put("email", email);
                  map.put("password", password);
+                 map.put("telefono", "");
+                 map.put("facebok", "");
+                 map.put("twiter", "");
+                 map.put("instagra", "");
+                 map.put("direccion_envio", "");
+                 map.put("edad", "");
+                 map.put("sexo", "");
                  String  id = mAuth.getCurrentUser().getUid();
                  Toast.makeText(getActivity(), "despues de id", Toast.LENGTH_SHORT).show();
                  mDatabase.child("users").child(id).setValue(map).addOnCompleteListener(getActivity(),new OnCompleteListener<Void>() {
@@ -111,25 +118,6 @@ private View view;
                          if (task2.isSuccessful()){
                              ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegistration());
 
-                           /*  dialogo = new AlertDialog.Builder(view.getContext());
-                             dialogo.setTitle("IR DE COMPRAS A LA TIENDA");
-                             dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                                 @Override
-                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                     ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegistration());
-                                 }
-                             });
-                             dialogo.setNegativeButton("IR DE VISITA A LA TIENDA", new DialogInterface.OnClickListener() {
-                                 @Override
-                                 public void onClick(DialogInterface dialogInterface, int i) {
-
-                                     ((MainActivity) getActivity()).cambiarFragmento(new FragmentStore());
-
-                                     dialogInterface.dismiss();
-                                 }
-                             });
-                             dialogo.show();
-*/
                          }
 
                      }
@@ -147,26 +135,6 @@ private View view;
 
     }
 
-/*
-    private void accionesFirebase(){
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser usuario = firebaseAuth.getCurrentUser();
-                if(usuario != null){
-                    //usuario ya logueado
-                    Log.d("Firebase", "onAuthStateChanged:usuario_logueado:" + usuario.getUid());
-                }else{
-                    //usuario no logueado
-                    Log.d("Firebase", "onAuthStateChanged:usuario_no_logueado:");
-                }
-            }
-        };
-    }
-
-
-*/
 
     @Override
     public void onStart() {

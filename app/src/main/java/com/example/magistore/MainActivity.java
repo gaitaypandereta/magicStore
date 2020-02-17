@@ -1,6 +1,5 @@
 package com.example.magistore;
 import android.os.Bundle;
-
 import com.example.magistore.modelo.Post;
 import com.example.magistore.vista.FragmentRegitrationInit;
 import com.example.magistore.vista.FragmentInic;
@@ -22,9 +21,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 private FragmentInic fragmentInicio = new FragmentInic();
@@ -105,9 +104,7 @@ private List<Post> postList =new ArrayList<Post>();
             cambiarFragmento(new FragmentUploadDesing());
         }
 
-
         return super.onOptionsItemSelected(item);
     }
-
 
 }

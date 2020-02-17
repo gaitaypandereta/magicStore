@@ -199,19 +199,19 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButonMasculino"
+                android:id="@+id/radioButtonMasculino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chico" />
 
             <RadioButton
-                android:id="@+id/radioButonFemenino"
+                android:id="@+id/radioButtonFemenino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chica" />
 
             <RadioButton
-                android:id="@+id/radioButonOtro"
+                android:id="@+id/radioButtonOtro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Otro" />

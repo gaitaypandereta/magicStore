@@ -52,7 +52,7 @@ public class FragmentStore extends Fragment {
         recyclerview=view.findViewById(R.id.rcv_store);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         mDatabase=FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("img_upload").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("img_desing").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try{

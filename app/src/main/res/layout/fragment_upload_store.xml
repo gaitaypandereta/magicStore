@@ -26,7 +26,8 @@
     <ImageView
         android:id="@+id/chooseImageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:src="@drawable/leonardo"/>
 
 
     <EditText
@@ -48,8 +49,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:text="CHOOSE IMAGE"/>
-    
 
+    <Button
+        android:id="@+id/btn_tu_desing"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="CREA TU PROPIO DISEÑO"/>
 
     <Button
         android:id="@+id/ulpoadBtn"

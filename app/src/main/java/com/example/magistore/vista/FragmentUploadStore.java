@@ -49,7 +49,7 @@ import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
 public class FragmentUploadStore extends Fragment {
 private static  final int PICK_IMAGE_REQUEST =1;
 private Button btn_chooseImage;
-private Button btn_upload;
+private Button btn_upload, btn_tu_design;
 private EditText descripcion, user;
 private ImageView  chooseImageView;
 private ProgressBar uploadProgressBar;
@@ -77,13 +77,14 @@ private FirebaseFirestore mfirestore;
      View view =inflater.inflate(R.layout.fragment_upload_store, container, false);
      btn_chooseImage=view.findViewById(R.id.btn_choose_img);
      btn_upload=view.findViewById(R.id.ulpoadBtn);
+     btn_tu_design=view.findViewById(R.id.btn_tu_desing);
      descripcion =view.findViewById(R.id.ed_description);
      user=view.findViewById(R.id.ed_user);
      chooseImageView=view.findViewById(R.id.chooseImageView);
      uploadProgressBar=view.findViewById(R.id.progress_bar);
 
-     mStorageReference= FirebaseStorage.getInstance().getReference("img_upload");
-     mDatabase= FirebaseDatabase.getInstance().getReference("img_upload");
+     mStorageReference= FirebaseStorage.getInstance().getReference("img_desing");
+     mDatabase= FirebaseDatabase.getInstance().getReference("img_desing");
      mAuth=FirebaseAuth.getInstance();
      mfirestore=FirebaseFirestore.getInstance();
      btn_upload.setVisibility(View.GONE);
@@ -117,6 +118,13 @@ private FirebaseFirestore mfirestore;
 
         }
     });
+
+     btn_tu_design.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadDesing());
+         }
+     });
 
 
      return view;

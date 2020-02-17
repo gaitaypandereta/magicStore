@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Usuario implements Serializable {
+    private String id;
     private String nombre;
     private String email;
     private String telefono;
@@ -26,7 +27,7 @@ public class Usuario implements Serializable {
     }
 
 
-    public Usuario(String nombre, String email, String telefono, String facebook, String twitter, String instagram, String direccion, String edad, String sexo, String pass) {
+    public Usuario( String nombre, String email, String telefono, String facebook, String twitter, String instagram, String direccion, String edad, String sexo, String pass) {
         this.nombre = nombre;
         this.email = email;
         this.telefono = telefono;
@@ -41,7 +42,23 @@ public class Usuario implements Serializable {
     }
 
 
-    public Usuario(String telefono, String facebok, String twiter, String instagra, String direccion, String edad, String sex) {
+    public Usuario(String telefono, String facebook, String twitter, String instagram, String direccion, String edad, String sex) {
+        this.telefono = telefono;
+        this.facebook = facebook;
+        this.twitter = twitter;
+        this.instagram = instagram;
+        this.direccion = direccion;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.pass = pass;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getInstagram() {
