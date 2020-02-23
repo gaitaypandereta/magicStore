@@ -226,5 +226,5 @@ Toast.makeText(getContext(), "este es el id:"+id, Toast.LENGTH_SHORT).show();
 
         }
     }
-
+// origin-gaitaypandereta 
 }
