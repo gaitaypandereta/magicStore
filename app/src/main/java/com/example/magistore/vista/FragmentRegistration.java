@@ -6,10 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,50 +17,32 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
-import com.example.magistore.modelo.Post;
 import com.example.magistore.modelo.Usuario;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentRegistration extends Fragment {
     private EditText  edit_telefono, edit_facebook, edit_twitter, edit_instagram, edit_direccion;
-    private String telefono, facebok, twiter, instagra, direccion, eda, seso;
+    private String telefono, facebok, twiter, instagra, direccion;
     private SeekBar edad;
     private TextView valor_edad;
     private RadioGroup radioGroup;
     private RadioButton radioButtonChico, radioButtonChica, radioButtonOtro;
     private Button btn_guardar_user, btn_en_otro_momento;
-    private Usuario usuario;
-    private String id;
-    private View vista;
-    private FirebaseFirestore mFirestore;
     private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabase;
-    private FirebaseFirestore db;
-    private  Usuario user=null;
-    DatabaseReference dR ;
+    private  DatabaseReference dR ;
+
     public FragmentRegistration() {
         // Required empty public constructor
     }
@@ -126,17 +105,14 @@ public class FragmentRegistration extends Fragment {
             public void onClick(View view) {
 
                actualizarRegistro();
-
-                Snackbar snackbar = Snackbar.make(view, " NO HAS INTRODUCIDO NINGÚN DATO", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null);
+/*
+                Snackbar snackbar = Snackbar.make(view, " NO HAS INTRODUCIDO NINGÚN DATO", Snackbar.LENGTH_LONG).setAction("Action", null);
                 View sbView = snackbar.getView();
                 sbView.setBackgroundColor(Color.rgb(28, 181, 148));
                 snackbar.show();
                 limpiarCampos();
-
+*/
                 ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
-
-              //  Snackbar.make(vista, "FALTAN CAMPOS OBLIGATORIOS", Snackbar.LENGTH_SHORT).show();
 
 
             }
@@ -152,20 +128,22 @@ public class FragmentRegistration extends Fragment {
 
 
     //Volvemos todos los campos del formulario a su valor por defecto
-    public void limpiarCampos() {
-        edit_telefono.setText(" ");
-        edit_facebook.setText(" ");
-        edit_twitter.setText(" ");
-        edit_instagram.setText(" ");
-        edit_direccion.setText(" ");
+
+  /*  public void limpiarCampos() {
+        edit_telefono.setText("");
+        edit_facebook.setText("");
+        edit_twitter.setText("");
+        edit_instagram.setText("");
+        edit_direccion.setText("");
         edad.setProgress(0);
         valor_edad.setText(edad.getProgress() + "");
         radioGroup.clearCheck();
         edit_telefono.requestFocus();
     }
-
+*/
 
     //Método que devuelve el valor de RadioButton seleccionado
+
     public String valorSexo(RadioGroup sexoChico) {
         int sex = sexoChico.getCheckedRadioButtonId();
         String sexo;
@@ -181,20 +159,21 @@ public class FragmentRegistration extends Fragment {
 
 
     public void actualizarRegistro() {
-        String telefono = edit_telefono.getText().toString();
-        String facebok = edit_facebook.getText().toString();
-        String twiter = edit_twitter.getText().toString();
-        String instagra = edit_instagram.getText().toString();
-        String direccion = edit_direccion.getText().toString();
+        telefono = edit_telefono.getText().toString();
+        facebok = edit_facebook.getText().toString();
+        twiter = edit_twitter.getText().toString();
+        instagra = edit_instagram.getText().toString();
+        direccion = edit_direccion.getText().toString();
         String edad = valor_edad.getText().toString();
         String sex = valorSexo(radioGroup);
+
         String id=mAuth.getCurrentUser().getUid();
         dR = FirebaseDatabase.getInstance().getReference("users").child(id);
         dR.child("telefono").setValue(telefono);
-        dR.child("facebook").setValue(facebok);
-        dR.child("twitter").setValue(twiter);
-        dR.child("instagram").setValue(instagra);
-        dR.child("direccion").setValue(direccion);
+        dR.child("facebok").setValue(facebok);
+        dR.child("twiter").setValue(twiter);
+        dR.child("instagra").setValue(instagra);
+        dR.child("direccion_envio").setValue(direccion);
         dR.child("sexo").setValue(sex);
         dR.child("edad").setValue(edad);
 
@@ -211,14 +190,12 @@ Toast.makeText(getContext(), "este es el id:"+id, Toast.LENGTH_SHORT).show();
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     String telefono=dataSnapshot.child("telefono").getValue().toString();
-                    String facebook=dataSnapshot.child("facebook").getValue().toString();
-                    String twitter=dataSnapshot.child("twitter").getValue().toString();
-                    String instagram=dataSnapshot.child("instagram").getValue().toString();
-                    String direccion=dataSnapshot.child("direccion").getValue().toString();
+                    String facebook=dataSnapshot.child("facebok").getValue().toString();
+                    String twitter=dataSnapshot.child("twiter").getValue().toString();
+                    String instagram=dataSnapshot.child("instagra").getValue().toString();
+                    String direccion=dataSnapshot.child("direccion_envio").getValue().toString();
                     String sexo=dataSnapshot.child("sexo").getValue().toString();
                     String edad=dataSnapshot.child("edad").getValue().toString();
-
-
 
                     edit_direccion.setText(direccion);
                     edit_facebook.setText(facebook);
@@ -234,7 +211,7 @@ Toast.makeText(getContext(), "este es el id:"+id, Toast.LENGTH_SHORT).show();
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "errorooooooo", Toast.LENGTH_SHORT).show();
+
             }
         });
 

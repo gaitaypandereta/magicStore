@@ -3,12 +3,17 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.fragment.app.Fragment;
 
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.magistore.MainActivity;
@@ -88,6 +93,22 @@ private View view;
             }
         });
 
+      CheckBox checkbox = vista.findViewById(R.id.checkbox);
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (!isChecked) {
+                    // show password
+                    edit_pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    // hide password
+                    edit_pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                }
+            }
+        });
+
+
         return vista;
     }
 
@@ -116,7 +137,9 @@ private View view;
                      @Override
                      public void onComplete(@NonNull Task<Void> task2) {
                          if (task2.isSuccessful()){
-                             ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegistration());
+                             Toast.makeText(getContext(), "Se ha registrado correctamente", Toast.LENGTH_SHORT).show();
+                             ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
+
 
                          }
 
@@ -143,6 +166,7 @@ private View view;
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
     }
+
 
 
 

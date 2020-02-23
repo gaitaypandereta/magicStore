@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.FragmentInic"
     android:background="@drawable/presentacion">
 
     <TextView
@@ -11,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Hola Sara!!!"/>
+        android:text=""/>
 
     <Button
         android:id="@+id/btn_of_session"

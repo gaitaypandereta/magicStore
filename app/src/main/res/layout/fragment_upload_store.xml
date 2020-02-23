@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
-        android:hint="Tu nombre de usuario"/>
+        android:hint="Tu nombre de usuario"
+        android:inputType="text"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Su descripción del post"
-        android:inputType="textLongMessage"/>
+        android:inputType="text"/>
 
 
     <ProgressBar
