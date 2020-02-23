@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:background="#D6D1CE">
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:paddingTop="60dp"
+        android:paddingBottom="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFF">
+
+        <EditText
+            android:id="@+id/editext_reset_pass_Email"
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"/>
+
+        <Button
+            android:id="@+id/btn_Reset_Pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Restablecer Contraseña"
+            android:layout_marginTop="75dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="#F13C57"
+            android:textColor="#FFF"/>
+
+    </LinearLayout>
+</LinearLayout>

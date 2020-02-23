@@ -52,7 +52,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="#FFF"
         android:orientation="horizontal"
         android:paddingLeft="7dp"
         android:paddingRight="7dp">
@@ -95,7 +95,19 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="¿ No estás registrado ?"
+        android:textSize="12sp"
         android:textColor="@color/colorPrimaryDark"
+        android:background="#ffffff"/>
+    <Button
+        android:id="@+id/btn_olvido_reset_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:layout_marginLeft="10dp"
+        android:text="¿Has olvidado tu contraseña ?"
+        android:textColor="#F13C57"
+        android:textSize="12sp"
         android:background="#ffffff"/>
   </LinearLayout>
 </ScrollView>

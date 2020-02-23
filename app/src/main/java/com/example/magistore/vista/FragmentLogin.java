@@ -1,19 +1,13 @@
 package com.example.magistore.vista;
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,7 +16,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,8 +25,8 @@ public class FragmentLogin extends Fragment {
     private String email="";
     private String password="";
     private FirebaseAuth mAuth;
-    private Button btn_login;
-
+    private Button btn_login, btn_registro;
+    private Button btn_olvido_pass;
 
 
     @Override
@@ -45,6 +38,14 @@ public class FragmentLogin extends Fragment {
         ed_email=vista.findViewById(R.id.editText_login_email);
         ed_password=vista.findViewById(R.id.editText_login_pass);
         btn_login=vista.findViewById(R.id.btn_login);
+        btn_registro=vista.findViewById(R.id.btn_registro);
+        btn_olvido_pass= vista.findViewById(R.id.btn_olvido_reset_pass);
+        btn_registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegitrationInit());
+            }
+        });
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +66,12 @@ public class FragmentLogin extends Fragment {
             }
         });
 
-
+        btn_olvido_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentRessetPass());
+            }
+        });
 
         return vista;
     }
