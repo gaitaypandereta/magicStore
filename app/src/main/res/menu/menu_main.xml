@@ -28,6 +28,10 @@
         android:orderInCategory="100"
         android:title="SUBIR A TU STORE" />
     <item
+        android:id="@+id/saldo"
+        android:orderInCategory="100"
+        android:title="SALDO" />
+    <item
         android:id="@+id/salir"
         android:orderInCategory="100"
         android:title="SALIR" />

@@ -1,15 +1,18 @@
 package com.example.magistore;
 import android.os.Bundle;
+
 import com.example.magistore.modelo.Post;
+import com.example.magistore.vista.FragmentNews;
 import com.example.magistore.vista.FragmentRegitrationInit;
 import com.example.magistore.vista.FragmentInic;
 import com.example.magistore.vista.FragmentRegistration;
 import com.example.magistore.vista.FragmentStore;
-import com.example.magistore.vista.FragmentStoreDetail;
+import com.example.magistore.vista.FragmentStoreWeb;
 import com.example.magistore.vista.FragmentUploadDesing;
 import com.example.magistore.vista.FragmentUploadStore;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,6 +30,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 private FragmentInic fragmentInicio = new FragmentInic();
+private FirebaseAnalytics mFirebaseAnalytics;
 private FirebaseAuth mAuth;
 private List<Post> postList =new ArrayList<Post>();
     @Override
@@ -36,7 +40,7 @@ private List<Post> postList =new ArrayList<Post>();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
@@ -98,13 +102,17 @@ private List<Post> postList =new ArrayList<Post>();
             cambiarFragmento(new FragmentRegistration());
         }
         if (id == R.id.store_detaill) {
-            cambiarFragmento(new FragmentStoreDetail());
+            cambiarFragmento(new FragmentStoreWeb());
         }
         if (id == R.id.salir) {
             cambiarFragmento(new FragmentUploadDesing());
         }
+        if (id == R.id.saldo) {
+            cambiarFragmento(new FragmentNews());
+        }
 
         return super.onOptionsItemSelected(item);
     }
+
 
 }

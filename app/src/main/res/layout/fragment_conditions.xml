@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista.FragmentConditions"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Complete registro sólo con los datos necesarios" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Puedes borrar o actualizar tus datos siempre que quieras" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Inroduzca sólo la red social con la que va a participar" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="La edad es la edad para la que compras o quieres regalos, no la tuya real" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sexo es para el que realizas las compras o quieres regalos" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Teléfono y dirección no es necesario lo puedes indicar por email o teléfono cuando lo necesitemos para enviarte compra o regalos" />
+
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Si lo ha entendido marque la casilla, en caso contrario no marque nada y si quiere puede contactar por email con nosotros"/>
+
+
+    <CheckBox
+        android:id="@+id/chk1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Ha leido y acepta las condiciones" />
+
+
+    <Button
+        android:id="@+id/btn_i_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IR A TIENDA"/>
+
+    <Button
+        android:id="@+id/btn_completa_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="COMPLETA REGISTRO"/>
+
+</LinearLayout>

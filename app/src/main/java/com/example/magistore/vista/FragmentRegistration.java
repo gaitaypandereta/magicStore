@@ -1,10 +1,5 @@
 package com.example.magistore.vista;
-
-
-import android.annotation.SuppressLint;
-import android.graphics.Color;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,15 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
-import com.example.magistore.modelo.Usuario;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -81,7 +73,7 @@ public class FragmentRegistration extends Fragment {
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     // Write code to perform some action when touch is stopped.
                     valor_edad.setText(edad.getProgress() + "");
-                    // Toast.makeText(MainActivity.this, "Current value is " + edad.getProgress(), Toast.LENGTH_SHORT).show();
+
                 }
             });
 

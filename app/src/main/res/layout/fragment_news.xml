@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista.FragmentNews"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Esta semana..."
+        android:textSize="28sp"
+        android:textColor="#008577"
+        android:textStyle="bold"
+        android:paddingTop="14dp"
+        android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/tv_mensaje"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¡Atentos a los retos para ganar cukis en Facebook!"
+        android:textSize="18sp"
+        android:textColor="#909090"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#008577"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FFF"
+            android:text="Tu Red "
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="8dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textAlignment="textStart"
+            android:text="Tus Cukis" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#FFF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="Fecha" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_facebook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:background="@drawable/facebook"
+            android:layout_marginLeft="8dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+        <TextView
+            android:id="@+id/tv_cukis_facebook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="10" />
+        <TextView
+            android:id="@+id/tv_fecha_facebook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="04/07/2020" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_instagram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingTop="6dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textColor="#F44336"
+            android:textSize="18dp"
+            android:background="@drawable/instagram"
+            android:layout_marginLeft="8dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+        <TextView
+            android:id="@+id/tv_cukis_instagram"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tv_fecha_instagram"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="04/07/2020" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_twitter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingTop="6dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/twitter"
+            android:layout_marginLeft="8dp"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+        <TextView
+            android:id="@+id/tv_cukis_twitter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="10" />
+        <TextView
+            android:id="@+id/tv_fecha_twitter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="04/07/2020" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total 30 Cukis"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textAlignment="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingBottom="16dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/btn_completa_registro"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="COMPLETAR REGISTRO"/>
+
+        <Button
+            android:id="@+id/btn_sube_tus_cosas"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="SUBE TUS IDEAS Y DISEÑOS"/>
+        <Button
+            android:id="@+id/btn_mis_cosas"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="IDEAS QUE APORTÉ"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>

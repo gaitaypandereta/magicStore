@@ -14,10 +14,10 @@ import com.example.magistore.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentStoreDetail extends Fragment {
+public class FragmentStoreWeb extends Fragment {
 
 
-    public FragmentStoreDetail() {
+    public FragmentStoreWeb() {
         // Required empty public constructor
     }
 

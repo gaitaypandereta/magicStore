@@ -89,9 +89,9 @@ public class FragmentLogin extends Fragment {
        @Override
        public void onComplete(@NonNull Task<AuthResult> task) {
            if(task.isSuccessful()){
-               //getActivity().finish();
-               ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadStore());
-               Toast.makeText(getContext(), "Ha iniciado sesión correctamente", Toast.LENGTH_SHORT).show();
+
+               ((MainActivity) getActivity()).cambiarFragmento(new FragmentNews());
+
 
            }else{
 

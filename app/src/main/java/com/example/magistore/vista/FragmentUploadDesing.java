@@ -57,6 +57,12 @@ public class FragmentUploadDesing extends Fragment {
     ImageButton rojo;
     ImageButton verde;
     ImageButton azul;
+    ImageButton amarillo;
+    ImageButton gris;
+    ImageButton naranja;
+    ImageButton marron;
+    ImageButton azul_c;
+    ImageButton volver;
     private static Lienzo lienzo;
     float ppequenyo;
     float pmediano;
@@ -82,7 +88,13 @@ public class FragmentUploadDesing extends Fragment {
         blanco =view.findViewById(R.id.colorblanco);
         rojo = view.findViewById(R.id.colorrojo);
         verde =view.findViewById(R.id.colorverde);
-        azul =view.findViewById(R.id.colorazul);
+        azul =view.findViewById(R.id.colorazul_o);
+        naranja =view.findViewById(R.id.colornaranja);
+        amarillo =view.findViewById(R.id.coloramarillo);
+        marron= view.findViewById(R.id.colormarron);
+        gris =view.findViewById(R.id.colorgris);
+        azul_c =view.findViewById(R.id.colorazul_c);
+        volver=view.findViewById(R.id.volver);
         grueso_trazo = view.findViewById(R.id.trazo);
         anadir = view.findViewById(R.id.anyadir);
         borrar = view.findViewById(R.id.borrar);
@@ -124,6 +136,58 @@ public class FragmentUploadDesing extends Fragment {
             }
         });
 
+
+        gris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = view.getTag().toString();
+                lienzo.setColor(color);
+            }
+        });
+        amarillo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = view.getTag().toString();
+                lienzo.setColor(color);
+            }
+        });
+        naranja.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = view.getTag().toString();
+                lienzo.setColor(color);
+            }
+        });
+        azul_c.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = view.getTag().toString();
+                lienzo.setColor(color);
+            }
+        });
+        verde.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = view.getTag().toString();
+                lienzo.setColor(color);
+            }
+        });
+
+        marron.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                color = view.getTag().toString();
+                lienzo.setColor(color);
+            }
+        });
+
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadStore());
+            }
+        });
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,6 +198,7 @@ public class FragmentUploadDesing extends Fragment {
             @Override
             public void onClick(View view) {
                guardarDibujo(view);
+               ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadStore());
             }
         });
 
@@ -204,8 +269,8 @@ public class FragmentUploadDesing extends Fragment {
     public void guardarDibujo(View view){
 
         AlertDialog.Builder salvarDibujo = new AlertDialog.Builder(getContext());
-        salvarDibujo.setTitle("Guardar diseño");
-        salvarDibujo.setMessage("¿Guardar diseño en galeria?");
+        salvarDibujo.setTitle("Guarda tu diseño");
+        salvarDibujo.setMessage("¿Guarda tu diseño en la galeria?");
         salvarDibujo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int which){
 
@@ -284,7 +349,7 @@ public class FragmentUploadDesing extends Fragment {
     public void nuevoDibujo(){
         AlertDialog.Builder newDialog = new AlertDialog.Builder(getContext());
         newDialog.setTitle("Nuevo Diseño");
-        newDialog.setMessage("¿Comenzar un nuevo diseño (Se perderá el actual)?");
+        newDialog.setMessage("¡OJO! Si comienzas con un diseño nuevo perderás el actual");
         newDialog.setPositiveButton("Aceptar", new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int which){
 

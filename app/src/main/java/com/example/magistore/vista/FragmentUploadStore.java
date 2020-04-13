@@ -22,12 +22,8 @@ import com.bumptech.glide.Glide;
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.example.magistore.modelo.Post;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCanceledListener;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -37,24 +33,18 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-
-import java.util.UUID;
-
 import static android.app.Activity.RESULT_OK;
-import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentUploadStore extends Fragment {
 private static  final int PICK_IMAGE_REQUEST =1;
-private Button btn_chooseImage;
-private Button btn_upload, btn_tu_design;
+private Button btn_upload, btn_tu_design, btn_cancelar, btn_chooseImage;
 private EditText descripcion, user;
 private ImageView  chooseImageView;
 private ProgressBar uploadProgressBar;
-
-    String my_img=null;
+private String my_img=null;
 private Uri mImageUri;
 
 private StorageReference mStorageReference;
@@ -78,17 +68,27 @@ private FirebaseFirestore mfirestore;
      btn_chooseImage=view.findViewById(R.id.btn_choose_img);
      btn_upload=view.findViewById(R.id.ulpoadBtn);
      btn_tu_design=view.findViewById(R.id.btn_tu_desing);
+     btn_cancelar=view.findViewById(R.id.btn_cancelar);
      descripcion =view.findViewById(R.id.ed_description);
      user=view.findViewById(R.id.ed_user);
      chooseImageView=view.findViewById(R.id.chooseImageView);
      uploadProgressBar=view.findViewById(R.id.progress_bar);
+
+     descripcion.setVisibility(View.GONE);
+     user.setVisibility(View.GONE);
 
      mStorageReference= FirebaseStorage.getInstance().getReference("img_desing");
      mDatabase= FirebaseDatabase.getInstance().getReference("img_desing");
      mAuth=FirebaseAuth.getInstance();
      mfirestore=FirebaseFirestore.getInstance();
      btn_upload.setVisibility(View.GONE);
-
+     btn_cancelar.setVisibility(View.GONE);
+     btn_cancelar.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadStore());
+         }
+     });
 
 
      btn_chooseImage.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +96,9 @@ private FirebaseFirestore mfirestore;
          public void onClick(View view) {
            openFileChooser();
              btn_chooseImage.setVisibility(View.GONE);
+             btn_tu_design.setVisibility(View.GONE);
              btn_upload.setVisibility(View.VISIBLE);
+             btn_cancelar.setVisibility(View.VISIBLE);
          }
      });
 
@@ -135,6 +137,8 @@ private FirebaseFirestore mfirestore;
         intent.setType("image/*");
         intent.setAction(intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        descripcion.setVisibility(View.VISIBLE);
+        user.setVisibility(View.VISIBLE);
 
     }
     @Override
@@ -196,13 +200,11 @@ private FirebaseFirestore mfirestore;
                                     String postId = mDatabase.push().getKey();
                                     mDatabase.child(postId).setValue(post);
 
-                                     Toast.makeText(getContext(), my_img+"dentrooooooooooooooooooooooooooo", Toast.LENGTH_SHORT).show();
+
 
 
                                 }
                             });
-
-                           // Log.e("my_img", my_img);
 
 
 
@@ -222,6 +224,8 @@ private FirebaseFirestore mfirestore;
 
                         }
                     });
+
+                   ((MainActivity) getActivity()).cambiarFragmento(new FragmentStore());
         } else {
             Toast.makeText(getContext(), "No ha seleccionado ningún archivo", Toast.LENGTH_SHORT).show();
         }

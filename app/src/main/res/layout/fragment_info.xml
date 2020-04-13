@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".vista.FragmentNews"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#F00"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:text="Nota"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#909090"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:text="¿Vas a participar en eventos de redes sociales?"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#909090"
+            android:text="En caso afirmativo deberás cumplimentar el formulario de completar registro con la url de tu cuenta de la red o redes en las que vayas a participar.
+           No tiene porque ser ahora, puede ser en otro momento."/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#909090"
+            android:textSize="15sp"
+            android:text="No introduzcas tu edad real ni tu sexo, queremos conocer tu edad de compra y sexo  de compra.
+            Por ejemplo, si compras para niños es la edad del niño y si es una niña debes de marcar la casilla chica o los dos
+            en caso de compras para niño y niña. Esto es importante ya que con tus Cukis vas a poder hacer compras y necesitamos saber que tallas y modelos debemos
+            fabricar o adquirir para vosotras."
+            />
+
+    </LinearLayout>
+</ScrollView>

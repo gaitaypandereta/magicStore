@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class FragmentInic extends Fragment {
 private Button btn_session;
-private TextView tv_sesion;
+private TextView tv_entrar, tv_registro;
 private FirebaseAuth mAuth;
 private DatabaseReference mDatabase;
 
@@ -41,9 +42,17 @@ private DatabaseReference mDatabase;
         View vista= inflater.inflate(R.layout.fragment_inic, container, false);
         mAuth= FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
-
         btn_session=vista. findViewById(R.id.btn_of_session);
-        tv_sesion=vista.findViewById(R.id.tv_saludo_session);
+
+
+        RelativeLayout relativeclic =vista.findViewById(R.id.layout_inic);
+        relativeclic.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
+            }
+        });
+
 
         btn_session.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +75,7 @@ private DatabaseReference mDatabase;
 
           if(mAuth.getCurrentUser().getUid().isEmpty()){
 
-              tv_sesion.setText("¡Hola! ¿Aún no has iniciado sesión?");
+              tv_registro.setText("¡Hola! ¿Aún no tienes cuenta?");
 
           }else{
 
@@ -78,7 +87,7 @@ private DatabaseReference mDatabase;
                       if (dataSnapshot.exists()) {
                           String nombre = dataSnapshot.child("nombre").getValue().toString();
 
-                          tv_sesion.setText("¡Hola " + nombre + "!");
+                          tv_entrar.setText("¡Hola! Vas a iniciar sesión " );
 
                       }
 

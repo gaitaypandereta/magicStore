@@ -7,19 +7,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
-import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-
-/**
- * Created by Profesor on 29/10/2015.
- */
 public class Lienzo extends View {
 
     //Path que utilizaré para ir pintando las lineas

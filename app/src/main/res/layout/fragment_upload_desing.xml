@@ -10,7 +10,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main" tools:context=".MainActivity">
 
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -45,11 +44,18 @@
             android:src="@drawable/guardar"
             android:id="@+id/guardar"/>
 
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chevron_left_black_24dp"
+            android:id="@+id/volver"/>
+
     </LinearLayout>
 
     <com.example.magistore.vista.Lienzo
         android:layout_width="match_parent"
-        android:layout_weight="5"
+        android:layout_weight="12"
         android:layout_height="0dp"
         android:id="@+id/lienzo"
         android:background="#FFFFFFFF"/>
@@ -58,16 +64,9 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_marginRight="60dp">
 
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="@dimen/alturacolor"
-            android:id="@+id/colornegro"
-            android:tag="#FF000000"
-            android:background="#FF000000"
-            />
 
         <ImageButton
             android:layout_width="0dp"
@@ -75,15 +74,25 @@
             android:layout_height="@dimen/alturacolor"
             android:id="@+id/colorblanco"
             android:tag="#FFFFFFFF"
-            android:background="#FFFFFFFF"/>
+            android:background="@drawable/l_blanco"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/alturacolor"
-            android:id="@+id/colorazul"
+            android:id="@+id/colornegro"
+            android:tag="#FF000000"
+            android:background="@drawable/l_negro"
+            />
+
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/alturacolor"
+            android:id="@+id/colorazul_o"
             android:tag="#FF0000FF"
-            android:background="#FF0000FF"/>
+            android:background="@drawable/l_azul_o"/>
 
         <ImageButton
             android:layout_width="0dp"
@@ -91,15 +100,65 @@
             android:layout_height="@dimen/alturacolor"
             android:id="@+id/colorrojo"
             android:tag="#FFFF0000"
-            android:background="#FFFF0000"/>
+            android:background="@drawable/l_rojo"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/alturacolor"
+            android:id="@+id/colorgris"
+            android:tag="#808080"
+            android:background="@drawable/l_gris"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_marginRight="60dp">
+
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/alturacolor"
+            android:id="@+id/coloramarillo"
+            android:tag="#FFEB3B"
+            android:background="@drawable/l_amarillo"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/alturacolor"
+            android:id="@+id/colornaranja"
+            android:tag="#FF9800"
+            android:background="@drawable/l_naranja"
+            />
+
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/alturacolor"
+            android:id="@+id/colorazul_c"
+            android:tag="#12E6AA"
+            android:background="@drawable/l_azul_c"/>
 
         <ImageButton
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="@dimen/alturacolor"
             android:id="@+id/colorverde"
-            android:tag="#FF00FF00"
-            android:background="#FF00FF00"/>
-    </LinearLayout>
+            android:tag="#F0046104"
+            android:background="@drawable/l_verde_o"/>
 
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/alturacolor"
+            android:id="@+id/colormarron"
+            android:tag="#792106"
+            android:background="@drawable/l_marron_o"/>
+    </LinearLayout>
 </LinearLayout>
