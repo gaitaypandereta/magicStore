@@ -68,7 +68,7 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:text="Fecha" />
+            android:text="Campaña" />
 
     </LinearLayout>
     <LinearLayout
@@ -109,7 +109,7 @@
             android:layout_weight="3"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="04/07/2020" />
+            android:text="00/00/0000" />
     </LinearLayout>
 
     <LinearLayout
@@ -150,7 +150,7 @@
             android:layout_weight="3"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="04/07/2020" />
+            android:text="00/00/0000" />
     </LinearLayout>
 
     <LinearLayout
@@ -160,7 +160,8 @@
         android:orientation="horizontal"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:paddingTop="6dp">
+        android:paddingTop="6dp"
+        android:layout_marginBottom="6dp">
 
         <TextView
             android:layout_width="0dp"
@@ -190,19 +191,49 @@
             android:layout_weight="3"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="04/07/2020" />
+            android:text="00/00/0000" />
     </LinearLayout>
+
     <TextView
+        android:id="@+id/tv_cukis_aportaciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total 30 Cukis"
+        android:text="Tus Cukis de aportaciones"
+        android:background="#008577"
+        android:textColor="#FFF"
         android:textStyle="bold"
         android:textSize="18dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_cukis_compras"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tus Cukis de compras"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:background="#008577"
+        android:textColor="#FFF"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:paddingLeft="8dp"/>
+    <TextView
+        android:id="@+id/tv_cukis_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total  Cukis"
+        android:textStyle="bold"
+        android:background="#008577"
+        android:textColor="#FFF"
+        android:textSize="20dp"
         android:textAlignment="center"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:paddingBottom="16dp"
-        android:paddingTop="15dp"
+        android:paddingBottom="18dp"
+        android:paddingTop="8dp"
         android:paddingLeft="8dp"/>
 
     <LinearLayout

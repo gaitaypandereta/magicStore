@@ -1,7 +1,12 @@
 package com.example.magistore.vista;
+
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,20 +17,33 @@ import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
+import com.example.magistore.modelo.Post;
+import com.example.magistore.modelo.Retrofit.CukisApi;
+import com.example.magistore.modelo.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentRegistration extends Fragment {
-    private EditText  edit_telefono, edit_facebook, edit_twitter, edit_instagram, edit_direccion;
-    private String telefono, facebok, twiter, instagra, direccion;
+    private EditText edit_telefono, edit_facebook, edit_twitter, edit_instagram, edit_direccion, hide_nombre, hide_id, hide_email, hide_sexo;
+    private String telefono, facebok, twiter, instagra, direccion, h_id, h_nombre, h_email, h_sexo;
     private SeekBar edad;
     private TextView valor_edad;
     private RadioGroup radioGroup;
@@ -33,7 +51,9 @@ public class FragmentRegistration extends Fragment {
     private Button btn_guardar_user, btn_en_otro_momento;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private  DatabaseReference dR ;
+    private DatabaseReference dR;
+    private CukisApi api;
+    private String TAG;
 
     public FragmentRegistration() {
         // Required empty public constructor
@@ -43,8 +63,12 @@ public class FragmentRegistration extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View vista = inflater.inflate(R.layout.fragment_registration, container, false);
-        mAuth= FirebaseAuth.getInstance();
-        mDatabase= FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        hide_nombre =vista.findViewById(R.id.edi_hide_nombre);
+        hide_email =vista.findViewById(R.id.edi_hide_email);
+        hide_id =vista.findViewById(R.id.edi_hide_id);
+        hide_sexo = vista.findViewById(R.id.edi_hide_sexo);
         edit_telefono = vista.findViewById(R.id.editText_telefono);
         edit_facebook = vista.findViewById(R.id.editText_facebook);
         edit_twitter = vista.findViewById(R.id.editText_twitter);
@@ -52,9 +76,9 @@ public class FragmentRegistration extends Fragment {
         edit_direccion = vista.findViewById(R.id.editText_direccion);
         edad = vista.findViewById(R.id.seekBar);
         valor_edad = vista.findViewById(R.id.seekBar_edad);
-        radioButtonChico=vista.findViewById(R.id.radioButtonMasculino);
-        radioButtonChica=vista.findViewById(R.id.radioButtonFemenino);
-        radioButtonOtro=vista.findViewById(R.id.radioButtonOtro);
+        radioButtonChico = vista.findViewById(R.id.radioButtonMasculino);
+        radioButtonChica = vista.findViewById(R.id.radioButtonFemenino);
+        radioButtonOtro = vista.findViewById(R.id.radioButtonOtro);
         getUsuario();
 
         if (edad != null) {
@@ -82,9 +106,7 @@ public class FragmentRegistration extends Fragment {
 
         radioGroup = vista.findViewById(R.id.radioGrou);
 
-       // String id=mAuth.getCurrentUser().getUid();
-
-        btn_en_otro_momento=vista.findViewById(R.id.btn_ir_a_session);
+        btn_en_otro_momento = vista.findViewById(R.id.btn_ir_a_session);
         btn_en_otro_momento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,43 +118,27 @@ public class FragmentRegistration extends Fragment {
             @Override
             public void onClick(View view) {
 
-               actualizarRegistro();
-/*
-                Snackbar snackbar = Snackbar.make(view, " NO HAS INTRODUCIDO NINGÚN DATO", Snackbar.LENGTH_LONG).setAction("Action", null);
-                View sbView = snackbar.getView();
-                sbView.setBackgroundColor(Color.rgb(28, 181, 148));
-                snackbar.show();
-                limpiarCampos();
-*/
+                actualizarRegistro();
+                guardarUsuarioMysql(getUsuarioMysql());
                 ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
 
 
             }
         });
 
-
+        Retrofit retrofit = new Retrofit
+                .Builder()
+                .baseUrl("http://192.168.43.113:3000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        api = retrofit.create(CukisApi.class);
+        String id = mAuth.getCurrentUser().getUid();
 
 
         return vista;
 
     }
 
-
-
-    //Volvemos todos los campos del formulario a su valor por defecto
-
-  /*  public void limpiarCampos() {
-        edit_telefono.setText("");
-        edit_facebook.setText("");
-        edit_twitter.setText("");
-        edit_instagram.setText("");
-        edit_direccion.setText("");
-        edad.setProgress(0);
-        valor_edad.setText(edad.getProgress() + "");
-        radioGroup.clearCheck();
-        edit_telefono.requestFocus();
-    }
-*/
 
     //Método que devuelve el valor de RadioButton seleccionado
 
@@ -151,6 +157,9 @@ public class FragmentRegistration extends Fragment {
 
 
     public void actualizarRegistro() {
+        h_email = hide_email.getText().toString();
+        h_nombre = hide_nombre.getText().toString();
+        h_id = hide_id.getText().toString();
         telefono = edit_telefono.getText().toString();
         facebok = edit_facebook.getText().toString();
         twiter = edit_twitter.getText().toString();
@@ -158,8 +167,7 @@ public class FragmentRegistration extends Fragment {
         direccion = edit_direccion.getText().toString();
         String edad = valor_edad.getText().toString();
         String sex = valorSexo(radioGroup);
-
-        String id=mAuth.getCurrentUser().getUid();
+        String id = mAuth.getCurrentUser().getUid();
         dR = FirebaseDatabase.getInstance().getReference("users").child(id);
         dR.child("telefono").setValue(telefono);
         dR.child("facebok").setValue(facebok);
@@ -169,33 +177,42 @@ public class FragmentRegistration extends Fragment {
         dR.child("sexo").setValue(sex);
         dR.child("edad").setValue(edad);
 
+       Toast.makeText(getContext(), "Este es el nombre: "+h_nombre+" y éste el email: "+h_email,Toast.LENGTH_SHORT).show();
+
     }
 
 
-    private void getUsuario(){
+    private void getUsuario() {
 
-       String id=mAuth.getCurrentUser().getUid();
-Toast.makeText(getContext(), "este es el id:"+id, Toast.LENGTH_SHORT).show();
+        String id = mAuth.getCurrentUser().getUid();
+        Toast.makeText(getContext(), "este es el id:" + id, Toast.LENGTH_SHORT).show();
         mDatabase.child("users").child(id).addValueEventListener(new ValueEventListener() {
 
-           @Override
+            @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    String telefono=dataSnapshot.child("telefono").getValue().toString();
-                    String facebook=dataSnapshot.child("facebok").getValue().toString();
-                    String twitter=dataSnapshot.child("twiter").getValue().toString();
-                    String instagram=dataSnapshot.child("instagra").getValue().toString();
-                    String direccion=dataSnapshot.child("direccion_envio").getValue().toString();
-                    String sexo=dataSnapshot.child("sexo").getValue().toString();
-                    String edad=dataSnapshot.child("edad").getValue().toString();
+                if (dataSnapshot.exists()) {
+                    String telefono = dataSnapshot.child("telefono").getValue().toString();
+                    String facebook = dataSnapshot.child("facebok").getValue().toString();
+                    String twitter = dataSnapshot.child("twiter").getValue().toString();
+                    String instagram = dataSnapshot.child("instagra").getValue().toString();
+                    String direccion = dataSnapshot.child("direccion_envio").getValue().toString();
+                    String sexo = dataSnapshot.child("sexo").getValue().toString();
+                    String edad = dataSnapshot.child("edad").getValue().toString();
 
+                    String email = dataSnapshot.child("email").getValue().toString();
+                    String nombre = dataSnapshot.child("nombre").getValue().toString();
+
+
+                    hide_email.setText(email);
+                    hide_nombre.setText(nombre);
                     edit_direccion.setText(direccion);
+                    valor_edad.setText(edad);
                     edit_facebook.setText(facebook);
                     edit_instagram.setText(instagram);
                     edit_telefono.setText(telefono);
                     edit_twitter.setText(twitter);
-                    valor_edad.setText(edad);
-                    mostrarSexo(sexo);
+                    hide_sexo.setText(sexo);
+
 
                 }
 
@@ -208,15 +225,62 @@ Toast.makeText(getContext(), "este es el id:"+id, Toast.LENGTH_SHORT).show();
         });
 
     }
-    public void mostrarSexo(String sexo){
 
-        if(sexo=="chico"){
+    public void guardarUsuarioMysql(Usuario usuario){
+
+
+        Call<Usuario> call = api.postUsuario(usuario);
+
+
+        api.postUsuario(usuario).enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+
+            }
+
+        });
+
+
+    }
+
+    public void mostrarSexo(String sexo) {
+
+        if (sexo == "chico") {
             radioButtonChico.setChecked(true);
-        } else if (sexo=="chica"){
+            hide_sexo.setText("chico");
+        } else if (sexo == "chica") {
             radioButtonChica.setChecked(true);
-        }else{ radioButtonOtro.setChecked(true);
+            hide_sexo.setText("chica");
+        } else {
+            radioButtonOtro.setChecked(true);
+            hide_sexo.setText("No responde");
 
         }
     }
+
+    public Usuario getUsuarioMysql(){
+
+        h_email = hide_email.getText().toString();
+        h_nombre = hide_nombre.getText().toString();
+        h_id = hide_id.getText().toString();
+        telefono = edit_telefono.getText().toString();
+        facebok = edit_facebook.getText().toString();
+        twiter = edit_twitter.getText().toString();
+        instagra = edit_instagram.getText().toString();
+        direccion = edit_direccion.getText().toString();
+        int edad =Integer.parseInt (valor_edad.getText().toString());
+        h_sexo = hide_sexo.getText().toString();
+
+
+      Usuario usuario = new Usuario(h_id,telefono, direccion, edad, h_email, facebok,instagra, h_nombre, h_sexo, twiter);
+
+     return usuario;
+    }
+
 // origin-gaitaypandereta 
 }

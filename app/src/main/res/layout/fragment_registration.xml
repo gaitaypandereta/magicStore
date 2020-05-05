@@ -250,6 +250,30 @@
 
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/edi_hide_email"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text=""
+        android:visibility="invisible"/>
+    <EditText
+        android:id="@+id/edi_hide_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text=""
+        android:visibility="invisible"/>
+    <EditText
+        android:id="@+id/edi_hide_id"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text=""
+        android:visibility="invisible"/>
+    <EditText
+        android:id="@+id/edi_hide_sexo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="chico"
+        android:visibility="invisible"/>
 
  </LinearLayout>
 
