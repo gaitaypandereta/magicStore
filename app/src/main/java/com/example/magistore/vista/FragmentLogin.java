@@ -1,8 +1,11 @@
 package com.example.magistore.vista;
+import android.content.ClipData;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -27,14 +30,13 @@ public class FragmentLogin extends Fragment {
     private FirebaseAuth mAuth;
     private Button btn_login, btn_registro;
     private Button btn_olvido_pass;
-
+    private MenuItem secondItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista = inflater.inflate(R.layout.fragment_login, container, false);
         mAuth = FirebaseAuth.getInstance();
-
         ed_email=vista.findViewById(R.id.editText_login_email);
         ed_password=vista.findViewById(R.id.editText_login_pass);
         btn_login=vista.findViewById(R.id.btn_login);
@@ -43,7 +45,7 @@ public class FragmentLogin extends Fragment {
         btn_registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegitrationInit());
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentConditions());
             }
         });
         btn_login.setOnClickListener(new View.OnClickListener() {

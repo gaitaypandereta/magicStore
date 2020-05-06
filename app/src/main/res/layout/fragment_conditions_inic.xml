@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4px"
+        android:orientation="vertical"
+        tools:context=".vista.FragmentConditions">
+
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Para poder registrarte debes de leer y aceptar las condiciones antes" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No podrás participar en eventos ni recoger regalos si antes no estás registrado " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Podrás subir ideas, opiniones y comentarios sólo sobre el tema de cada campaña " />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Si algo no te gusta o lo ves mejorable hazlo tu mejor o mejora el existente y compartelo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No se admiten opininiones y críticas destructivas hacia los demás participantes" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Queda prohibido hacer menciones y comentarios de mal gusto u ofensivos" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Se prohibe imágenes o textos relacionados con maltrato, sexo, abusos, política, religión o incitación a la violencia" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ten en cuenta que este sitio es familiar con niños,jóvenes y mayores" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Esto es una revista y tu opinión es importante siempre que sea constructiva " />
+
+        <CheckBox
+            android:id="@+id/chk_inic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="He leido y acepto las condiciones" />
+
+
+        <Button
+            android:id="@+id/btn_registro_inic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REGISTRARSE" />
+        <Button
+            android:id="@+id/btn_volver_inic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MI REVISTA" />
+
+    </LinearLayout>
+</ScrollView>

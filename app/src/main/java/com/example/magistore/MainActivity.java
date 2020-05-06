@@ -2,6 +2,9 @@ package com.example.magistore;
 import android.os.Bundle;
 
 import com.example.magistore.modelo.Post;
+import com.example.magistore.vista.FragmentConditions;
+import com.example.magistore.vista.FragmentConditionsInic;
+import com.example.magistore.vista.FragmentLogin;
 import com.example.magistore.vista.FragmentNews;
 import com.example.magistore.vista.FragmentRegitrationInit;
 import com.example.magistore.vista.FragmentInic;
@@ -10,6 +13,7 @@ import com.example.magistore.vista.FragmentStore;
 import com.example.magistore.vista.FragmentStoreWeb;
 import com.example.magistore.vista.FragmentUploadDesing;
 import com.example.magistore.vista.FragmentUploadStore;
+import com.example.magistore.vista.Fragment_campahne;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -24,6 +28,8 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 private FragmentInic fragmentInicio = new FragmentInic();
 private FirebaseAnalytics mFirebaseAnalytics;
 private FirebaseAuth mAuth;
+private boolean estado=true;
 private List<Post> postList =new ArrayList<Post>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +70,13 @@ private List<Post> postList =new ArrayList<Post>();
         });
     }
 
+    public boolean mostrarItem(Boolean dato){
+       boolean estado=false;
+       if(dato)
+        estado=true;
+
+       return estado;
+    }
     public void cambiarFragmento(Fragment fragmento) {
         FragmentManager FM = getSupportFragmentManager();
         FragmentTransaction FT = FM.beginTransaction();
@@ -75,10 +89,15 @@ private List<Post> postList =new ArrayList<Post>();
         return postList;
     }
 
-    @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem item3 = menu.findItem(R.id.tablero);
+        item3.setVisible(estado);
+
         return true;
+
     }
 
     @Override
@@ -89,26 +108,24 @@ private List<Post> postList =new ArrayList<Post>();
         if (id == R.id.inic) {
             cambiarFragmento(new FragmentInic());
         }
+        if (id == R.id.login) {
+            cambiarFragmento(new FragmentLogin());
+        }
         if (id == R.id.registro) {
-            cambiarFragmento(new FragmentRegitrationInit());
+            cambiarFragmento(new FragmentConditionsInic());
         }
-        if (id == R.id.store) {
-            cambiarFragmento(new FragmentStore());
+        if (id == R.id.campahne) {
+            cambiarFragmento(new Fragment_campahne());
         }
-        if(id==R.id.subir_Store){
-            cambiarFragmento(new FragmentUploadStore());
-        }
-        if(id==R.id.registro_completo){
-            cambiarFragmento(new FragmentRegistration());
-        }
-        if (id == R.id.store_detaill) {
+
+        if (id == R.id.web) {
             cambiarFragmento(new FragmentStoreWeb());
         }
-        if (id == R.id.salir) {
-            cambiarFragmento(new FragmentUploadDesing());
+        if (id == R.id.logout) {
+
         }
-        if (id == R.id.saldo) {
-            cambiarFragmento(new FragmentNews());
+        if (id == R.id.tablero) {
+            cambiarFragmento(new FragmentLogin());
         }
 
         return super.onOptionsItemSelected(item);

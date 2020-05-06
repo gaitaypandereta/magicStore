@@ -1,61 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".vista.FragmentConditions"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:layout_weight="1">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Complete registro sólo con los datos necesarios" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Puedes borrar o actualizar tus datos siempre que quieras" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Inroduzca sólo la red social con la que va a participar" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="La edad es la edad para la que compras o quieres regalos, no la tuya real" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sexo es para el que realizas las compras o quieres regalos" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Teléfono y dirección no es necesario lo puedes indicar por email o teléfono cuando lo necesitemos para enviarte compra o regalos" />
+        android:layout_height="match_parent"
+        android:layout_margin="4px"
+        android:orientation="vertical"
+        tools:context=".vista.FragmentConditions">
 
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Si lo ha entendido marque la casilla, en caso contrario no marque nada y si quiere puede contactar por email con nosotros"/>
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Completa registro sólo con los datos necesarios" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Puedes borrar o actualizar tus datos siempre que quieras, excepto el email y usuario. Nuestro consejo es que sólo introduzcas un email nuevo  que no sea el que uses para cosas serias." />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Antes de completar este formulario recuerda que en internet nada es al 100% seguro." />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Para eliminar todos tus datos simplemente envía un email a elimina@empresa.com" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Inroduce sólo la red social con la que va a participar aunque no es necesario hasta el final de campaña" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="La edad es para la que compras o quieres regalos, no la tuya real. Si tus regalos o compras son para un niño, la edad es la del niño" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Si te gusta la ropa de más edad o de menos edad o te sientes más joven o más mayor, esa es tu edad. La que sientes no la del dni" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sexo es para el que realizas las compras o quieres regalos, no el tuyo si los artículos no son para tí" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teléfono y dirección no es necesario. Lo puedes indicar por email o wassat cuando lo necesitemos para enviarte compra o regalos" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Si lo has entendido marca la casilla, en caso contrario no marques nada y si quieres puedes contactar por email o wassat con nosotros" />
 
 
-    <CheckBox
-        android:id="@+id/chk1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:text="Ha leido y acepta las condiciones" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Los datos de edad y sexo puedes indicarlos el último día de campaña para ser efectivos el siguiente ya que los usamos para trabajar acorde a edad y sexo de nuestros usuarios. Sólo contamos en cada campaña y no guardamos nombres ni otros datos" />
 
 
-    <Button
-        android:id="@+id/btn_i_store"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="IR A TIENDA"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recuerda que sólo necesitamos tu email para contactar y confirmar que eres tú en caso de premio" />
 
-    <Button
-        android:id="@+id/btn_completa_registro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="COMPLETA REGISTRO"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recuerda que la red social nos la puedes indicar por email el último día de la campaña" />
 
-</LinearLayout>
+        <CheckBox
+            android:id="@+id/chk1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="He leido y acepto las condiciones" />
+
+
+        <Button
+            android:id="@+id/btn_completa_registro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COMPLETA REGISTRO" />
+        <Button
+            android:id="@+id/btn_i_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TABLERO" />
+
+    </LinearLayout>
+</ScrollView>

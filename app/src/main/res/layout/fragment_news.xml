@@ -12,11 +12,12 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tv_campahne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Esta semana..."
         android:textSize="28sp"
-        android:textColor="#008577"
+        android:textColor="#008557"
         android:textStyle="bold"
         android:paddingTop="14dp"
         android:textAlignment="center"/>
@@ -24,14 +25,70 @@
         android:id="@+id/tv_mensaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Atentos a los retos para ganar cukis en Facebook!"
-        android:textSize="18sp"
+        android:text="¡Atentos para ganar cukis!"
+        android:textSize="20sp"
         android:textColor="#909090"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:paddingBottom="10dp"/>
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="15dp"/>
+    <ImageView
+        android:id="@+id/imv_campahne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/leonardo"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <Button
+            android:id="@+id/btn_web"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="WEB"/>
+
+        <Button
+            android:id="@+id/btn_sube_tus_cosas"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="SUBIR AL TABLERO"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_completa_registro"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="COMPLETAR REGISTRO"/>
+
+        <Button
+            android:id="@+id/btn_mis_cosas"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="TABLERO"/>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +97,7 @@
         android:background="#008577"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:paddingTop="8dp">
+        android:paddingTop="18dp">
 
         <TextView
             android:layout_width="0dp"
@@ -235,37 +292,6 @@
         android:paddingBottom="18dp"
         android:paddingTop="8dp"
         android:paddingLeft="8dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="8dp">
-
-        <Button
-            android:id="@+id/btn_completa_registro"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="COMPLETAR REGISTRO"/>
-
-        <Button
-            android:id="@+id/btn_sube_tus_cosas"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="SUBE TUS IDEAS Y DISEÑOS"/>
-        <Button
-            android:id="@+id/btn_mis_cosas"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="IDEAS QUE APORTÉ"/>
-
-    </LinearLayout>
 
 </LinearLayout>
 </ScrollView>

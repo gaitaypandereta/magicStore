@@ -6,9 +6,11 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.magistore.MainActivity;
@@ -28,11 +30,12 @@ import static java.lang.Integer.parseInt;
 public class FragmentNews extends Fragment {
     private FirebaseAuth mAuth;
     private CukisApi api;
-    private TextView  tv_cukis_face_date, tv_cukis_twit_date, tv_cukis_inst_date, tv_cukis_facebook, tv_cukis_twitter, tv_cukis_instagram, tv_cukis_compras, tv_cukis_aportaciones, tv_cukis_total;
-    private Button completa_registro, mis_ideas, subir_ideas;
-
+    private TextView  tv_cukis_face_date, tv_cukis_twit_date, tv_cukis_inst_date, tv_cukis_facebook, tv_cukis_twitter, tv_cukis_instagram, tv_cukis_compras, tv_cukis_aportaciones, tv_cukis_total, tv_campahne, tv_mensaje;
+    private Button completa_registro, mis_ideas, subir_ideas, ir_a_web;
+    private ImageView imv_campahne;
+    private Fragment fragment;
     public FragmentNews() {
-        // Required empty public constructor
+
     }
 
 
@@ -45,6 +48,7 @@ public class FragmentNews extends Fragment {
         completa_registro=vista.findViewById(R.id.btn_completa_registro);
         mis_ideas=vista.findViewById(R.id.btn_mis_cosas);
         subir_ideas=vista.findViewById(R.id.btn_sube_tus_cosas);
+        ir_a_web=vista.findViewById(R.id.btn_web);
         tv_cukis_aportaciones=vista.findViewById(R.id.tv_cukis_aportaciones);
         tv_cukis_compras=vista.findViewById(R.id.tv_cukis_compras);
         tv_cukis_facebook=vista.findViewById(R.id.tv_cukis_facebook);
@@ -54,6 +58,39 @@ public class FragmentNews extends Fragment {
         tv_cukis_face_date=vista.findViewById(R.id.tv_fecha_facebook);
         tv_cukis_inst_date=vista.findViewById(R.id.tv_fecha_instagram);
         tv_cukis_twit_date=vista.findViewById(R.id.tv_fecha_twitter);
+        imv_campahne=vista.findViewById(R.id.imv_campahne);
+        tv_mensaje=vista.findViewById(R.id.tv_mensaje);
+        tv_campahne=vista.findViewById(R.id.tv_campahne);
+
+        tv_mensaje.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new Fragment_campahne());
+            }
+        });
+
+        tv_campahne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new Fragment_campahne());
+            }
+        });
+
+        imv_campahne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new Fragment_campahne());
+            }
+        });
+
+        ir_a_web.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentStoreWeb());
+            }
+        });
+
+
         completa_registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,9 +159,9 @@ public class FragmentNews extends Fragment {
                     });
 
 
-
-
         return vista;
     }
+
+
 
 }

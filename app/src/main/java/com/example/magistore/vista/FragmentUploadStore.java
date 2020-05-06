@@ -86,7 +86,7 @@ private FirebaseFirestore mfirestore;
      btn_cancelar.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View view) {
-             ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadStore());
+             ((MainActivity) getActivity()).cambiarFragmento(new FragmentNews());
          }
      });
 

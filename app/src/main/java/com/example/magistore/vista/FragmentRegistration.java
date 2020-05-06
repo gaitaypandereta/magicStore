@@ -110,7 +110,7 @@ public class FragmentRegistration extends Fragment {
         btn_en_otro_momento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentNews());
             }
         });
         btn_guardar_user = vista.findViewById(R.id.btn_guardar_usuario);
@@ -120,7 +120,7 @@ public class FragmentRegistration extends Fragment {
 
                 actualizarRegistro();
                 guardarUsuarioMysql(getUsuarioMysql());
-                ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentNews());
 
 
             }

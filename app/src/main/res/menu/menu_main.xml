@@ -6,35 +6,32 @@
         android:id="@+id/inic"
         android:orderInCategory="100"
         android:title="INICIO"
-        app:showAsAction="never" />
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/login"
+        android:orderInCategory="100"
+        android:title="LOGIN"/>
     <item
         android:id="@+id/registro"
         android:orderInCategory="100"
-        android:title="REGISTRO" />
+        android:title="REGISTRO"/>
     <item
-        android:id="@+id/registro_completo"
+        android:id="@+id/campahne"
         android:orderInCategory="100"
-        android:title="COMPLETAR REGISTRO" />
+        android:title="CAMPAÑAS"/>
+
     <item
-        android:id="@+id/store"
+        android:id="@+id/web"
         android:orderInCategory="100"
-        android:title="TU STORE" />
+        android:title="WEB"/>
     <item
-        android:id="@+id/store_detaill"
+        android:id="@+id/tablero"
         android:orderInCategory="100"
-        android:title=" STORE DETAILL" />
+        android:title="TABLERO"/>
     <item
-        android:id="@+id/subir_Store"
+        android:id="@+id/logout"
         android:orderInCategory="100"
-        android:title="SUBIR A TU STORE" />
-    <item
-        android:id="@+id/saldo"
-        android:orderInCategory="100"
-        android:title="SALDO" />
-    <item
-        android:id="@+id/salir"
-        android:orderInCategory="100"
-        android:title="SALIR" />
+        android:title="LOGOUT"/>
 
 
 </menu>
