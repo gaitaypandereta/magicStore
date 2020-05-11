@@ -1,29 +1,25 @@
 # MagicStore
 ## Gana regalos, descuentos y compras gratis con tus redes sociales y con tus fabulosas ideas. 
 ## Aplicación móvil
-MagicStore es una aplicación nativa  android contra firebase y mysql con la finalidad de complementar los servicios de la web.
+MagicStore es una aplicación nativa  android contra firebase y mysql con la finalidad de hacer más prácticos los servicios de la web a la que complementa.
+MagicStore no guarda tus datos y sólo recaba los datos necesarios y en el momento  que los necesita:
 
- <img src="img/1-inic-serve.png" height="380px">
- 
- <img src="img/2-login.png" height="380px">
+ <img src="img/1-inicio.png" height="380px">
+
+El registro se completa en el momento de necesitarlo y te da la oportunuidad de eliminarlo en cuanto ya no lo necesites:
+
+ <img src="img/2-registro.png" height="380px">
 
 El usuario podrá ganar cukis, moneda interna con la que luego podrá comprar en la tienda u obtener regalos participando 
 en campañas de redes sociales o también aportando ideas a las que podrá ademas añadir imágenes o crear sus propios diseños.
 
+ <img src="img/3-subir.png" height="380px">
+
 Mediante retrofit además de registrarse en firestore lo hace al mismo tiempo en mysql desde donde se administra todo 
-lo relacionado con Cukis ganadas/gastadas obtenidas por los diferntes medios que puede ver en su aplicación también:
-
-<img src="img/4-1-sube.png" height="380px">
-
-<img src="img/3-3-cukis.png" height="380px">
-
-Puede eliminar también los post propios que no desee:
-
-<img src="img/5-eliminar.png" height="380px">
-
+lo relacionado con Cukis ganadas/gastadas obtenidas por los diferntes medios que puede ver en su aplicación también.
 Implementa un WebView para facilitar el acceso a la web sin salir de la aplicación:
 
-<img src="img/3-1-web_movil.png" height="380px">
+<img src="img/4-cukis.png" height="380px">
 
 
 
@@ -33,15 +29,17 @@ Implementa un WebView para facilitar el acceso a la web sin salir de la aplicaci
  
  <img src="img/web.png" height="580px">
  
- Zoy tiene actividades infantiles como ésta de arrastrar y soltar relizada mediante canvas y CreateJS y en donde además incluye vídeo con indicaciones de como realizarlo y también la opción de incluir imágenes en svg:
-       <img src="img/canvas.png" height="380px">
-       <img src="img/tejidos_svg.png" height="380px">
+ Zoy tiene actividades infantiles como ésta de arrastrar y soltar relizada mediante canvas y CreateJS:
+ 
+ <img src="img/canvas.png" height="380px">
        
-     
+ Incluye vídeo y también la opción de incluir imágenes en svg: 
+   
+ <img src="img/tejidos_svg.png" height="380px">
+ 
  Zoy también muestra otros elementos más simples como audios infantiles: 
  
   <img src="img/cuentos.png" height="380px">
-  
   
   Zoy tiene además una página de administración desde donde se contabilizan todas las Cukis:
   
