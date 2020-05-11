@@ -1,0 +1,76 @@
+# MagicStore
+## Gana regalos, descuentos y compras gratis con tus redes sociales y con tus fabulosas ideas. 
+## Aplicación móvil
+MagicStore es una aplicación nativa  android contra firebase y mysql con la finalidad de complementar los servicios 
+de la página web.
+ <img src="img/1-inic-serve.png" height="580px">
+
+El cliente se registra, logea y puede recuperar su contraseña si se le ha olvidado para acceder a su tablero
+ <img src="img/2-login.png" height="580px">
+
+El usuario podrá ganar cukis, moneda interna con la que luego podrá comprar en la tienda u obtener regalos participando 
+en campañas de redes sociales o también aportando ideas a las que podrá ademas añadir imágenes o crear sus propios diseños
+<img src="img/4-1-sube.png" height="580px">
+
+Mediante retrofit además de registrarse en firestore lo hace al mismo tiempo en mysql desde donde se administra todo 
+lo relacionado con Cukis ganadas/gastadas obtenidas por los diferntes medios que puede ver en su aplicación también
+<img src="img/3-3-cukis.png" height="580px">
+
+Puede eliminar también los post propios que no desee
+<img src="img/eliminar.png" height="580px">
+
+Implementa un WebView para facilitar el acceso a la web sin salir de la aplicación
+<img src="img/3-1-web_movil.png" height="580px">
+
+
+
+## Página Web
+ Logo de Zoytu creado con svg y Anime.js en donde la bolita está en cosntante movimiento. 
+ Zoytu es un sitio web familiar con secciones infantiles, de moda, belleza y cocina.
+ <img src="img/web.png" height="580px">
+ 
+ Zotu tiene actividades infantiles como ésta de arrastrar y soltar relizada mediante canvas y
+ CreateJS y en donde además in vídeo con indicaciones de como realizarlo:
+       <img src="img/canvas.png" height="580px">
+       
+ Zotu también incluye los diseños de tejidos realizados con svg:
+     <img src="img/tejidos_svg.png" height="580px">
+     
+ Zotu también muestra otros elementos más simples como audios infantiles: 
+  <img src="img/cuentos.png" height="580px">
+  
+  
+  Zotu tiene además una página de administración desde donde se contabilizan todas las Cukis:
+  <img src="img/contabilidad.png" height="580px">
+  
+  
+  
+ . Tecnologías
+   . Canvas
+   . SVG
+   . CreateJS
+   . Anime.js
+   . TableSorter
+   . JQery
+   . CSS SASS
+   . PHPMailer
+   . Angular
+   . gridlayout y flexbox
+   . PHP (En consultas PDO y prepare)
+   
+  . Base de datos
+    - Mysql 
+    - Firebase 
+    
+  . Api 
+    - Retrofit
+ 
+ ## Bibliografía
+   - Plataforma OpenWebinars 
+   - Apuntes profesores
+   - https://stackoverflow.com/
+   - https://developer.android.com/
+   - https://www.php.net/manual
+   - https://square.github.io/retrofit/
+   - https://square.github.io/retrofit/
+   - https://firebase.google.com/docs
