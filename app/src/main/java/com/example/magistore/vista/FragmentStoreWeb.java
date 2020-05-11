@@ -41,7 +41,7 @@ public class FragmentStoreWeb extends Fragment {
         WebView myWebView1 = view.findViewById(R.id.webView1);
 
         myWebView1.getSettings().setJavaScriptEnabled(true);
-        myWebView1.loadUrl("https://www.google.es/");
+        myWebView1.loadUrl("https://www.google.es");
         return view;
     }
 

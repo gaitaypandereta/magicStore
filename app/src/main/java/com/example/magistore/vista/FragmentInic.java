@@ -42,9 +42,6 @@ private DatabaseReference mDatabase;
         View vista= inflater.inflate(R.layout.fragment_inic, container, false);
         mAuth= FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
-        btn_session=vista. findViewById(R.id.btn_of_session);
-
-
         RelativeLayout relativeclic =vista.findViewById(R.id.layout_inic);
         relativeclic.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -52,19 +49,6 @@ private DatabaseReference mDatabase;
                 ((MainActivity) getActivity()).cambiarFragmento(new FragmentLogin());
             }
         });
-
-
-        btn_session.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-               mAuth.signOut();
-               btn_session.setVisibility(View.GONE);
-
-
-            }
-        });
-
 
 
         return vista;

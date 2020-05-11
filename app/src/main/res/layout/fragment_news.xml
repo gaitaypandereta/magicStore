@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="¡Atentos para ganar cukis!"
         android:textSize="20sp"
-        android:textColor="#909090"
+        android:textColor="#F44336"
         android:textStyle="bold"
         android:textAlignment="center"
         android:layout_marginLeft="18dp"
@@ -38,7 +38,7 @@
         android:id="@+id/imv_campahne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/leonardo"/>
+        android:src="@drawable/campana"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -158,7 +158,7 @@
             android:layout_weight="2"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="10" />
+            android:text="0" />
         <TextView
             android:id="@+id/tv_fecha_facebook"
             android:layout_width="0dp"
@@ -198,7 +198,7 @@
             android:layout_weight="2"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="10" />
+            android:text="0" />
 
         <TextView
             android:id="@+id/tv_fecha_instagram"
@@ -240,7 +240,7 @@
             android:layout_weight="2"
             android:textSize="18dp"
             android:textStyle="bold"
-            android:text="10" />
+            android:text="0" />
         <TextView
             android:id="@+id/tv_fecha_twitter"
             android:layout_width="0dp"

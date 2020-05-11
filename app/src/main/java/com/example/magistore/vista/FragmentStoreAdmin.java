@@ -1,4 +1,5 @@
 package com.example.magistore.vista;
+
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,15 +25,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class FragmentStore extends Fragment {
-    private ArrayList<Post> postList =new ArrayList<Post>();
+public class FragmentStoreAdmin extends Fragment {
+    private ArrayList<Post> postList = new ArrayList<Post>();
     private PostAdapter postAdapter;
     private DatabaseReference mDatabase;
     private RecyclerView recyclerview;
     private String usuario, megustas, comento, img;
     private FirebaseAuth mAuth;
 
-    public FragmentStore() {
+    public FragmentStoreAdmin() {
 
     }
 
@@ -41,16 +42,16 @@ public class FragmentStore extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_store, container, false);
         mAuth = FirebaseAuth.getInstance();
-        recyclerview=view.findViewById(R.id.rcv_store);
+        recyclerview = view.findViewById(R.id.rcv_store);
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        mDatabase=FirebaseDatabase.getInstance().getReference();
-        String ide = mAuth.getCurrentUser().getUid();
-        mDatabase.child("img_desing").orderByChild("id").equalTo(ide).addValueEventListener(new ValueEventListener() {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+      //  String ide = mAuth.getCurrentUser().getUid();
+        mDatabase.child("img_desing").addValueEventListener(new ValueEventListener() {
 
-        //mDatabase.child("img_desing").addValueEventListener(new ValueEventListener() {
+            //mDatabase.child("img_desing").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try{
+                try {
                     if (dataSnapshot.exists()) {
                         postList.clear();
                         for (DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -65,18 +66,17 @@ public class FragmentStore extends Fragment {
                         }
 
 
-                        postAdapter=new PostAdapter(postList, R.layout.list_store, getContext());
+                        postAdapter = new PostAdapter(postList, R.layout.list_store, getContext());
                         recyclerview.setAdapter(postAdapter);
 
 
                     }
-                }catch ( Exception e){
+                } catch (Exception e) {
 
                     ((MainActivity) getActivity()).cambiarFragmento(new FragmentStoreWeb());
                 }
 
             }
-
 
 
             @Override
@@ -91,7 +91,6 @@ public class FragmentStore extends Fragment {
     }
 
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -103,5 +102,5 @@ public class FragmentStore extends Fragment {
         super.onStop();
         //-----
     }
-}
 
+}

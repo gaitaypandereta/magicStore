@@ -45,7 +45,7 @@ public class FragmentLogin extends Fragment {
         btn_registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivity) getActivity()).cambiarFragmento(new FragmentConditions());
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentRegitrationInit());
             }
         });
         btn_login.setOnClickListener(new View.OnClickListener() {

@@ -114,7 +114,7 @@ private FirebaseFirestore mfirestore;
                 btn_chooseImage.setVisibility(View.VISIBLE);
                 btn_upload.setVisibility(View.GONE);
                 Toast.makeText(getContext(), "Subiendo post actual, espere por favor:", Toast.LENGTH_SHORT).show();
-
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentStore());
 
             }
 
@@ -196,7 +196,7 @@ private FirebaseFirestore mfirestore;
                                     String id_user = mAuth.getCurrentUser().getUid();
                                     String my_user = user.getText().toString().trim();
                                     String my_descripcion = descripcion.getText().toString().trim();
-                                    Post post = new Post("" + id_user, "@" + my_user, "" + my_descripcion, my_img+"", "4");
+                                    Post post = new Post("" + id_user,  my_user, "" + my_descripcion, my_img+"", "");
                                     String postId = mDatabase.push().getKey();
                                     mDatabase.child(postId).setValue(post);
 

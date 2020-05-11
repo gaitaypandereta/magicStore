@@ -8,7 +8,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4px"
+        android:layout_margin="10px"
         android:orientation="vertical"
         tools:context=".vista.FragmentConditions">
 
@@ -16,13 +16,28 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Completa registro sólo con los datos necesarios" />
+            android:text="Completar registro"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Puedes borrar o actualizar tus datos siempre que quieras, excepto el email y usuario. Nuestro consejo es que sólo introduzcas un email nuevo  que no sea el que uses para cosas serias." />
+            android:text="Sólo con los datos necesarios"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Puedes borrar o actualizar tus datos siempre que quieras, excepto el email y usuario.Nuestro consejo es que sólo introduzcas un email nuevo  que no sea el que uses para cosas serias." />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Para cambiar usuario o email crea una cuenta nueva y contata para que te guardemos tus Cukis y tu antigüedad "/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,7 +112,7 @@
             android:id="@+id/btn_i_store"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TABLERO" />
+            android:text="SALIR" />
 
     </LinearLayout>
 </ScrollView>

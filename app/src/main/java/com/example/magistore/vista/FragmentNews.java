@@ -115,7 +115,7 @@ public class FragmentNews extends Fragment {
 
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://192.168.43.113:3000/")
+                .baseUrl("http://192.168.43.3:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(CukisApi.class);

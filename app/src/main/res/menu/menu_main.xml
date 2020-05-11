@@ -19,7 +19,6 @@
         android:id="@+id/campahne"
         android:orderInCategory="100"
         android:title="CAMPAÑAS"/>
-
     <item
         android:id="@+id/web"
         android:orderInCategory="100"
@@ -32,6 +31,12 @@
         android:id="@+id/logout"
         android:orderInCategory="100"
         android:title="LOGOUT"/>
+    <item
+        android:id="@+id/salir"
+        android:orderInCategory="100"
+        android:title="SALIR"/>
+
+
 
 
 </menu>

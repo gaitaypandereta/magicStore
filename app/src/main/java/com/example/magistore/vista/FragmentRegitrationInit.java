@@ -113,13 +113,13 @@ private View view;
     }
 
     private void registerUser(){
-        Toast.makeText(getActivity(), "antes de map_1", Toast.LENGTH_SHORT).show();
+
      mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(),new OnCompleteListener<AuthResult>() {
 
          @Override
          public void onComplete(@NonNull Task<AuthResult> task) {
              if (task.isSuccessful()) {
-                 Toast.makeText(getActivity(), "antes de map_2", Toast.LENGTH_SHORT).show();
+
                  Map<String, Object> map = new HashMap<>();
                  map.put("nombre", nombre);
                  map.put("email", email);
@@ -132,7 +132,7 @@ private View view;
                  map.put("edad", "");
                  map.put("sexo", "");
                  String  id = mAuth.getCurrentUser().getUid();
-                 Toast.makeText(getActivity(), "despues de id", Toast.LENGTH_SHORT).show();
+
                  mDatabase.child("users").child(id).setValue(map).addOnCompleteListener(getActivity(),new OnCompleteListener<Void>() {
                      @Override
                      public void onComplete(@NonNull Task<Void> task2) {
@@ -148,10 +148,10 @@ private View view;
              }
 
              else{
-                   Toast.makeText(getActivity(), "No se pudo crear", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(getActivity(), "No se pudo ser. Revisa los datos", Toast.LENGTH_SHORT).show();
              }
 
-             Toast.makeText(getActivity(), "despues de mDatabase", Toast.LENGTH_SHORT).show();
+
          }
      });
 
