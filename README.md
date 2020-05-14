@@ -10,8 +10,7 @@ El registro se completa en el momento de necesitarlo y te da la oportunuidad de 
 
  <img src="img/2-registro.png" height="380px">
 
-El usuario podrá ganar cukis, moneda interna con la que luego podrá comprar en la tienda u obtener regalos participando 
-en campañas de redes sociales o también aportando ideas a las que podrá ademas añadir imágenes o crear sus propios diseños.
+El usuario podrá ganar cukis, moneda interna con la que luego podrá comprar en la tienda u obtener regalos participando en campañas de redes sociales o también aportando ideas a las que podrá ademas añadir imágenes o crear sus propios diseños.
 
  <img src="img/3-subir.png" height="380px">
 
@@ -21,6 +20,7 @@ Implementa un WebView para facilitar el acceso a la web sin salir de la aplicaci
 
 <img src="img/4-cukis.png" height="380px">
 
+[Enlace a video descriptivo de utilidad](https://www.youtube.com/watch?v=T10orBgETPA)
 
 
 ## Página Web
@@ -45,11 +45,6 @@ Implementa un WebView para facilitar el acceso a la web sin salir de la aplicaci
   
   
   <img src="img/contabilidad.png" height="380px">
-  
-  
-  
-  
-  
   
   
  ## Tecnologías
@@ -81,3 +76,85 @@ Implementa un WebView para facilitar el acceso a la web sin salir de la aplicaci
    - https://square.github.io/retrofit/
    - https://square.github.io/retrofit/
    - https://firebase.google.com/docs
+
+
+#Desarrollo del proyecto semana a semana
+
+En cuanto a la evolución del desarrollo de este proyecto no es continuo en el tiempo sino que avanza y retrocede dependiendo de varios factores como la monetización, el mantenimiento y el desconocimiento de aspectos legales bastante complejos y querer  evitar riesgos y responsabilidades que económicamente no se podrían asumir  hace que cada vez se 
+más. Éste es un proyecto real que una misma persona tiene que generar contenido, darle soporte, crear y promocionar productos con medios bastante rudimentarios ya que se trata de crear empresa sin apenas nada.
+
+##Febrero
+###Semana 1
+    -Proyecto inicial con fragmentos inicio, login y registro con las opciones de mostrar y recuperar 
+
+###Semana 2
+   - Incorporo el fragmento desde donde se mostrarán los pots  recyclerview-viewholder
+
+###Semana 3
+  - Creo el fragmento de opciones de  subida de archivos y el de paint y les doy funcionalidad.
+  - Implemento la subida a Storage Firebase para  las imágenes y los archivos creados con paint .
+
+###Semana 4
+  - Trabajo en la web
+  - Estudio el uso de Retrofit para sincronizar datos de de Firebase con el backend PHP de la web.
+  - Obtengo dominio y hosting y estudio y pruebo  su funcionamiento.
+  - Resuelvo pequeños incidentes de configuración para que funcione prepare y PDO.
+  - Comienzo con la web diseñando la base de datos y la interfaz.
+  - Maqueto con gridLayout y fexbox.
+
+##Marzo
+###Semana 1
+   - Sin actividad/Buscando monetización con email-marketing
+
+###Semana 2
+   - Sin actividad/Buscando monetizar proyecto contactos directos.
+
+###Semana 3 
+   - Sin actividad/Compras de material.
+      
+###Semana 4
+    - Sin actividad
+    - Solucionando temas legales sobre base datos y prestación de servicios.
+    - Busco orientación en Secot  y en la actualidad estamos trabajando ello.
+
+
+##Abril
+   ###Semana 1
+     - Trabajo en la web
+     - Estudio el uso de Retrofit contra el backend PHP de la web.
+     - Obtengo dominio y hosting y estudio y pruebo  su funcionamiento.
+     - Resuelvo pequeños incidentes de configuración para que funcione prepare y PDO.
+ ###Semana 2
+    - Comienzo con la web diseñando la base de datos y la interfaz.
+    - Maqueto con gridLayout y fexbox.
+    - Sigo trabajando en la web.
+    - Creo el logo con svg usando path y las curvas de  Bézier  y Anime.js,
+    - Imágenes con funciones svg y un canvas para arrastrar y soltar con CreateJS
+    - Galería de imágenes y el vídeo y los audios.
+    - Añado fragmento de aceptar condiciones de registro en android.
+
+
+###Semana 3
+   - Sigo con android.
+   - Añado el  fragmento de Cukis y le doy funcionalidad.
+   - Implemento retrofit y lo pruebo con éxito sobre un backend jsonServer.
+ 
+###Semana 4
+   - Sigo con la web.
+   - Implemento registro/login infantil sin persistencia.
+   - Implemento PHPMailer para el envío de cuentos y dibujitos.  
+   - Implemento registro/login general contra backend PHP. 
+   - Implemento la página de administración de Cukis con TableSorter con su login.
+   - Comienzo con el backend PHP creando la conexión.
+
+##Mayo
+ ###Semana 1
+   - Me documento sobre seguridad viendo varios videos de OpenWebinar
+   - Incorporo un servicio de audio que al pulsar el logo comienza a contar cuentos en android. 
+   - Incorporo ya los archivos web al servidor.
+
+ ###Semana2 
+   - Implemento webview en dos nuevos fragmentos como son index y campañas para así acceder desde la misma aplicación.
+
+
+
