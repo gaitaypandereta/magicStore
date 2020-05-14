@@ -46,26 +46,35 @@ Implementa un WebView para facilitar el acceso a la web sin salir de la aplicaci
   
   <img src="img/contabilidad.png" height="380px">
   
+ ## Software
+   - Docker php en un principio y ya luego directamente en el servidor
+   - AndroidStudio para android
+   - Visualstudio code para web
+   - Geany para canvas y archivos vectoriales
+   - Vysor para captar pantalla móvil
+   - Gimp para retoque de imágenes  
   
  ## Tecnologías
    - Canvas
    - SVG
+   - javascript
+   - JQuery
    - CreateJS
    - Anime.js
    - TableSorter
    - JQery
-   - CSS SASS
+   - CSS, SASS
    - PHPMailer
    - Angular
    - gridlayout y flexbox
    - PHP con PDO y prepare
    
   ## Base de datos
-     - Mysql 
-     - Firebase 
+   - Mysql 
+   - Firebase 
     
   ## Api 
-    - Retrofit
+   - Retrofit
  
  ## Bibliografía
    - Plataforma OpenWebinars 
@@ -80,29 +89,30 @@ Implementa un WebView para facilitar el acceso a la web sin salir de la aplicaci
 
 # Desarrollo del proyecto semana a semana
 
-En cuanto a la evolución del desarrollo de este proyecto no es continuo en el tiempo sino que avanza y retrocede dependiendo de varios factores como la monetización, el mantenimiento y el desconocimiento de aspectos legales bastante complejos y querer  evitar riesgos y responsabilidades que económicamente no se podrían asumir  hace que cada vez se 
-más. Éste es un proyecto real que una misma persona tiene que generar contenido, darle soporte, crear y promocionar productos con medios bastante rudimentarios ya que se trata de crear empresa sin apenas nada.
+En cuanto a la evolución del desarrollo de este proyecto no es continuo en el tiempo sino que avanza y retrocede dependiendo de varios factores como la monetización, el mantenimiento y el desconocimiento de aspectos legales bastante complejos y querer  evitar riesgos y responsabilidades que económicamente no se podrían asumir.Éste es un proyecto real de autoempleo que una misma persona tiene que generar contenido, darle soporte, crear y promocionar productos con medios bastante rudimentarios ya que se trata de crear empresa sin apenas medios.
 
 ## Febrero
+
 ### Semana 1
-    -Proyecto inicial con fragmentos inicio, login y registro con las opciones de mostrar y recuperar 
+   -Proyecto inicial con fragmentos inicio, login y registro con las opciones de mostrar y recuperar .
 
 ### Semana 2
-   - Incorporo el fragmento desde donde se mostrarán los pots  recyclerview-viewholder
+   - Incorporo el fragmento desde donde se mostrarán los pots  recyclerview-viewholder.
 
 ### Semana 3
   - Creo el fragmento de opciones de  subida de archivos y el de paint y les doy funcionalidad.
-  - Implemento la subida a Storage Firebase para  las imágenes y los archivos creados con paint .
+  - Implemento la subida a Storage Firebase para las imágenes y los archivos creados con paint.
 
 ### Semana 4
-  - Trabajo en la web
-  - Estudio el uso de Retrofit para sincronizar datos de de Firebase con el backend PHP de la web.
+  - Trabajo en la web.
+  - Estudio el uso de Retrofit para sincronizar datos de Firebase con el backend PHP de la web.
   - Obtengo dominio y hosting y estudio y pruebo  su funcionamiento.
   - Resuelvo pequeños incidentes de configuración para que funcione prepare y PDO.
   - Comienzo con la web diseñando la base de datos y la interfaz.
   - Maqueto con gridLayout y fexbox.
 
 ## Marzo
+
 ### Semana 1
    - Sin actividad/Buscando monetización con email-marketing
 
@@ -110,28 +120,30 @@ más. Éste es un proyecto real que una misma persona tiene que generar contenid
    - Sin actividad/Buscando monetizar proyecto contactos directos.
 
 ### Semana 3 
-   - Sin actividad/Compras de material.
+   - Sin actividad/Balance de material.
       
 ### Semana 4
-    - Sin actividad
-    - Solucionando temas legales sobre base datos y prestación de servicios.
-    - Busco orientación en Secot  y en la actualidad estamos trabajando ello.
+   - Sin actividad
+   - Solucionando temas legales sobre base datos y prestación de servicios.
+   - Busco orientación en Secot y en la actualidad estamos trabajando ello.
 
 
 ## Abril
+
    ### Semana 1
-     - Trabajo en la web
-     - Estudio el uso de Retrofit contra el backend PHP de la web.
-     - Obtengo dominio y hosting y estudio y pruebo  su funcionamiento.
-     - Resuelvo pequeños incidentes de configuración para que funcione prepare y PDO.
- ### Semana 2
-    - Comienzo con la web diseñando la base de datos y la interfaz.
-    - Maqueto con gridLayout y fexbox.
-    - Sigo trabajando en la web.
-    - Creo el logo con svg usando path y las curvas de  Bézier  y Anime.js,
-    - Imágenes con funciones svg y un canvas para arrastrar y soltar con CreateJS
-    - Galería de imágenes y el vídeo y los audios.
-    - Añado fragmento de aceptar condiciones de registro en android.
+   - Trabajo en la web
+   - Estudio el uso de Retrofit contra el backend PHP de la web.
+   - Obtengo dominio y hosting y estudio y pruebo  su funcionamiento.
+   - Resuelvo pequeños incidentes de configuración para que funcione prepare y PDO.
+   
+   ### Semana 2
+   - Comienzo con la web diseñando la base de datos y la interfaz.
+   - Maqueto con gridLayout y fexbox.
+   - Sigo trabajando en la web.
+   - Creo el logo con svg usando path y las curvas de  Bézier  y Anime.js.
+   - Imágenes con funciones svg y un canvas para arrastrar y soltar con CreateJS.
+   - Galería de imágenes y el vídeo y los audios.
+   - Añado fragmento de aceptar condiciones de registro en android.
 
 
 ### Semana 3
@@ -141,7 +153,7 @@ más. Éste es un proyecto real que una misma persona tiene que generar contenid
  
 ### Semana 4
    - Sigo con la web.
-   - Implemento registro/login infantil sin persistencia.
+   - Implemento registro/login infantil sin persistencia (-son menores-) evitando así envíos maxivos al requerir más tiempo.
    - Implemento PHPMailer para el envío de cuentos y dibujitos.  
    - Implemento registro/login general contra backend PHP. 
    - Implemento la página de administración de Cukis con TableSorter con su login.
