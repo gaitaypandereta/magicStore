@@ -1,12 +1,10 @@
-package com.example.magistore.vista;
+package com.example.magistore.fragmentos;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +18,8 @@ import android.widget.Toast;
 
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
-import com.example.magistore.modelo.Post;
-import com.example.magistore.modelo.Retrofit.CukisApi;
-import com.example.magistore.modelo.Usuario;
+import com.example.magistore.modelos.Retrofit.CukisApi;
+import com.example.magistore.modelos.Usuario;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,8 +32,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.firebase.ui.auth.ui.phone.SubmitConfirmationCodeFragment.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -76,6 +71,7 @@ public class FragmentRegistration extends Fragment {
         edit_direccion = vista.findViewById(R.id.editText_direccion);
         edad = vista.findViewById(R.id.seekBar);
         valor_edad = vista.findViewById(R.id.seekBar_edad);
+        radioGroup = vista.findViewById(R.id.radioGrou);
         radioButtonChico = vista.findViewById(R.id.radioButtonMasculino);
         radioButtonChica = vista.findViewById(R.id.radioButtonFemenino);
         radioButtonOtro = vista.findViewById(R.id.radioButtonOtro);
@@ -177,15 +173,12 @@ public class FragmentRegistration extends Fragment {
         dR.child("sexo").setValue(sex);
         dR.child("edad").setValue(edad);
 
-       Toast.makeText(getContext(), "Este es el nombre: "+h_nombre+" y éste el email: "+h_email,Toast.LENGTH_SHORT).show();
-
     }
 
 
     private void getUsuario() {
 
         String id = mAuth.getCurrentUser().getUid();
-        Toast.makeText(getContext(), "este es el id:" + id, Toast.LENGTH_SHORT).show();
         mDatabase.child("users").child(id).addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -211,7 +204,7 @@ public class FragmentRegistration extends Fragment {
                     edit_instagram.setText(instagram);
                     edit_telefono.setText(telefono);
                     edit_twitter.setText(twitter);
-                    hide_sexo.setText(sexo);
+                    mostrarSexo(sexo);
 
 
                 }

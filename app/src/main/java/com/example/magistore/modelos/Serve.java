@@ -1,9 +1,8 @@
-package com.example.magistore.modelo;
+package com.example.magistore.modelos;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.os.IBinder;
 
 import com.example.magistore.R;

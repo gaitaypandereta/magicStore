@@ -1,8 +1,8 @@
-package com.example.magistore.modelo.Retrofit;
+package com.example.magistore.modelos.Retrofit;
 
-import com.example.magistore.modelo.Cuki;
-import com.example.magistore.modelo.Post;
-import com.example.magistore.modelo.Usuario;
+import com.example.magistore.modelos.Cuki;
+import com.example.magistore.modelos.Post;
+import com.example.magistore.modelos.Usuario;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

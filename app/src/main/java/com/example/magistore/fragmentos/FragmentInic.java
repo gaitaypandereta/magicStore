@@ -1,4 +1,4 @@
-package com.example.magistore.vista;
+package com.example.magistore.fragmentos;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;

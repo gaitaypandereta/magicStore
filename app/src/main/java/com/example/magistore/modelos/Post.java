@@ -1,4 +1,4 @@
-package com.example.magistore.modelo;
+package com.example.magistore.modelos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -27,6 +27,23 @@ public class Post implements Serializable {
     @SerializedName("megusta")
     private String megusta;
 
+    @Expose
+    @SerializedName("cukis")
+    private String cukis;
+
+    @Expose
+    @SerializedName("comenta_admin")
+    private String comenta_admin;
+
+    public Post(String id, String user, String url_img, String descripcion, String megusta, String cukis, String comenta_admin) {
+        this.id = id;
+        this.user = user;
+        this.url_img = url_img;
+        this.descripcion = descripcion;
+        this.megusta = megusta;
+        this.cukis = cukis;
+        this.comenta_admin = comenta_admin;
+    }
 
     public Post(String id, String user, String descripcion, String url_img, String megusta) {
         this.id=id;
@@ -96,6 +113,26 @@ public class Post implements Serializable {
 
     public void setMegusta(String megusta) {
         this.megusta = megusta;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getCukis() {
+        return cukis;
+    }
+
+    public void setCukis(String cukis) {
+        this.cukis = cukis;
+    }
+
+    public String getComenta_admin() {
+        return comenta_admin;
+    }
+
+    public void setComenta_admin(String comenta_admin) {
+        this.comenta_admin = comenta_admin;
     }
 
     @Override

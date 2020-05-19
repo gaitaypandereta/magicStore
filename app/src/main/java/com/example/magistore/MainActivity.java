@@ -3,16 +3,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import com.example.magistore.modelo.Post;
-import com.example.magistore.modelo.Serve;
-import com.example.magistore.vista.FragmentConditionsInic;
-import com.example.magistore.vista.FragmentLogin;
-import com.example.magistore.vista.FragmentInic;
-import com.example.magistore.vista.FragmentStoreAdmin;
-import com.example.magistore.vista.FragmentStoreWeb;
-import com.example.magistore.vista.Fragment_campahne;
+import com.example.magistore.modelos.Post;
+import com.example.magistore.modelos.Serve;
+import com.example.magistore.fragmentos.FragmentConditionsInic;
+import com.example.magistore.fragmentos.FragmentLogin;
+import com.example.magistore.fragmentos.FragmentInic;
+import com.example.magistore.fragmentos.FragmentStoreAdmin;
+import com.example.magistore.fragmentos.FragmentStoreWeb;
+import com.example.magistore.fragmentos.Fragment_campahne;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -143,7 +142,8 @@ private List<Post> postList =new ArrayList<Post>();
             cambiarFragmento(new FragmentLogin());
         }
         if (id == R.id.salir) {
-            finish();
+           // finish();
+            cambiarFragmento(new FragmentStoreAdmin());
 
         }
 

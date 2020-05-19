@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".modelo.Serve" android:enabled="true"></service>
+        <service android:name=".modelos.Serve" android:enabled="true"></service>
     </application>
 
 </manifest>

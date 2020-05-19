@@ -53,7 +53,7 @@
 
     </LinearLayout>
 
-    <com.example.magistore.vista.Lienzo
+    <com.example.magistore.fragmentos.Lienzo
         android:layout_width="match_parent"
         android:layout_weight="12"
         android:layout_height="0dp"

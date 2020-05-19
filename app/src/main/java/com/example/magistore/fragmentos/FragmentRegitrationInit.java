@@ -1,9 +1,8 @@
-package com.example.magistore.vista;
+package com.example.magistore.fragmentos;
 import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.fragment.app.Fragment;
 
 import android.text.method.HideReturnsTransformationMethod;

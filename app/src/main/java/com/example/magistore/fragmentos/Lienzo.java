@@ -1,4 +1,4 @@
-package com.example.magistore.vista;
+package com.example.magistore.fragmentos;
 
 import android.content.Context;
 import android.graphics.Bitmap;

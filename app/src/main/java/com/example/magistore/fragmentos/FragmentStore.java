@@ -1,4 +1,4 @@
-package com.example.magistore.vista;
+package com.example.magistore.fragmentos;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,8 +13,9 @@ import android.widget.Toast;
 
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
-import com.example.magistore.modelo.Post;
-import com.example.magistore.modelo.PostAdapter;
+import com.example.magistore.fragmentos.FragmentStoreWeb;
+import com.example.magistore.modelos.Post;
+import com.example.magistore.modelos.PostAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,7 +48,7 @@ public class FragmentStore extends Fragment {
         String ide = mAuth.getCurrentUser().getUid();
         mDatabase.child("img_desing").orderByChild("id").equalTo(ide).addValueEventListener(new ValueEventListener() {
 
-        //mDatabase.child("img_desing").addValueEventListener(new ValueEventListener() {
+            //mDatabase.child("img_desing").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try{
@@ -104,4 +105,3 @@ public class FragmentStore extends Fragment {
         //-----
     }
 }
-

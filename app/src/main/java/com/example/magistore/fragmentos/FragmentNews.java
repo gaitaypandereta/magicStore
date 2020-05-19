@@ -1,4 +1,4 @@
-package com.example.magistore.vista;
+package com.example.magistore.fragmentos;
 
 
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,8 +14,8 @@ import android.widget.TextView;
 
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
-import com.example.magistore.modelo.Cuki;
-import com.example.magistore.modelo.Retrofit.CukisApi;
+import com.example.magistore.modelos.Cuki;
+import com.example.magistore.modelos.Retrofit.CukisApi;
 import com.google.firebase.auth.FirebaseAuth;
 
 import retrofit2.Call;
@@ -115,7 +114,7 @@ public class FragmentNews extends Fragment {
 
         Retrofit retrofit = new Retrofit
                 .Builder()
-                .baseUrl("http://192.168.43.3:3000/")
+                .baseUrl("http://192.168.43.113:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(CukisApi.class);
