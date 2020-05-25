@@ -1,17 +1,15 @@
 package com.example.magistore;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import com.example.magistore.modelos.MessageFragmentActivity;
-import com.example.magistore.modelos.MessageFragmentFragment;
 import com.example.magistore.modelos.OttoClass;
 import com.example.magistore.modelos.Post;
 import com.example.magistore.modelos.Serve;
 import com.example.magistore.fragmentos.FragmentConditionsInic;
 import com.example.magistore.fragmentos.FragmentLogin;
 import com.example.magistore.fragmentos.FragmentInic;
-import com.example.magistore.fragmentos.FragmentStoreAdmin;
 import com.example.magistore.fragmentos.FragmentStoreWeb;
 import com.example.magistore.fragmentos.Fragment_campahne;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -19,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.otto.Subscribe;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -30,6 +27,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -37,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private FragmentInic fragmentInicio = new FragmentInic();
     private FirebaseAuth mAuth;
     private ImageView imv_Musica;
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference dR;
     private String valor;
     private String ides;
+    View view;
     private List<Post> postList = new ArrayList<Post>();
 
     @Override
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 enviar_email();
-
+                cambiarFragmento(new FragmentInic());
             }
         });
 
@@ -166,18 +165,24 @@ public class MainActivity extends AppCompatActivity {
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
         emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Indica el  motivo: Denuncia un Post inadecuado, Comentario, Consuta, Otros");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Asunto");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Tu mensaje");
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Enviar email....."));
-            finish();
             enviado = true;
+
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(MainActivity.this,
                     "No hay clientes de email instalados.", Toast.LENGTH_SHORT).show();
             enviado = false;
         }
+
+        if(enviado){
+
+            }
+
+
 
     }
 
@@ -280,5 +285,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void setIdes(String ides) {
         this.ides = ides;
+    }
+
+
+
+    private void hideTeclado(View v) {
+        InputMethodManager teclado = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        teclado.hideSoftInputFromWindow(v.getWindowToken(), 0);
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        hideTeclado(v);
     }
 }

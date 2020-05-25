@@ -121,7 +121,7 @@ public class FragmentStoreAdmin extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
 
-                if (campos.get(position) == "ORDENAR POR MEGUSTA") {
+                if (campos.get(position) == "ORDENAR POR CUKIS") {
 
                     mDatabase.child("img_desing").orderByChild("megusta").addValueEventListener(new ValueEventListener() {
 

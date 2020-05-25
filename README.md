@@ -18,7 +18,11 @@ Mediante retrofit además de registrarse en firestore lo hace al mismo tiempo en
 lo relacionado con Cukis ganadas/gastadas obtenidas por los diferntes medios que puede ver en su aplicación también.
 Implementa un WebView para facilitar el acceso a la web sin salir de la aplicación:
 
-<img src="img/4-cukis.png" height="380px">
+ <img src="img/4-cukis.png" height="380px">
+
+Interfaz de administrador:
+
+ <img src="img/5-admin.png" height="380px">
 
 [Enlace a video descriptivo de utilidad](https://www.youtube.com/watch?v=T10orBgETPA)
 
@@ -65,6 +69,7 @@ Implementa un WebView para facilitar el acceso a la web sin salir de la aplicaci
    - JQery
    - CSS, SASS
    - PHPMailer
+   - Otto Event Bus
    - Angular
    - gridlayout y flexbox
    - PHP con PDO y prepare
@@ -168,5 +173,9 @@ En cuanto a la evolución del desarrollo de este proyecto no es continuo en el t
  ### Semana2 
    - Implemento webview en dos nuevos fragmentos como son index y campañas para así acceder desde la misma aplicación.
 
-
+ ### Semana 3
+   - En esta semana implemento la interfaz de administración incorporando  eventos onLongClick() y onClick(), Spinner para ordenar la salida  de RecyclerView por id o por Cukis, opción  eliminar  campaña y  menú contextual para identificar usuarios de post inadecuados o excelentes.
+Añado una nueva funcionalidad a la vista personal de cada usuario para que pueda eliminar post.
+Actualizo vistas vacías con imágenes y corrijo algún bug que va surgiendo.
+Incorporo la librería Otto Event Bus en vez de interfaces en el manejo de datos.
 

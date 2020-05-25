@@ -51,6 +51,10 @@ public class FragmentInic extends Fragment {
         });
 
 
+
+
+
+
         return vista;
     }
 
@@ -86,6 +90,9 @@ public class FragmentInic extends Fragment {
             });
         }
     }
+
+
+
 
 
 }
