@@ -96,7 +96,7 @@ public class FragmentLogin extends Fragment {
                 if (task.isSuccessful()) {
                     id_admin = mAuth.getCurrentUser().getUid();
 
-                    if (id_admin.equals("qh5QrFwjUEVkDjZbvxi1rXhT8Wc2")) {
+                    if (id_admin.equals("yLcY2Sx1t7hT5pM9f1C0NCfvEHr2")) {
 
                         ((MainActivity) getActivity()).cambiarFragmento(new FragmentStoreAdmin());
                     } else {

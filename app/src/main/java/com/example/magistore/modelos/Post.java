@@ -21,56 +21,40 @@ public class Post implements Serializable {
 
     @Expose
     @SerializedName("decripcion")
-    private String descripcion;
+    private String decripcion;
 
     @Expose
     @SerializedName("megusta")
     private String megusta;
 
-    @Expose
-    @SerializedName("cukis")
-    private String cukis;
 
-    @Expose
-    @SerializedName("comenta_admin")
-    private String comenta_admin;
 
-    public Post(String id, String user, String url_img, String descripcion, String megusta, String cukis, String comenta_admin) {
-        this.id = id;
-        this.user = user;
-        this.url_img = url_img;
-        this.descripcion = descripcion;
-        this.megusta = megusta;
-        this.cukis = cukis;
-        this.comenta_admin = comenta_admin;
-    }
-
-    public Post(String id, String user, String descripcion, String url_img, String megusta) {
+    public Post(String id, String user, String url_img, String decripcion,  String megusta) {
         this.id=id;
         this.user = user;
         this.url_img = url_img;
-        this.descripcion = descripcion;
+        this.decripcion = decripcion;
         this.megusta = megusta;
 
     }
 
-    public Post(String user, String url_img, String descripcion,  String megusta) {
+    public Post(String user, String url_img, String decripcion,  String megusta) {
         this.user=user;
         this.url_img =url_img;
-        this.descripcion = descripcion;
+        this.decripcion = decripcion;
         this.megusta=megusta;
 
     }
 
-    public Post(String user, String url_img, String descripcion) {
+    public Post(String user, String url_img, String decripcion) {
         this.user=user;
         this.url_img =url_img;
-        this.descripcion = descripcion;
+        this.decripcion = decripcion;
     }
     public Post(String url_img, String descripcion) {
         this.user=user;
         this.url_img =url_img;
-        this.descripcion = descripcion;
+        this.decripcion = decripcion;
     }
     public Post() {
     }
@@ -100,11 +84,11 @@ public class Post implements Serializable {
     }
 
     public String getDecripcion() {
-        return descripcion;
+        return decripcion;
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.decripcion = decripcion;
     }
 
     public String getMegusta() {
@@ -115,33 +99,13 @@ public class Post implements Serializable {
         this.megusta = megusta;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public String getCukis() {
-        return cukis;
-    }
-
-    public void setCukis(String cukis) {
-        this.cukis = cukis;
-    }
-
-    public String getComenta_admin() {
-        return comenta_admin;
-    }
-
-    public void setComenta_admin(String comenta_admin) {
-        this.comenta_admin = comenta_admin;
-    }
-
     @Override
     public String toString() {
         return "Post{" +
                 "id='" + id + '\'' +
                 ", user='" + user + '\'' +
                 ", url_img='" + url_img + '\'' +
-                ", descripcion='" + descripcion + '\'' +
+                ", decripcion='" + decripcion + '\'' +
                 ", megusta='" + megusta + '\'' +
                 '}';
     }

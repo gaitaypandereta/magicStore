@@ -32,12 +32,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Puedes borrar o actualizar tus datos siempre que quieras, excepto el email y usuario.Nuestro consejo es que sólo introduzcas un email nuevo  que no sea el que uses para cosas serias." />
+            android:text="Puedes borrar o actualizar tus datos siempre que quieras, excepto el email y usuario.Nuestro consejo es que introduzcas un email nuevo  que no sea el que uses para cosas serias." />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Para cambiar usuario o email crea una cuenta nueva y contata para que te guardemos tus Cukis y tu antigüedad "/>
+            android:text="Para cambiar tu usuario o tu email crea una cuenta nueva y contacta para que te guardemos tus Cukis y tu antigüedad "/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
             android:id="@+id/chk1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
             android:text="He leido y acepto las condiciones" />
 
 
@@ -107,7 +107,7 @@
             android:id="@+id/btn_completa_registro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="COMPLETA REGISTRO" />
+            android:text="ACTUALIZA O ELIMINA DATOS DE REGISTRO" />
         <Button
             android:id="@+id/btn_i_store"
             android:layout_width="match_parent"

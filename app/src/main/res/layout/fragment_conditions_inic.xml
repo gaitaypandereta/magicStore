@@ -25,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Para poder registrarte debes de leer y aceptar las condiciones antes." />
+            android:text="Recuerda que internet no es segura al 100%. Usa un email nuevo,  que no sea el de tu trabajo,.." />
 
         <TextView
             android:layout_width="match_parent"
@@ -61,7 +61,7 @@
             android:id="@+id/chk_inic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:checked="false"
             android:text="He leido y acepto las condiciones." />
 
 
@@ -69,7 +69,8 @@
             android:id="@+id/btn_registro_inic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="REGISTRARSE" />
+            android:text="REGISTRARSE"/>
+
         <Button
             android:id="@+id/btn_volver_inic"
             android:layout_width="match_parent"

@@ -46,6 +46,9 @@ import com.google.gson.annotations.SerializedName;
             this.twitter = twitter;
         }
 
+        public Usuario(String telefono, String direccion, int edad, String email, String faceboo, String instagra, String nombre, String sexo, String estado, String twitte) {
+        }
+
         public String getId() {
             return id;
         }

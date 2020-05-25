@@ -23,10 +23,11 @@ import com.google.firebase.database.ValueEventListener;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentInic extends Fragment {
-private Button btn_session;
-private TextView tv_entrar, tv_registro;
-private FirebaseAuth mAuth;
-private DatabaseReference mDatabase;
+
+    private Button btn_session;
+    private TextView tv_entrar, tv_registro;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
 
 
 
@@ -56,34 +57,34 @@ private DatabaseReference mDatabase;
     private void saludoUser(){
 
 
-          if(mAuth.getCurrentUser().getUid().isEmpty()){
+        if(mAuth.getCurrentUser().getUid().isEmpty()){
 
-              tv_registro.setText("¡Hola! ¿Aún no tienes cuenta?");
+            tv_registro.setText("¡Hola! ¿Aún no tienes cuenta?");
 
-          }else{
+        }else{
 
-          String id= mAuth.getCurrentUser().getUid();
-               mDatabase.child("users").child(id).addValueEventListener(new ValueEventListener() {
+            String id= mAuth.getCurrentUser().getUid();
+            mDatabase.child("users").child(id).addValueEventListener(new ValueEventListener() {
 
-                  @Override
-                  public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                      if (dataSnapshot.exists()) {
-                          String nombre = dataSnapshot.child("nombre").getValue().toString();
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String nombre = dataSnapshot.child("nombre").getValue().toString();
 
-                          tv_entrar.setText("¡Hola! Vas a iniciar sesión " );
+                        tv_entrar.setText("¡Hola! Vas a iniciar sesión " );
 
-                      }
+                    }
 
 
-                  }
+                }
 
-                  @Override
-                  public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                  }
+                }
 
-               });
-           }
+            });
+        }
     }
 
 

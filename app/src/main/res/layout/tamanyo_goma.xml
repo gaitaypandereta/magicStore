@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/tgrande"
+        android:id="@+id/paint_gomag"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="8dp"
@@ -16,11 +16,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lapiz_g" />
+        app:srcCompat="@drawable/goma" />
 
 
     <ImageView
-        android:id="@+id/tmediano"
+        android:id="@+id/paint_gomam"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
@@ -30,20 +30,20 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lapiz_m" />
+        app:srcCompat="@drawable/goma" />
 
 
     <ImageView
-        android:id="@+id/tpequenyo"
+        android:id="@+id/paint_gomap"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="192dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/lapiz_p" />
+        app:srcCompat="@drawable/goma" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

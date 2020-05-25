@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class FragmentUploadDesing extends Fragment {
     ImageButton borrar;
     ImageButton guardar;
     String color = null;
+    private View view;
     public FragmentUploadDesing() {
         // Required empty public constructor
     }
@@ -164,14 +166,14 @@ public class FragmentUploadDesing extends Fragment {
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               borrarDibujo();
+                borrarDibujo();
             }
         });
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               guardarDibujo(view);
-               ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadStore());
+                guardarDibujo(view);
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadStore());
             }
         });
 
@@ -185,7 +187,7 @@ public class FragmentUploadDesing extends Fragment {
         anadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              nuevoDibujo();
+                nuevoDibujo();
             }
         });
 
@@ -205,7 +207,7 @@ public class FragmentUploadDesing extends Fragment {
         tamanyopunto.setTitle("Tamaño del punto:");
         tamanyopunto.setContentView(R.layout.tamanyo_punto);
         //listen for clicks on tamaños de los botones
-        TextView smallBtn = (TextView)tamanyopunto.findViewById(R.id.tpequenyo);
+        ImageView smallBtn =tamanyopunto.findViewById(R.id.tpequenyo);
         smallBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -215,7 +217,7 @@ public class FragmentUploadDesing extends Fragment {
                 tamanyopunto.dismiss();
             }
         });
-        TextView mediumBtn = (TextView)tamanyopunto.findViewById(R.id.tmediano);
+        ImageView mediumBtn = tamanyopunto.findViewById(R.id.tmediano);
         mediumBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -225,7 +227,7 @@ public class FragmentUploadDesing extends Fragment {
                 tamanyopunto.dismiss();
             }
         });
-        TextView largeBtn = (TextView)tamanyopunto.findViewById(R.id.tgrande);
+        ImageView largeBtn = tamanyopunto.findViewById(R.id.tgrande);
         largeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -248,7 +250,7 @@ public class FragmentUploadDesing extends Fragment {
             public void onClick(DialogInterface dialog, int which){
 
                 lienzo.setDrawingCacheEnabled(true);
-                 String myimg=UUID.randomUUID().toString();
+                String myimg=UUID.randomUUID().toString();
                 //guardar imagen
                 String imgSaved = MediaStore.Images.Media.insertImage(
                         getContext().getContentResolver(), lienzo.getDrawingCache(),
@@ -282,9 +284,9 @@ public class FragmentUploadDesing extends Fragment {
 
         final Dialog borrarpunto = new Dialog(getContext());
         borrarpunto.setTitle("Tamaño de borrado:");
-        borrarpunto.setContentView(R.layout.tamanyo_punto);
+        borrarpunto.setContentView(R.layout.tamanyo_goma);
         //listen for clicks on tamaños de los botones
-        TextView smallBtnBorrar = (TextView)borrarpunto.findViewById(R.id.tpequenyo);
+        ImageView smallBtnBorrar = borrarpunto.findViewById(R.id.paint_gomap);
         smallBtnBorrar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -294,7 +296,7 @@ public class FragmentUploadDesing extends Fragment {
                 borrarpunto.dismiss();
             }
         });
-        TextView mediumBtnBorrar = (TextView)borrarpunto.findViewById(R.id.tmediano);
+        ImageView mediumBtnBorrar = borrarpunto.findViewById(R.id.paint_gomam);
         mediumBtnBorrar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -304,7 +306,7 @@ public class FragmentUploadDesing extends Fragment {
                 borrarpunto.dismiss();
             }
         });
-        TextView largeBtnBorrar = (TextView)borrarpunto.findViewById(R.id.tgrande);
+        ImageView largeBtnBorrar = borrarpunto.findViewById(R.id.paint_gomag);
         largeBtnBorrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -339,6 +341,5 @@ public class FragmentUploadDesing extends Fragment {
 
 
     }
-
 
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <string></string>
+
+    <item
+        android:id="@+id/mcSelect"
+        android:title="PREMIAR" />
+    <item
+        android:id="@+id/mcSucces"
+        android:title="PENALIZAR" />
+
+
+</menu>

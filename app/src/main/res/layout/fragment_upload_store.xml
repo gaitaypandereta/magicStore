@@ -1,75 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-
-    <EditText
-        android:id="@+id/ed_user"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nombre de usuario"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/chooseImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sube" />
+
+
+        <EditText
+            android:id="@+id/ed_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Usuario"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <EditText
+            android:id="@+id/ed_cukis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="¿Cántas cukis vale ?"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/ed_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:hint="Describe la imagen o el diseño "
+            android:inputType="text"
+            android:textAlignment="center" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
+
+        <Button
+            android:id="@+id/btn_choose_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BUSCA TU IMAGEN O TU DISEÑO" />
+
+        <Button
+            android:id="@+id/btn_tu_desing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CREA TU PROPIO DISEÑO" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/chooseImageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/yayito" />
-
-
-            <EditText
-                android:id="@+id/ed_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Describe la imagen o el diseño "
-                android:inputType="text" />
-
-
-            <ProgressBar
-                android:id="@+id/progress_bar"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="52dp" />
-
-            <Button
-                android:id="@+id/btn_choose_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="BUSCA TU DISEÑO O TU IMAGEN" />
-
-            <Button
-                android:id="@+id/btn_tu_desing"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="CREA TU PROPIO DISEÑO" />
+            android:orientation="horizontal"
+            android:paddingBottom="20dp">
 
             <Button
                 android:id="@+id/ulpoadBtn"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="SUBIR" />
 
             <Button
                 android:id="@+id/btn_cancelar"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="CANCELAR" />
 
         </LinearLayout>
-    </ScrollView>
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

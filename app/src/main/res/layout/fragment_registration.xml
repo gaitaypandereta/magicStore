@@ -4,278 +4,278 @@
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_weight="1">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#BFFF5722"
-    android:orientation="vertical"
-    android:padding="10dp">
-
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:text="Registro"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:paddingTop="10dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:paddingLeft="7dp"
-        android:paddingRight="7dp">
-
-        <ImageView
-            android:id="@+id/img_telefono"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/ic_call_black_24dp" />
-
-        <EditText
-
-            android:id="@+id/editText_telefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Tu Teléfono"
-            android:inputType="number" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:paddingLeft="7dp"
-        android:paddingRight="7dp">
-
-        <ImageView
-            android:id="@+id/img_facebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/facebook" />
-
-        <EditText
-
-            android:id="@+id/editText_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Tu url de Facebook"
-            android:inputType="textUri" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:paddingLeft="7dp"
-        android:paddingRight="7dp">
-
-        <ImageView
-            android:id="@+id/img_twitter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/twitter" />
-
-        <EditText
-
-            android:id="@+id/editText_twitter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Tu url de Twitter"
-            android:inputType="textUri" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:paddingLeft="7dp"
-        android:paddingRight="7dp">
-
-        <ImageView
-            android:id="@+id/img_instagram"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="12dp"
-            android:src="@drawable/instagram" />
-
-        <EditText
-
-            android:id="@+id/editText_instagram"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Tu url de Instagram"
-            android:inputType="textUri" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:paddingLeft="7dp"
-        android:paddingRight="7dp">
-
-        <ImageView
-            android:id="@+id/img_direccion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_location_on_black_24dp" />
-
-        <EditText
-
-            android:id="@+id/editText_direccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Tu Dirección Envío"
-            android:inputType="textLongMessage" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:paddingLeft="17dp"
-        android:paddingRight="7dp"
-        android:paddingBottom="16dp"
-        android:paddingTop="16dp">
+        android:layout_height="match_parent"
+        android:background="#BFFF5722"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edad" />
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="220dp"
-            android:layout_height="19dp"
-            android:max="100"
-            android:min="18" />
-
-        <TextView
-            android:id="@+id/seekBar_edad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:paddingLeft="17dp"
-        android:paddingRight="7dp">
-
-        <RadioGroup
-            android:id="@+id/radioGrou"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
-            android:orientation="horizontal">
+            android:text="Registro"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:paddingTop="10dp"/>
 
-            <RadioButton
-                android:id="@+id/radioButtonMasculino"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp">
+
+            <ImageView
+                android:id="@+id/img_telefono"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chico" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/ic_call_black_24dp" />
 
-            <RadioButton
-                android:id="@+id/radioButtonFemenino"
+            <EditText
+
+                android:id="@+id/editText_telefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tu Teléfono"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp">
+
+            <ImageView
+                android:id="@+id/img_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chica" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/facebook" />
 
-            <RadioButton
-                android:id="@+id/radioButtonOtro"
+            <EditText
+
+                android:id="@+id/editText_facebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tu url de Facebook"
+                android:inputType="textUri" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp">
+
+            <ImageView
+                android:id="@+id/img_twitter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Otro" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/twitter" />
 
-        </RadioGroup>
+            <EditText
+
+                android:id="@+id/editText_twitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tu url de Twitter"
+                android:inputType="textUri" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp">
+
+            <ImageView
+                android:id="@+id/img_instagram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="12dp"
+                android:src="@drawable/instagram" />
+
+            <EditText
+
+                android:id="@+id/editText_instagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tu url de Instagram"
+                android:inputType="textUri" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp">
+
+            <ImageView
+                android:id="@+id/img_direccion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_location_on_black_24dp" />
+
+            <EditText
+
+                android:id="@+id/editText_direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Tu Dirección Envío"
+                android:inputType="textLongMessage" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingLeft="17dp"
+            android:paddingRight="7dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edad" />
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="220dp"
+                android:layout_height="19dp"
+                android:max="100"
+                android:min="18" />
+
+            <TextView
+                android:id="@+id/seekBar_edad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingLeft="17dp"
+            android:paddingRight="7dp">
+
+            <RadioGroup
+                android:id="@+id/radioGrou"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonMasculino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chico" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonFemenino"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chica" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonOtro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Compra para los dos" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingLeft="4dp"
+            android:paddingRight="7dp"
+            android:paddingBottom="10dp">
+
+
+            <Button
+                android:id="@+id/btn_ir_a_session"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="10dp"
+                android:text="AHORA NO" />
+
+
+            <Button
+                android:id="@+id/btn_guardar_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="10dp"
+                android:text="GUARDAR DATOS" />
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edi_hide_email"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text=""
+            android:visibility="invisible"/>
+        <EditText
+            android:id="@+id/edi_hide_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text=""
+            android:visibility="invisible"/>
+        <EditText
+            android:id="@+id/edi_hide_id"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text=""
+            android:visibility="invisible"/>
+        <EditText
+            android:id="@+id/edi_hide_sexo"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="chico"
+            android:visibility="invisible"/>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:paddingLeft="4dp"
-        android:paddingRight="7dp"
-        android:paddingBottom="10dp">
-
-
-        <Button
-            android:id="@+id/btn_ir_a_session"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="10dp"
-            android:text="AHORA NO" />
-
-
-        <Button
-            android:id="@+id/btn_guardar_usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="10dp"
-            android:text="GUARDAR DATOS" />
-
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/edi_hide_email"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text=""
-        android:visibility="invisible"/>
-    <EditText
-        android:id="@+id/edi_hide_nombre"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text=""
-        android:visibility="invisible"/>
-    <EditText
-        android:id="@+id/edi_hide_id"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text=""
-        android:visibility="invisible"/>
-    <EditText
-        android:id="@+id/edi_hide_sexo"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="chico"
-        android:visibility="invisible"/>
-
- </LinearLayout>
 
 
 </ScrollView>

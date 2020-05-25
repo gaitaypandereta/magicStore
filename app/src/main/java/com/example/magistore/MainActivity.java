@@ -3,6 +3,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.example.magistore.modelos.MessageFragmentActivity;
+import com.example.magistore.modelos.MessageFragmentFragment;
+import com.example.magistore.modelos.OttoClass;
 import com.example.magistore.modelos.Post;
 import com.example.magistore.modelos.Serve;
 import com.example.magistore.fragmentos.FragmentConditionsInic;
@@ -15,29 +18,36 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.otto.Subscribe;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-private FragmentInic fragmentInicio = new FragmentInic();
-private FirebaseAuth mAuth;
-private ImageView imv_Musica;
-private boolean estado=true;
-private boolean encendida=false;
-private List<Post> postList =new ArrayList<Post>();
+    private FragmentInic fragmentInicio = new FragmentInic();
+    private FirebaseAuth mAuth;
+    private ImageView imv_Musica;
+    private boolean estado = true;
+    private boolean encendida = false;
+    private DatabaseReference dR;
+    private String valor;
+    private String ides;
+    private List<Post> postList = new ArrayList<Post>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,17 +55,14 @@ private List<Post> postList =new ArrayList<Post>();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        mAuth=FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
-
-       // myRef.setValue("Hello, World!");
 
         FragmentManager FM = getSupportFragmentManager();
         FragmentTransaction FT = FM.beginTransaction();
         FT.add(R.id.contenedor, fragmentInicio);
         FT.commit();
-
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -67,17 +74,16 @@ private List<Post> postList =new ArrayList<Post>();
             }
         });
 
-        imv_Musica=findViewById(R.id.imv_sonido);
+        imv_Musica = findViewById(R.id.imv_sonido);
         imv_Musica.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(encendida)
-                   apagaMusica();
+                if (encendida)
+                    ofSound();
                 else
-                    enciendeMusica();
+                    onSound();
             }
         });
-
 
 
     }
@@ -137,13 +143,13 @@ private List<Post> postList =new ArrayList<Post>();
         }
         if (id == R.id.logout) {
             mAuth.signOut();
+            cambiarFragmento(new FragmentInic());
         }
         if (id == R.id.tablero) {
             cambiarFragmento(new FragmentLogin());
         }
         if (id == R.id.salir) {
-           // finish();
-            cambiarFragmento(new FragmentStoreAdmin());
+            finish();
 
         }
 
@@ -152,7 +158,7 @@ private List<Post> postList =new ArrayList<Post>();
 
 
     public void enviar_email() {
-        boolean enviado=false;
+        boolean enviado = false;
         String[] TO = {"micolejaen@gmail.com"};
         String[] CC = {""};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -166,29 +172,26 @@ private List<Post> postList =new ArrayList<Post>();
         try {
             startActivity(Intent.createChooser(emailIntent, "Enviar email....."));
             finish();
-            enviado=true;
+            enviado = true;
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(MainActivity.this,
                     "No hay clientes de email instalados.", Toast.LENGTH_SHORT).show();
-            enviado=false;
+            enviado = false;
         }
 
     }
 
-    public void enciendeMusica(){
-
-        // botonMusica.setImageResource(R.drawable.l_azul_o);
-        Intent miReproductor= new Intent(this, Serve.class);
+    public void onSound() {
+        Intent miReproductor = new Intent(this, Serve.class);
         this.startService(miReproductor);
 
-        encendida=!encendida;
+        encendida = !encendida;
     }
 
-    public void apagaMusica(){
-        //botonMusica.setImageResource(R.drawable.l_gris);
-        Intent miReproductor= new Intent(this, Serve.class);
+    public void ofSound() {
+        Intent miReproductor = new Intent(this, Serve.class);
         this.stopService(miReproductor);
-        encendida=!encendida;
+        encendida = !encendida;
 
     }
 
@@ -198,4 +201,84 @@ private List<Post> postList =new ArrayList<Post>();
 
     }
 
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_contextual, menu);
+    }
+
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+
+            case R.id.mcSelect:
+                if (getIdes() != null)
+                    prizeUser(getIdes());
+                break;
+
+            case R.id.mcSucces:
+                if (getIdes() != null)
+                    penalizeUser(getIdes());
+
+
+                break;
+            default:
+                return super.onContextItemSelected(item);
+        }
+
+        return true;
+    }
+
+
+    public void prizeUser(String ide) {
+        dR = FirebaseDatabase.getInstance().getReference("users").child(ide);
+        dR.child("comenta_admin").setValue("PREMIADO");
+
+    }
+
+    public void penalizeUser(String ide) {
+        dR = FirebaseDatabase.getInstance().getReference("users").child(ide);
+        dR.child("comenta_admin").setValue("PENALIZADO");
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        OttoClass.getBus().register(this);
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        OttoClass.getBus().unregister(this);
+    }
+
+    @Subscribe
+    public void receiveMessageAtoF(MessageFragmentActivity message) {
+
+        String idess = message.getMensaje();
+        setIdes(idess);
+
+    }
+
+    public String getIdes() {
+        return ides;
+    }
+
+    public void setIdes(String ides) {
+        this.ides = ides;
+    }
 }

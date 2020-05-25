@@ -1,4 +1,5 @@
 package com.example.magistore.fragmentos;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -36,22 +37,23 @@ import static android.app.Activity.RESULT_OK;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentUploadStore extends Fragment {
-private static  final int PICK_IMAGE_REQUEST =1;
-private Button btn_upload, btn_tu_design, btn_cancelar, btn_chooseImage;
-private EditText descripcion, user;
-private ImageView  chooseImageView;
-private ProgressBar uploadProgressBar;
-private String my_img=null;
-private Uri mImageUri;
-
-private StorageReference mStorageReference;
-private DatabaseReference mDatabase;
-private StorageTask mUploadTask;
-private FirebaseAuth mAuth;
-private FirebaseFirestore mfirestore;
-    FirebaseStorage storage;
-    StorageReference storageReference;
-    FirebaseDatabase firebaseDatabase;
+    private static  final int PICK_IMAGE_REQUEST =1;
+    private Button btn_upload, btn_tu_design, btn_cancelar, btn_chooseImage;
+    private EditText descripcion, user, cukis;
+    private ImageView  chooseImageView;
+    private ProgressBar uploadProgressBar;
+    private String my_img=null;
+    private Uri mImageUri;
+    private View view;
+    private StorageReference mStorageReference;
+    private DatabaseReference mDatabase;
+    private StorageTask mUploadTask;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore mfirestore;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+    private FirebaseDatabase firebaseDatabase;
+    private AlertDialog.Builder dialogo;
     public FragmentUploadStore() {
         // Required empty public constructor
     }
@@ -61,72 +63,75 @@ private FirebaseFirestore mfirestore;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-     View view =inflater.inflate(R.layout.fragment_upload_store, container, false);
-     btn_chooseImage=view.findViewById(R.id.btn_choose_img);
-     btn_upload=view.findViewById(R.id.ulpoadBtn);
-     btn_tu_design=view.findViewById(R.id.btn_tu_desing);
-     btn_cancelar=view.findViewById(R.id.btn_cancelar);
-     descripcion =view.findViewById(R.id.ed_description);
-     user=view.findViewById(R.id.ed_user);
-     chooseImageView=view.findViewById(R.id.chooseImageView);
-     uploadProgressBar=view.findViewById(R.id.progress_bar);
+        View view =inflater.inflate(R.layout.fragment_upload_store, container, false);
+        dialogo = new AlertDialog.Builder(view.getContext());
+        btn_chooseImage=view.findViewById(R.id.btn_choose_img);
+        btn_upload=view.findViewById(R.id.ulpoadBtn);
+        btn_tu_design=view.findViewById(R.id.btn_tu_desing);
+        btn_cancelar=view.findViewById(R.id.btn_cancelar);
+        descripcion =view.findViewById(R.id.ed_description);
+        cukis = view.findViewById(R.id.ed_cukis);
+        user=view.findViewById(R.id.ed_user);
+        chooseImageView=view.findViewById(R.id.chooseImageView);
+        uploadProgressBar=view.findViewById(R.id.progress_bar);
 
-     descripcion.setVisibility(View.GONE);
-     user.setVisibility(View.GONE);
+        descripcion.setVisibility(View.GONE);
+        user.setVisibility(View.GONE);
+        cukis.setVisibility(View.GONE);
 
-     mStorageReference= FirebaseStorage.getInstance().getReference("img_desing");
-     mDatabase= FirebaseDatabase.getInstance().getReference("img_desing");
-     mAuth=FirebaseAuth.getInstance();
-     mfirestore=FirebaseFirestore.getInstance();
-     btn_upload.setVisibility(View.GONE);
-     btn_cancelar.setVisibility(View.GONE);
-     btn_cancelar.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             ((MainActivity) getActivity()).cambiarFragmento(new FragmentNews());
-         }
-     });
-
-
-     btn_chooseImage.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-           openFileChooser();
-             btn_chooseImage.setVisibility(View.GONE);
-             btn_tu_design.setVisibility(View.GONE);
-             btn_upload.setVisibility(View.VISIBLE);
-             btn_cancelar.setVisibility(View.VISIBLE);
-         }
-     });
+        mStorageReference= FirebaseStorage.getInstance().getReference("img_desing");
+        mDatabase= FirebaseDatabase.getInstance().getReference("img_desing");
+        mAuth=FirebaseAuth.getInstance();
+        mfirestore=FirebaseFirestore.getInstance();
+        btn_upload.setVisibility(View.GONE);
+        btn_cancelar.setVisibility(View.GONE);
+        btn_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentNews());
+            }
+        });
 
 
-     btn_upload.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if(mUploadTask !=null && mUploadTask.isInProgress()){
-                Toast.makeText(getContext(), "Espere por favor, aún se está subiendo el archivo anterior", Toast.LENGTH_SHORT).show();
+        btn_chooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFileChooser();
+                btn_chooseImage.setVisibility(View.GONE);
+                btn_tu_design.setVisibility(View.GONE);
+                btn_upload.setVisibility(View.VISIBLE);
+                btn_cancelar.setVisibility(View.VISIBLE);
+            }
+        });
 
-            }else{
-                uploadFile();
-                btn_chooseImage.setVisibility(View.VISIBLE);
-                btn_upload.setVisibility(View.GONE);
-                Toast.makeText(getContext(), "Subiendo post actual, espere por favor:", Toast.LENGTH_SHORT).show();
-                ((MainActivity) getActivity()).cambiarFragmento(new FragmentStore());
+
+        btn_upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mUploadTask !=null && mUploadTask.isInProgress()){
+                    Toast.makeText(getContext(), "Espere por favor, aún se está subiendo el archivo anterior", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    uploadFile();
+                    btn_chooseImage.setVisibility(View.VISIBLE);
+
+
+                }
+
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentNews());
 
             }
+        });
 
-        }
-    });
-
-     btn_tu_design.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadDesing());
-         }
-     });
+        btn_tu_design.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity) getActivity()).cambiarFragmento(new FragmentUploadDesing());
+            }
+        });
 
 
-     return view;
+        return view;
     }
 
     private void openFileChooser(){
@@ -136,7 +141,7 @@ private FirebaseFirestore mfirestore;
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
         descripcion.setVisibility(View.VISIBLE);
         user.setVisibility(View.VISIBLE);
-
+        cukis.setVisibility(View.VISIBLE);
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -148,11 +153,11 @@ private FirebaseFirestore mfirestore;
 
     }
 
-       private String getFileExtension(Uri uri){
-            ContentResolver cR = getContext().getContentResolver();
-            MimeTypeMap mime =MimeTypeMap.getSingleton();
-           return mime.getExtensionFromMimeType(cR.getType(uri));
-        }
+    private String getFileExtension(Uri uri){
+        ContentResolver cR = getContext().getContentResolver();
+        MimeTypeMap mime =MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
 
 
     private void uploadFile() {
@@ -184,7 +189,7 @@ private FirebaseFirestore mfirestore;
 
                             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
-                             taskSnapshot.getStorage()
+                            taskSnapshot.getStorage()
                                     .getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
@@ -193,16 +198,15 @@ private FirebaseFirestore mfirestore;
                                     String id_user = mAuth.getCurrentUser().getUid();
                                     String my_user = user.getText().toString().trim();
                                     String my_descripcion = descripcion.getText().toString().trim();
-                                    Post post = new Post("" + id_user,  my_user, "" + my_descripcion, my_img+"", "");
+                                    String my_cukis=cukis.getText().toString().trim();
+                                    Post post = new Post("" + id_user,  my_user, "" + my_img, my_descripcion+"", my_cukis+"");
                                     String postId = mDatabase.push().getKey();
                                     mDatabase.child(postId).setValue(post);
 
 
 
-
                                 }
                             });
-
 
 
                         }
@@ -222,10 +226,10 @@ private FirebaseFirestore mfirestore;
                         }
                     });
 
-                   ((MainActivity) getActivity()).cambiarFragmento(new FragmentStore());
         } else {
             Toast.makeText(getContext(), "No ha seleccionado ningún archivo", Toast.LENGTH_SHORT).show();
         }
+
     }
 
 }

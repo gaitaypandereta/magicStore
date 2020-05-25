@@ -71,7 +71,6 @@ public class FragmentRegistration extends Fragment {
         edit_direccion = vista.findViewById(R.id.editText_direccion);
         edad = vista.findViewById(R.id.seekBar);
         valor_edad = vista.findViewById(R.id.seekBar_edad);
-        radioGroup = vista.findViewById(R.id.radioGrou);
         radioButtonChico = vista.findViewById(R.id.radioButtonMasculino);
         radioButtonChica = vista.findViewById(R.id.radioButtonFemenino);
         radioButtonOtro = vista.findViewById(R.id.radioButtonOtro);
@@ -146,7 +145,7 @@ public class FragmentRegistration extends Fragment {
         } else if (sex == R.id.radioButtonFemenino) {
             sexo = "chica";
         } else {
-            sexo = "---NO contesta en SEXO---";
+            sexo = " compra para chico y chica";
         }
         return sexo;
     }
@@ -173,6 +172,7 @@ public class FragmentRegistration extends Fragment {
         dR.child("sexo").setValue(sex);
         dR.child("edad").setValue(edad);
 
+
     }
 
 
@@ -191,11 +191,10 @@ public class FragmentRegistration extends Fragment {
                     String direccion = dataSnapshot.child("direccion_envio").getValue().toString();
                     String sexo = dataSnapshot.child("sexo").getValue().toString();
                     String edad = dataSnapshot.child("edad").getValue().toString();
-
                     String email = dataSnapshot.child("email").getValue().toString();
                     String nombre = dataSnapshot.child("nombre").getValue().toString();
-
-
+                    String ide = mAuth.getCurrentUser().getUid();
+                    hide_id.setText(ide);
                     hide_email.setText(email);
                     hide_nombre.setText(nombre);
                     edit_direccion.setText(direccion);
@@ -241,7 +240,7 @@ public class FragmentRegistration extends Fragment {
 
     }
 
-    public void mostrarSexo(String sexo) {
+    public void  mostrarSexo(String sexo) {
 
         if (sexo == "chico") {
             radioButtonChico.setChecked(true);
@@ -251,7 +250,7 @@ public class FragmentRegistration extends Fragment {
             hide_sexo.setText("chica");
         } else {
             radioButtonOtro.setChecked(true);
-            hide_sexo.setText("No responde");
+            hide_sexo.setText("Compra para los dos");
 
         }
     }
@@ -270,9 +269,9 @@ public class FragmentRegistration extends Fragment {
         h_sexo = hide_sexo.getText().toString();
 
 
-      Usuario usuario = new Usuario(h_id,telefono, direccion, edad, h_email, facebok,instagra, h_nombre, h_sexo, twiter);
+        Usuario usuario = new Usuario(h_id,telefono, direccion, edad, h_email, facebok,instagra, h_nombre, h_sexo, twiter);
 
-     return usuario;
+        return usuario;
     }
 
 // origin-gaitaypandereta 

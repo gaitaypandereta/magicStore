@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:background="#FFEB3B"
             android:scaleType="fitCenter"
-            android:src="@drawable/leonardo" />
+            android:src="@drawable/sube" />
 
         <TextView
             android:id="@+id/tv_user"
@@ -37,37 +37,16 @@
             android:layout_height="1dp"
             android:background="#1F1B1B"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+
+
+        <EditText
+            android:id="@+id/edit_cukis"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/edit_cukis"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:background="@drawable/mg"
-                android:textColor="#fff"
-                android:textAlignment="center"
-                android:text="0"/>
-
-
-            <TextView
-                android:id="@+id/tv_value_cukis"
-                android:layout_width="0dp"
-                android:layout_weight="7"
-                android:layout_height="wrap_content"
-                android:text="Cukis" />
-
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_value_coment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
+            android:background="@drawable/mg"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:text="0"/>
 
     </LinearLayout>
 
