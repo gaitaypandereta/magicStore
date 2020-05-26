@@ -22,7 +22,7 @@ Implementa un WebView para facilitar el acceso a la web sin salir de la aplicaci
 
 Interfaz de administrador:
 
- <img src="img/5-admin.png" height="380px">
+ <img src="img/5-administrador.png" height="380px">
 
 [Enlace a video descriptivo de utilidad](https://www.youtube.com/watch?v=T10orBgETPA)
 
