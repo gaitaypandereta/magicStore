@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +13,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
-
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.example.magistore.modelos.MessageFragmentFragment;
@@ -33,7 +29,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.otto.Subscribe;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,11 +41,7 @@ public class FragmentStoreAdmin extends Fragment {
     private DatabaseReference mDatabase;
     private String usuario, megustas, comento, img, id_user;
     private FirebaseAuth mAuth;
-    //private FirebaseAuth.AuthStateListener mAuthListener;
     private RecyclerView recyclerview;
-    //private FirebaseDatabase database;
-   // private EditText campo;
-    //private TextView ver_detalle;
     private Button fin_campanha;
     private List<String> campos;
     private Spinner spinner_campos;
@@ -65,7 +56,6 @@ public class FragmentStoreAdmin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_store_admin, container, false);
-        //  ButterKnife.bind(this, view);
 
         dialogo = new AlertDialog.Builder(view.getContext());
         mAuth = FirebaseAuth.getInstance();
@@ -77,7 +67,7 @@ public class FragmentStoreAdmin extends Fragment {
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-
+        //Eliminar post campaña de firebase con diálogo de confirmación
         fin_campanha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,8 +79,7 @@ public class FragmentStoreAdmin extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         mDatabase.child("img_desing").removeValue();
-                        ((MainActivity) getActivity()).cambiarFragmento(new FragmentInic());
-
+                        postList.clear();
 
                     }
                 });
@@ -106,6 +95,7 @@ public class FragmentStoreAdmin extends Fragment {
             }
         });
 
+        //Opciones de Spinner para ordenar la vista de todos los post
 
         campos = new ArrayList<String>();
         campos.add("ORDENAR POR CUKIS");
@@ -120,11 +110,11 @@ public class FragmentStoreAdmin extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                //Ordena la salida según la opción seleccionada en el Spinner
 
                 if (campos.get(position) == "ORDENAR POR CUKIS") {
-
+                    //Muestra los post ordenados por megusta/cukis.
                     mDatabase.child("img_desing").orderByChild("megusta").addValueEventListener(new ValueEventListener() {
-
 
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -165,7 +155,7 @@ public class FragmentStoreAdmin extends Fragment {
 
                 } else {
 
-
+                    //Muestra los post ordenados por id.
                     mDatabase.child("img_desing").orderByChild("id").addValueEventListener(new ValueEventListener() {
 
                         @Override
@@ -224,21 +214,23 @@ public class FragmentStoreAdmin extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        //-----
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        //-----
+
     }
+
+    //Método que elimina todos los post de una campaña.
 
     public void deleteCampahna() {
 
         mDatabase.child("img_desing").removeValue();
 
     }
-
+    //AlertDialogo que muestra todos los detalles del usuario del post.
     class MDialogo {
         public AlertDialog createSingleListDialog(String telefono, String direccion, String edad, String email, String facebo, String instagra, String nombre, String sexo, String estado, String twiter) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -272,7 +264,7 @@ public class FragmentStoreAdmin extends Fragment {
         }
 
     }
-
+    //Métodos de Otto Event Buss para recibir los datos que llegan desde mainActivity y Adapter.
     @Override
     public void onResume() {
         super.onResume();
@@ -293,7 +285,7 @@ public class FragmentStoreAdmin extends Fragment {
 
     }
 
-
+    //Método que carga desde firebase los datos del usuario del post seleccionado.
     private void getUsuario(String id) {
 
         mDatabase.child("users").child(id).addValueEventListener(new ValueEventListener() {

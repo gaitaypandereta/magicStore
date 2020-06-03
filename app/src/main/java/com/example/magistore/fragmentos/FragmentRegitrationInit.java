@@ -1,11 +1,7 @@
 package com.example.magistore.fragmentos;
-import android.app.AlertDialog;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
@@ -41,9 +37,7 @@ public class FragmentRegitrationInit extends Fragment {
     private Button btn_register, btn_session;
     private EditText edit_nombre, edit_email, edit_pass;
     private String nombre, email, password;
-    private CardView cardView;
     private ProgressBar barraProgreso;
-    private AlertDialog.Builder dialogo;
     private View vista;
 
 
@@ -82,6 +76,8 @@ public class FragmentRegitrationInit extends Fragment {
                 password = edit_pass.getText().toString().trim();
 
 
+                //Validación de datos de entrada como email, nombre y password.
+
                 Pattern patron = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
                 Matcher elMatcher = patron.matcher(email);
 
@@ -102,6 +98,7 @@ public class FragmentRegitrationInit extends Fragment {
 
             }
         });
+        //Checkbox aceptación condiciones de registro inicial.
 
         CheckBox checkbox = vista.findViewById(R.id.checkbox);
         checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -121,6 +118,7 @@ public class FragmentRegitrationInit extends Fragment {
 
         return vista;
     }
+    //Método para registro de usuario.
 
     private void registerUser() {
 

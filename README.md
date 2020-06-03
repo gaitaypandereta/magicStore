@@ -26,6 +26,8 @@ Interfaz de administrador:
 
 [Enlace a video descriptivo de utilidad](https://www.youtube.com/watch?v=T10orBgETPA)
 
+[Enlace a vídeo proyecto final](https://www.youtube.com/watch?v=PEXS_G9896k&t=35s)
+[Enlace a vídeo manual de uso](https://www.youtube.com/watch?v=t1c_2H7TX5E)
 
 ## Página Web
  Logo de Zoy creado con svg y Anime.js en donde la bolita está en constante movimiento. 
@@ -165,17 +167,19 @@ En cuanto a la evolución del desarrollo de este proyecto no es continuo en el t
    - Comienzo con el backend PHP creando la conexión.
 
 ## Mayo
- ### Semana 1
+### Semana 1
    - Me documento sobre seguridad viendo varios videos de OpenWebinar
    - Incorporo un servicio de audio que al pulsar el logo comienza a contar cuentos en android. 
    - Incorporo ya los archivos web al servidor.
 
- ### Semana2 
+### Semana2 
    - Implemento webview en dos nuevos fragmentos como son index y campañas para así acceder desde la misma aplicación.
 
- ### Semana 3
+### Semana 3
    - En esta semana implemento la interfaz de administración incorporando  eventos onLongClick() y onClick(), Spinner para ordenar la salida  de RecyclerView por id o por Cukis, opción  eliminar  campaña y  menú contextual para identificar usuarios de post inadecuados o excelentes.
 Añado una nueva funcionalidad a la vista personal de cada usuario para que pueda eliminar post.
 Actualizo vistas vacías con imágenes y corrijo algún bug que va surgiendo.
 Incorporo la librería Otto Event Bus en vez de interfaces en el manejo de datos.
 
+### Semana 4
+   - Correcciones finales en documentar y algún bug y fin de apk 

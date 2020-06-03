@@ -5,21 +5,16 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
-
 import java.util.UUID;
 
 /**
@@ -74,6 +69,10 @@ public class FragmentUploadDesing extends Fragment {
         anadir = view.findViewById(R.id.anyadir);
         borrar = view.findViewById(R.id.borrar);
         guardar = view.findViewById(R.id.guardar);
+
+
+
+        //listen  clicks para selección de color
 
         negro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,11 +201,14 @@ public class FragmentUploadDesing extends Fragment {
         return view;
     }
 
+
+    //Método para seleccionar el grueso de trazo de línea.
+
     public void seleccionaGruesoLinea(){
         final Dialog tamanyopunto = new Dialog(getContext());
         tamanyopunto.setTitle("Tamaño del punto:");
         tamanyopunto.setContentView(R.layout.tamanyo_punto);
-        //listen for clicks on tamaños de los botones
+
         ImageView smallBtn =tamanyopunto.findViewById(R.id.tpequenyo);
         smallBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -241,6 +243,9 @@ public class FragmentUploadDesing extends Fragment {
         tamanyopunto.show();
 
     }
+
+    //Método que guarda el dibujo.
+
     public void guardarDibujo(View view){
 
         AlertDialog.Builder salvarDibujo = new AlertDialog.Builder(getContext());
@@ -280,6 +285,10 @@ public class FragmentUploadDesing extends Fragment {
         });
         salvarDibujo.show();
     }
+
+
+    //Método que elimina un dibujo según el grueso de trazo seleccionado.
+
     public void borrarDibujo(){
 
         final Dialog borrarpunto = new Dialog(getContext());
@@ -321,6 +330,8 @@ public class FragmentUploadDesing extends Fragment {
 
     }
 
+    //Método que descarta un dibujo para comenzar otro nuevo.
+
     public void nuevoDibujo(){
         AlertDialog.Builder newDialog = new AlertDialog.Builder(getContext());
         newDialog.setTitle("Nuevo Diseño");
@@ -343,3 +354,4 @@ public class FragmentUploadDesing extends Fragment {
     }
 
 }
+

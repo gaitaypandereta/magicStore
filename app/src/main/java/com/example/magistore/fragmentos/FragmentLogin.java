@@ -1,4 +1,5 @@
 package com.example.magistore.fragmentos;
+
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -62,11 +63,6 @@ public class FragmentLogin extends Fragment {
                 }else{
                     Toast.makeText(getContext(), "Ingrese correctamente los datos", Toast.LENGTH_SHORT).show();
                 }
-
-
-
-
-
             }
         });
 
@@ -83,12 +79,12 @@ public class FragmentLogin extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Traemos el identificador del usuario una vez creada la actividad.
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
 
     }
-
+    //Método que comprueba si accede un usuario normal o el administrador en cuyo caso acede a la vista de administración
     private void   loginUser() {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -114,7 +110,7 @@ public class FragmentLogin extends Fragment {
 
         cleaCamp();
     }
-
+    //Método que limpia los campos una vez son enviados.
     public void cleaCamp(){
         ed_email.setText("");
         ed_password.setText("");

@@ -116,7 +116,7 @@ public class FragmentStore extends Fragment {
         //-----
     }
 
-
+    //Métodos Otto Event Buss para comunicación entre fragmento y activity.
     @Override
     public void onResume() {
         super.onResume();
@@ -137,7 +137,9 @@ public class FragmentStore extends Fragment {
 
     }
 
-
+    //Método que elimina post en firebase.
+    //Si se suben post sin contenido o repetido los elimina también aunque la imagen sea diferente.
+    //Cada post debe tener su propia descripción.
     public void deletePost(String mg) {
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();

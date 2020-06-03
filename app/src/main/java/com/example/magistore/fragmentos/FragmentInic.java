@@ -1,6 +1,5 @@
 package com.example.magistore.fragmentos;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,8 +38,12 @@ public class FragmentInic extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View vista= inflater.inflate(R.layout.fragment_inic, container, false);
+
+        //Inicializamos firebase.
         mAuth= FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance().getReference();
+
+        //Escucha decfragmento inicial para ir con un click a login
         RelativeLayout relativeclic =vista.findViewById(R.id.layout_inic);
         relativeclic.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -58,6 +60,7 @@ public class FragmentInic extends Fragment {
         return vista;
     }
 
+    //Saludo inicial
     private void saludoUser(){
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_weight="1">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,10 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:paddingTop="10dp"
             android:text="Registro"
             android:textAlignment="center"
-            android:textSize="25sp"
-            android:paddingTop="10dp"/>
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,6 +73,7 @@
                 android:inputType="textUri" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -99,6 +100,7 @@
                 android:inputType="textUri" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -159,9 +161,9 @@
             android:background="#FFFFFF"
             android:orientation="horizontal"
             android:paddingLeft="17dp"
+            android:paddingTop="16dp"
             android:paddingRight="7dp"
-            android:paddingBottom="16dp"
-            android:paddingTop="16dp">
+            android:paddingBottom="16dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -234,8 +236,8 @@
                 android:id="@+id/btn_ir_a_session"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="1dp"
                 android:text="AHORA NO" />
 
 
@@ -243,8 +245,8 @@
                 android:id="@+id/btn_guardar_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="1dp"
                 android:text="GUARDAR DATOS" />
 
 
@@ -255,25 +257,35 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:text=""
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
         <EditText
             android:id="@+id/edi_hide_nombre"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:text=""
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
         <EditText
             android:id="@+id/edi_hide_id"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:text=""
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
         <EditText
             android:id="@+id/edi_hide_sexo"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:text="chico"
-            android:visibility="invisible"/>
+            android:text=""
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/edi_hide_estado"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text=""
+            android:visibility="invisible" />
 
     </LinearLayout>
 

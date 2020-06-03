@@ -1,5 +1,6 @@
 package com.example.magistore.fragmentos;
 
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,7 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 public class Lienzo extends View {
 
-    //Path que utilizaré para ir pintando las lineas
+    //Path que utilizamos para ir pintando las lineas
     private Path drawPath;
     //Paint de dibujar y Paint de Canvas
     private static Paint drawPaint;
@@ -35,14 +36,14 @@ public class Lienzo extends View {
 
 
     private void setupDrawing() {
-//Configuración del area sobre la que pintar
+        //Configuración del area sobre la que pintar
 
         drawPath = new Path();
         drawPaint = new Paint();
         drawPaint.setColor(paintColor);
         drawPaint.setAntiAlias(true);
 
-        //setTamanyoPunto(20);
+        //Tamaño punto;
 
         drawPaint.setStrokeWidth(20);
         drawPaint.setStyle(Paint.Style.STROKE);
@@ -107,25 +108,24 @@ public class Lienzo extends View {
     public static void setTamanyoPunto(float nuevoTamanyo) {
 
 
-        //float pixel = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-        //        nuevoTamanyo, getResources().getDisplayMetrics());
 
-        //TamanyoPunto=pixel;
+
+        //Tamaño punto pixel;
         drawPaint.setStrokeWidth(nuevoTamanyo);
     }
 
 
-    //set borrado true or false
+    //Borrado true o false
     public static void setBorrado(boolean estaborrado) {
         borrado = estaborrado;
         if (borrado) {
 
             drawPaint.setColor(Color.WHITE);
-            //drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+
 
         } else {
             drawPaint.setColor(paintColor);
-            //drawPaint.setXfermode(null);
+
         }
     }
 
@@ -134,5 +134,6 @@ public class Lienzo extends View {
         invalidate();
 
     }
+
 
 }

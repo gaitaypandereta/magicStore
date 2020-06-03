@@ -27,8 +27,6 @@ public class Post implements Serializable {
     @SerializedName("megusta")
     private String megusta;
 
-
-
     public Post(String id, String user, String url_img, String decripcion,  String megusta) {
         this.id=id;
         this.user = user;
@@ -37,6 +35,7 @@ public class Post implements Serializable {
         this.megusta = megusta;
 
     }
+
 
     public Post(String user, String url_img, String decripcion,  String megusta) {
         this.user=user;

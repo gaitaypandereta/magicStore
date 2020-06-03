@@ -1,10 +1,8 @@
 package com.example.magistore.fragmentos;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.example.magistore.modelos.Retrofit.CukisApi;
@@ -26,7 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -76,6 +71,7 @@ public class FragmentRegistration extends Fragment {
         radioButtonOtro = vista.findViewById(R.id.radioButtonOtro);
         getUsuario();
 
+        //SeekBack edad
         if (edad != null) {
             edad.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -120,7 +116,7 @@ public class FragmentRegistration extends Fragment {
 
             }
         });
-
+        //En este caso implementamos tambien Retrofit llamando a su clase.
         Retrofit retrofit = new Retrofit
                 .Builder()
                 .baseUrl("http://192.168.43.113:3000/")
@@ -150,6 +146,7 @@ public class FragmentRegistration extends Fragment {
         return sexo;
     }
 
+    //Método que actualiza los datos de registro en firebase.
 
     public void actualizarRegistro() {
         h_email = hide_email.getText().toString();
@@ -175,6 +172,7 @@ public class FragmentRegistration extends Fragment {
 
     }
 
+    //Método que trae desde firebase los datos de registro para mostrarlos en la vista.
 
     private void getUsuario() {
 
@@ -218,6 +216,8 @@ public class FragmentRegistration extends Fragment {
 
     }
 
+    //Método que guarda y actualiza los datos de registro en mysql por medio de retrofit.
+
     public void guardarUsuarioMysql(Usuario usuario){
 
 
@@ -254,6 +254,7 @@ public class FragmentRegistration extends Fragment {
 
         }
     }
+    //Método que recoge los datos al método anterior guardarUsuarioMysql().
 
     public Usuario getUsuarioMysql(){
 
@@ -274,5 +275,5 @@ public class FragmentRegistration extends Fragment {
         return usuario;
     }
 
-// origin-gaitaypandereta 
+
 }

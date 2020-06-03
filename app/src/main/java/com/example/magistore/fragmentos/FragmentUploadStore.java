@@ -44,15 +44,11 @@ public class FragmentUploadStore extends Fragment {
     private ProgressBar uploadProgressBar;
     private String my_img=null;
     private Uri mImageUri;
-    private View view;
     private StorageReference mStorageReference;
     private DatabaseReference mDatabase;
     private StorageTask mUploadTask;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mfirestore;
-    private FirebaseStorage storage;
-    private StorageReference storageReference;
-    private FirebaseDatabase firebaseDatabase;
     private AlertDialog.Builder dialogo;
     public FragmentUploadStore() {
         // Required empty public constructor
@@ -79,10 +75,12 @@ public class FragmentUploadStore extends Fragment {
         user.setVisibility(View.GONE);
         cukis.setVisibility(View.GONE);
 
+        //Inicializamos firebase.
         mStorageReference= FirebaseStorage.getInstance().getReference("img_desing");
         mDatabase= FirebaseDatabase.getInstance().getReference("img_desing");
         mAuth=FirebaseAuth.getInstance();
         mfirestore=FirebaseFirestore.getInstance();
+
         btn_upload.setVisibility(View.GONE);
         btn_cancelar.setVisibility(View.GONE);
         btn_cancelar.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +131,7 @@ public class FragmentUploadStore extends Fragment {
 
         return view;
     }
+    //Nos abre el seleccionador de archivos para ver el que vamos a subir.
 
     private void openFileChooser(){
         Intent intent=new Intent();
@@ -143,6 +142,7 @@ public class FragmentUploadStore extends Fragment {
         user.setVisibility(View.VISIBLE);
         cukis.setVisibility(View.VISIBLE);
     }
+    //Método que muestra la imagen seleccionada en su ImageView predeterminado.
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -153,13 +153,16 @@ public class FragmentUploadStore extends Fragment {
 
     }
 
+
+    //Método que devuelve la extensión de archivo.
+
     private String getFileExtension(Uri uri){
         ContentResolver cR = getContext().getContentResolver();
         MimeTypeMap mime =MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
-
+    //Método que sube los post a firebase.
     private void uploadFile() {
 
         if (mImageUri != null) {
@@ -233,4 +236,5 @@ public class FragmentUploadStore extends Fragment {
     }
 
 }
+
 
