@@ -12,6 +12,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.magistore.MainActivity;
 import com.example.magistore.R;
 import com.example.magistore.modelos.Retrofit.CukisApi;
@@ -22,6 +24,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.okhttp.ResponseBody;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,8 +36,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * A simple {@link Fragment} subclass.
  */
 public class FragmentRegistration extends Fragment {
-    private EditText edit_telefono, edit_facebook, edit_twitter, edit_instagram, edit_direccion, hide_nombre, hide_id, hide_email, hide_sexo;
-    private String telefono, facebok, twiter, instagra, direccion, h_id, h_nombre, h_email, h_sexo;
+    private EditText edit_telefono, edit_facebook, edit_twitter, edit_instagram, edit_direccion, hide_nombre, hide_id, hide_email, hide_sexo, hide_comenta_admin;
+    private String telefono, facebok, twiter, instagra, direccion, h_id, h_nombre, h_email, h_sexo, h_estado;
     private SeekBar edad;
     private TextView valor_edad;
     private RadioGroup radioGroup;
@@ -58,6 +62,7 @@ public class FragmentRegistration extends Fragment {
         hide_nombre =vista.findViewById(R.id.edi_hide_nombre);
         hide_email =vista.findViewById(R.id.edi_hide_email);
         hide_id =vista.findViewById(R.id.edi_hide_id);
+        hide_comenta_admin=vista.findViewById(R.id.edi_hide_estado);
         hide_sexo = vista.findViewById(R.id.edi_hide_sexo);
         edit_telefono = vista.findViewById(R.id.editText_telefono);
         edit_facebook = vista.findViewById(R.id.editText_facebook);
@@ -110,7 +115,13 @@ public class FragmentRegistration extends Fragment {
             public void onClick(View view) {
 
                 actualizarRegistro();
-                guardarUsuarioMysql(getUsuarioMysql());
+
+
+                    guardarUsuarioMysql(getUsuarioMysql());
+
+                    updateUsuarioMysql(getUsuarioMysql());
+
+
                 ((MainActivity) getActivity()).cambiarFragmento(new FragmentNews());
 
 
@@ -141,7 +152,7 @@ public class FragmentRegistration extends Fragment {
         } else if (sex == R.id.radioButtonFemenino) {
             sexo = "chica";
         } else {
-            sexo = " compra para chico y chica";
+            sexo = " compra para todos";
         }
         return sexo;
     }
@@ -152,6 +163,7 @@ public class FragmentRegistration extends Fragment {
         h_email = hide_email.getText().toString();
         h_nombre = hide_nombre.getText().toString();
         h_id = hide_id.getText().toString();
+        h_estado=hide_comenta_admin.getText().toString();
         telefono = edit_telefono.getText().toString();
         facebok = edit_facebook.getText().toString();
         twiter = edit_twitter.getText().toString();
@@ -191,10 +203,12 @@ public class FragmentRegistration extends Fragment {
                     String edad = dataSnapshot.child("edad").getValue().toString();
                     String email = dataSnapshot.child("email").getValue().toString();
                     String nombre = dataSnapshot.child("nombre").getValue().toString();
+                    String coment_admin=dataSnapshot.child("comenta_admin").getValue().toString();
                     String ide = mAuth.getCurrentUser().getUid();
                     hide_id.setText(ide);
                     hide_email.setText(email);
                     hide_nombre.setText(nombre);
+                    hide_comenta_admin.setText(coment_admin);
                     edit_direccion.setText(direccion);
                     valor_edad.setText(edad);
                     edit_facebook.setText(facebook);
@@ -216,27 +230,44 @@ public class FragmentRegistration extends Fragment {
 
     }
 
-    //Método que guarda y actualiza los datos de registro en mysql por medio de retrofit.
-
-    public void guardarUsuarioMysql(Usuario usuario){
+    //Método que guarda los datos de registro en mysql por medio de retrofit.
 
 
-        Call<Usuario> call = api.postUsuario(usuario);
+                public void guardarUsuarioMysql(Usuario usuario){
 
 
-        api.postUsuario(usuario).enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                    Call<Usuario> call = api.postUsuario(usuario);
 
-            }
 
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
+                    api.postUsuario(usuario).enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
 
-            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+                        }
 
         });
 
+
+    }
+
+     //Actualizar usuario en mysql
+    public void updateUsuarioMysql(Usuario usuario){
+
+        api.updateUser(usuario.getId(), usuario).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
 
     }
 
@@ -250,7 +281,7 @@ public class FragmentRegistration extends Fragment {
             hide_sexo.setText("chica");
         } else {
             radioButtonOtro.setChecked(true);
-            hide_sexo.setText("Compra para los dos");
+            hide_sexo.setText("Compra para todos");
 
         }
     }
@@ -261,17 +292,19 @@ public class FragmentRegistration extends Fragment {
         h_email = hide_email.getText().toString();
         h_nombre = hide_nombre.getText().toString();
         h_id = hide_id.getText().toString();
-        telefono = edit_telefono.getText().toString();
+        telefono = edit_telefono.getText().toString().trim();
         facebok = edit_facebook.getText().toString();
         twiter = edit_twitter.getText().toString();
         instagra = edit_instagram.getText().toString();
         direccion = edit_direccion.getText().toString();
-        int edad =Integer.parseInt (valor_edad.getText().toString());
+        String edad = valor_edad.getText().toString();
+        h_estado=hide_comenta_admin.getText().toString();
         h_sexo = hide_sexo.getText().toString();
 
 
-        Usuario usuario = new Usuario(h_id,telefono, direccion, edad, h_email, facebok,instagra, h_nombre, h_sexo, twiter);
+        Usuario usuario = new Usuario(h_id, telefono, direccion, edad, h_email, facebok,instagra, h_nombre, h_sexo, h_estado, twiter);
 
+        Toast.makeText(getContext(), h_estado, Toast.LENGTH_LONG).show();
         return usuario;
     }
 

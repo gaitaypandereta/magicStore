@@ -303,8 +303,7 @@ public class FragmentStoreAdmin extends Fragment {
                     String instagra = dataSnapshot.child("instagra").getValue().toString();
                     String faceboo = dataSnapshot.child("facebok").getValue().toString();
                     String direccion = dataSnapshot.child("direccion_envio").getValue().toString();
-                    int edad = Integer.parseInt(eda);
-                    user = new Usuario(telefono, direccion, edad, email, faceboo, instagra, nombre, sexo, estado, twitte);
+                    user = new Usuario(telefono, direccion, eda, email, faceboo, instagra, nombre, sexo, estado, twitte);
 
                     MDialogo dialogo = new MDialogo();
                     dialogo.createSingleListDialog(telefono, direccion, eda, email, faceboo, instagra, nombre, sexo, estado, twitte).show();
@@ -321,6 +320,9 @@ public class FragmentStoreAdmin extends Fragment {
 
 
         });
+
+
+
 
 
     }

@@ -6,34 +6,48 @@ public class Usuario {
     @SerializedName("id")
     @Expose
     private String id;
+
     @SerializedName("telefono ")
     @Expose
     private String telefono;
+
     @SerializedName("direccion")
     @Expose
     private String direccion;
+
     @SerializedName("edad_compra")
     @Expose
-    private int edadCompra;
+    private String edadCompra;
+
     @SerializedName("email")
     @Expose
     private String email;
+
     @SerializedName("facebook")
     @Expose
     private String facebook;
+
     @SerializedName("instagram")
     @Expose
     private String instagram;
+
     @SerializedName("nombre")
     @Expose
     private String nombre;
+
     @SerializedName("sexo_compra")
     @Expose
     private String sexoCompra;
+
+    @SerializedName("comenta_admin")
+    @Expose
+    private String comentaAdmin;
+
     @SerializedName("twitter")
     @Expose
     private String twitter;
-    public Usuario(String id, String telefono, String direccion, int edadCompra, String email, String facebook, String instagram, String nombre, String sexoCompra, String twitter) {
+/*
+    public Usuario(String id, String telefono, String direccion, String edadCompra, String email, String facebook, String instagram, String nombre, String sexoCompra, String comentaAdmin,  String twitter) {
         this.id = id;
         this.telefono = telefono;
         this.direccion = direccion;
@@ -43,10 +57,39 @@ public class Usuario {
         this.instagram = instagram;
         this.nombre = nombre;
         this.sexoCompra = sexoCompra;
+        this.comentaAdmin=comentaAdmin;
         this.twitter = twitter;
     }
 
-    public Usuario(String telefono, String direccion, int edad, String email, String faceboo, String instagra, String nombre, String sexo, String estado, String twitte) {
+   */
+
+
+    public Usuario(String id, String telefono, String direccion, String edadCompra, String email, String facebook, String instagram, String nombre, String sexoCompra, String comentaAdmin, String twitter) {
+        this.id = id;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.edadCompra = edadCompra;
+        this.email = email;
+        this.facebook = facebook;
+        this.instagram = instagram;
+        this.nombre = nombre;
+        this.sexoCompra = sexoCompra;
+        this.comentaAdmin=comentaAdmin;
+        this.twitter = twitter;
+    }
+
+    public Usuario(String telefono, String direccion, String edad, String email, String faceboo, String instagra, String nombre, String sexo, String estado, String twitte) {
+        this.id = id;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.edadCompra = edad;
+        this.email = email;
+        this.facebook = faceboo;
+        this.instagram = instagra;
+        this.nombre = nombre;
+        this.sexoCompra = sexo;
+        this.twitter = twitte;
+
     }
 
     public String getId() {
@@ -73,11 +116,11 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public Integer getEdadcompra() {
+    public String getEdadcompra() {
         return edadCompra;
     }
 
-    public void setEdadcompra(Integer edadcompra) {
+    public void setEdadcompra(String edadcompra) {
         this.edadCompra = edadcompra;
     }
 
@@ -119,6 +162,14 @@ public class Usuario {
 
     public void setSexocompra(String sexoCompra) {
         this.sexoCompra = sexoCompra;
+    }
+
+    public String getComentaAdmin() {
+        return comentaAdmin;
+    }
+
+    public void setComentaAdmin(String comentaAdmin) {
+        this.comentaAdmin = comentaAdmin;
     }
 
     public String getTwitter() {

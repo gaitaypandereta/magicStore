@@ -6,22 +6,32 @@ import android.os.Bundle;
 import com.example.magistore.modelos.MessageFragmentActivity;
 import com.example.magistore.modelos.OttoClass;
 import com.example.magistore.modelos.Post;
+import com.example.magistore.modelos.Retrofit.CukisApi;
 import com.example.magistore.modelos.Serve;
 import com.example.magistore.fragmentos.FragmentConditionsInic;
 import com.example.magistore.fragmentos.FragmentLogin;
 import com.example.magistore.fragmentos.FragmentInic;
 import com.example.magistore.fragmentos.FragmentStoreWeb;
 import com.example.magistore.fragmentos.Fragment_campahne;
+import com.example.magistore.modelos.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.okhttp.ResponseBody;
 import com.squareup.otto.Subscribe;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -34,6 +44,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private FragmentInic fragmentInicio = new FragmentInic();
@@ -44,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private DatabaseReference dR;
     private String valor;
     private String ides;
+    private CukisApi api;
     View view;
     private List<Post> postList = new ArrayList<Post>();
 
@@ -84,6 +101,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+
+        //En este caso implementamos tambien Retrofit llamando a su clase.
+        Retrofit retrofit = new Retrofit
+                .Builder()
+                .baseUrl("http://192.168.43.113:3000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        api = retrofit.create(CukisApi.class);
 
     }
 
@@ -229,11 +254,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.mcSelect:
                 if (getIdes() != null)
                     prizeUser(getIdes());
+                    String premio="PREMIADO";
+                    updateGetUsuario(getIdes(), premio);
                 break;
 
             case R.id.mcSucces:
                 if (getIdes() != null)
                     penalizeUser(getIdes());
+                    String penalizado="PENALIZADO";
+                    updateGetUsuario(getIdes(), penalizado);
 
 
                 break;
@@ -248,6 +277,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void prizeUser(String ide) {
         dR = FirebaseDatabase.getInstance().getReference("users").child(ide);
         dR.child("comenta_admin").setValue("PREMIADO");
+
 
     }
 
@@ -288,8 +318,62 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    //Actualizar usuario final de campaña en mysql
+    public void updateUsuarioMysql(Usuario usuario){
 
-    private void hideTeclado(View v) {
+        api.updateUser(usuario.getId(), usuario).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
+    private void updateGetUsuario(String id, String estado) {
+
+    final  String ide=id;
+    final  String coment_admin = estado;
+        dR = FirebaseDatabase.getInstance().getReference();
+        dR.child("users").child(id).addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String telefono = dataSnapshot.child("telefono").getValue().toString();
+                    String facebook = dataSnapshot.child("facebok").getValue().toString();
+                    String twitter = dataSnapshot.child("twiter").getValue().toString();
+                    String instagram = dataSnapshot.child("instagra").getValue().toString();
+                    String direccion = dataSnapshot.child("direccion_envio").getValue().toString();
+                    String sexo = dataSnapshot.child("sexo").getValue().toString();
+                    String edad = dataSnapshot.child("edad").getValue().toString();
+                    String email = dataSnapshot.child("email").getValue().toString();
+                    String nombre = dataSnapshot.child("nombre").getValue().toString();
+
+                    Usuario usuario = new Usuario(ide, telefono, direccion, edad, email, facebook,instagram, nombre, sexo, coment_admin , twitter);
+                    updateUsuarioMysql(usuario);
+
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
+            private void hideTeclado(View v) {
         InputMethodManager teclado = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         teclado.hideSoftInputFromWindow(v.getWindowToken(), 0);
     }
