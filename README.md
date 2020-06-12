@@ -30,6 +30,9 @@ Interfaz de administrador:
 [Enlace a vídeo manual de uso](https://www.youtube.com/watch?v=t1c_2H7TX5E)
 
 ## Página Web
+
+ [Enlace a MagicStoreWeb](https://github.com/gaitaypandereta/magicStoreWeb)
+
  Logo de Zoy creado con svg y Anime.js en donde la bolita está en constante movimiento. 
  Zoy es un sitio web familiar con secciones infantiles, de moda, belleza y cocina.
  
@@ -47,10 +50,23 @@ Interfaz de administrador:
  
   <img src="img/cuentos.png" height="380px">
   
-  Zoy tiene además una página de administración desde donde se contabilizan todas las Cukis:
+## Página Admin
+
+ [Enlace a MagicStoreAdmin](https://github.com/gaitaypandereta/MagicStoreAdmin)
+
+  Zoy tiene además una página de administración desde donde se contabilizan todas las Cukis.
+  Recoge los datos de los participantes desde android por medio de retrofit y envía las cukis obtenidas 
+  desde mysql también desde mysql a la apk.
   
-  
-  <img src="img/contabilidad.png" height="380px">
+  <img src="img/pcukis.png" height="380px">
+
+  <img src="img/proyectUsers.png" height="380px">
+
+  <img src="img/pupdat.png" height="380px">
+
+  <img src="img/pupdate.png" height="380px">
+
+ 
   
  ## Software
    - Docker php en un principio y ya luego directamente en el servidor
@@ -182,4 +198,10 @@ Actualizo vistas vacías con imágenes y corrijo algún bug que va surgiendo.
 Incorporo la librería Otto Event Bus en vez de interfaces en el manejo de datos.
 
 ### Semana 4
-   - Correcciones finales en documentar y algún bug y fin de apk 
+   - Correcciones finales en documentar y algún bug y fin de apk.
+
+## Junio
+### Semana 1 
+  - Trabajo sobre la página web mejorando las vistas.
+### Semana 2
+  - Dedico este tiempo a la página de administración realizando el backend en php  y mejorando la interfaz.

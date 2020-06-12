@@ -31,7 +31,7 @@ public class Fragment_campahne extends Fragment {
         WebView myWebView1 = view.findViewById(R.id.webView1);
 
         myWebView1.getSettings().setJavaScriptEnabled(true);
-        myWebView1.loadUrl("https://www.google.es/");
+        myWebView1.loadUrl("https://www.soyturevista.es/inicio.html");
         return view;
     }
 
