@@ -65,9 +65,9 @@ Interfaz de administrador:
   <img src="img/pupdat.png" height="380px">
 
   <img src="img/pupdate.png" height="380px">
-
- 
   
+  [Enlace a MagicStoreWeb](https://github.com/gaitaypandereta/magicStore
+[EEEnlace a MagicStore_manual_apk ] (https://github.com/gaitaypandereta/MagicStore_manual_apk)ttps://github.com/gaitaypandereta/MagicStore_manual_ap
  ## Software
    - Docker php en un principio y ya luego directamente en el servidor
    - AndroidStudio para android
